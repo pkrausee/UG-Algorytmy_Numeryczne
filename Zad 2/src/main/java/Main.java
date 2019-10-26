@@ -2,19 +2,17 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Integer[][] A =
+        Double[][] A =
         {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
+                {1.0, 2.0, 3.0},
+                {4.0, 5.0, 6.0},
+                {7.0, 8.0, 9.0}
         };
 
         char[] X = {'x', 'y', 'z'};
 
-        Integer[] B = {10, 11, 12};
+        Double[] B = {10.0, 11.0, 12.0};
 
         MyMatrix.gauss(A, X, B);
     }
-
-
 }

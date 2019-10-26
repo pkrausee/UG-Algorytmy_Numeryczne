@@ -1,70 +1,88 @@
 public class MyMatrix
 {
-    public static  <TTyp extends Number> void gauss (TTyp[][] A, char[] X, TTyp[] B)
+    public static <TType extends Number> void gauss (TType[][] A, char[] X, TType[] B)
     {
-        Double[][] mergedMatrix = new Double[A.length][A.length + 1];
-
-        //merge
-        for(int i = 0; i < mergedMatrix.length; i++)
+        if(A.getClass().equals(Fraction[][].class))
         {
-            for(int j = 0; j < mergedMatrix[i].length; j++)
-            {
-                mergedMatrix[i][j] = (j < A[i].length) ? A[i][j].doubleValue() : B[i].doubleValue();
-            }
+            System.out.println("Fraction");
+
+            calculate((Fraction[][]) A, (Fraction[]) B);
         }
-
-        show(mergedMatrix);
-
-        for(int x = 0; x < mergedMatrix.length; x++)
+        else if(A.getClass().equals(Float[][].class))
         {
-            if(mergedMatrix[x][x] == 0)
+            System.out.println("Float");
+
+            calculate(CollectionUtilities.parse((Float[][]) A), CollectionUtilities.parse((Float[]) B));
+        }
+        else if(A.getClass().equals(Double[][].class))
+        {
+            System.out.println("Double");
+
+            calculate(CollectionUtilities.parse((Double[][]) A), CollectionUtilities.parse((Double[]) B));
+        }
+        else if(A.getClass().equals(Integer[][].class))
+        {
+            System.out.println("Integer");
+
+            calculate(CollectionUtilities.parse((Integer[][]) A), CollectionUtilities.parse((Integer[]) B));
+        }
+    }
+
+    private static  <TType extends IUsableNumber<TType>> void calculate (TType[][] A, TType[] B)
+    {
+        CollectionUtilities.show(A, B);
+
+        TType ZERO = A[0][0].ZERO();
+        TType ONE = A[0][0].ONE();
+
+        for(int x = 0; x < A.length; x++)
+        {
+            if(A[x][x].isZero())
             {
                 System.out.println("Brak rozwiazania");
 
                 break;
             }
 
-            //podziel wiersz przez obecny element
-            for(int i = x + 1; i < mergedMatrix[0].length; i++)
+            for(int i = x + 1; i < A[0].length + 1; i++)
             {
-                mergedMatrix[x][i] = mergedMatrix[x][i] / mergedMatrix[x][x];
+                if(i < A[0].length)
+                {
+                    A[x][i] = A[x][i].divide(A[x][x]);
+                }
+                else
+                {
+                    System.out.println("oasdasdasdasd");
+
+                    B[x] = B[x].divide(A[x][x]);
+                }
             }
 
-            mergedMatrix[x][x] = 1.0;
+            A[x][x] = ONE;
 
-            //wyzeruj wiersz ponizej
-            for(int i = 0; i < mergedMatrix.length; i++)
+            for(int i = 0; i < A.length; i++)
             {
                 if(i != x)
                 {
-                    double count = mergedMatrix[i][x] * mergedMatrix[x][x];
-                    mergedMatrix[i][x] = 0.0;
+                    TType count = A[i][x].multiply(A[x][x]);
 
-                    for(int j = x + 1; j < mergedMatrix[i].length; j++)
+                    A[i][x] = ZERO;
+
+                    for(int j = x + 1; j < A[i].length + 1; j++)
                     {
-                        mergedMatrix[i][j] -= mergedMatrix[x][j] * count;
+                        if(j < A[i].length)
+                        {
+                            A[i][j] = A[i][j].subtract(A[x][j].multiply(count));
+                        }
+                        else
+                        {
+                            B[i] = B[i].subtract(B[x].multiply(count));
+                        }
                     }
-
-                    show(mergedMatrix);
                 }
             }
         }
 
-        show(mergedMatrix);
-    }
-
-    private static void show(Double[][] matrix)
-    {
-        for (Double[] row : matrix)
-        {
-            for (Double value : row)
-            {
-                System.out.print(String.format("%.1f", value) + " ");
-            }
-            System.out.println();
-        }
-        System.out.println("----------------");
+        CollectionUtilities.show(A, B);
     }
 }
-
-
