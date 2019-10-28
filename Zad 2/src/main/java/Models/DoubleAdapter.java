@@ -1,4 +1,6 @@
-public class DoubleAdapter extends Number implements IUsableNumber<DoubleAdapter>
+package Models;
+
+public class DoubleAdapter extends Number implements INumberAdapter<Double>
 {
     private final Double value;
 
@@ -10,24 +12,24 @@ public class DoubleAdapter extends Number implements IUsableNumber<DoubleAdapter
         this.value = value;
     }
 
-    public DoubleAdapter add(DoubleAdapter n)
+    public INumberAdapter add(INumberAdapter n)
     {
-        return new DoubleAdapter(this.value + n.value);
+        return new DoubleAdapter(this.value + ((Double) n.getValue()));
     }
 
-    public DoubleAdapter subtract(DoubleAdapter n)
+    public INumberAdapter subtract(INumberAdapter n)
     {
-        return new DoubleAdapter(this.value - n.value);
+        return new DoubleAdapter(this.value - ((Double) n.getValue()));
     }
 
-    public DoubleAdapter multiply(DoubleAdapter n)
+    public INumberAdapter multiply(INumberAdapter n)
     {
-        return new DoubleAdapter(this.value * n.value);
+        return new DoubleAdapter(this.value * ((Double) n.getValue()));
     }
 
-    public DoubleAdapter divide(DoubleAdapter n)
+    public INumberAdapter divide(INumberAdapter n)
     {
-        return new DoubleAdapter(this.value / n.value);
+        return new DoubleAdapter(this.value / ((Double) n.getValue()));
     }
 
     public DoubleAdapter ZERO()

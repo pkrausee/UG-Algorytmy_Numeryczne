@@ -1,4 +1,6 @@
-public class IntegerAdapter extends Number implements IUsableNumber<IntegerAdapter>
+package Models;
+
+public class IntegerAdapter extends Number implements INumberAdapter<Integer>
 {
     private final Integer value;
 
@@ -10,20 +12,20 @@ public class IntegerAdapter extends Number implements IUsableNumber<IntegerAdapt
         this.value = value;
     }
 
-    public IntegerAdapter add(IntegerAdapter n) {
-        return new IntegerAdapter(this.value + n.value);
+    public INumberAdapter add(INumberAdapter n) {
+        return new IntegerAdapter(this.value + ((Integer) n.getValue()));
     }
 
-    public IntegerAdapter subtract(IntegerAdapter n) {
-        return new IntegerAdapter(this.value - n.value);
+    public INumberAdapter subtract(INumberAdapter n) {
+        return new IntegerAdapter(this.value - ((Integer) n.getValue()));
     }
 
-    public IntegerAdapter multiply(IntegerAdapter n) {
-        return new IntegerAdapter(this.value * n.value);
+    public INumberAdapter multiply(INumberAdapter n) {
+        return new IntegerAdapter(this.value * ((Integer) n.getValue()));
     }
 
-    public IntegerAdapter divide(IntegerAdapter n) {
-        return new IntegerAdapter(this.value / n.value);
+    public INumberAdapter divide(INumberAdapter n) {
+        return new IntegerAdapter(this.value / ((Integer) n.getValue()));
     }
 
     public IntegerAdapter ZERO()

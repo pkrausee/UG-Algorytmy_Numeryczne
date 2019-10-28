@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CollectionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CollectionUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/DoubleAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/FloatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IUsableNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/INumberAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/IntegerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyMatrix.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -97,6 +98,9 @@
       <workItem from="1572024838823" duration="1939000" />
       <workItem from="1572094684531" duration="1228000" />
       <workItem from="1572096323250" duration="27991000" />
+      <workItem from="1572198836091" duration="664000" />
+      <workItem from="1572214648493" duration="269000" />
+      <workItem from="1572282276625" duration="4090000" />
     </task>
     <servers />
   </component>
@@ -108,7 +112,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

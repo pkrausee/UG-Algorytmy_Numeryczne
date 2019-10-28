@@ -1,6 +1,8 @@
+package Models;
+
 import java.math.BigInteger;
 
-public class Fraction extends Number implements IUsableNumber<Fraction>
+public class Fraction extends Number implements INumberAdapter<Fraction>
 {
     private final BigInteger numerator;
     private final BigInteger denominator;
@@ -44,40 +46,40 @@ public class Fraction extends Number implements IUsableNumber<Fraction>
         this(new BigInteger("" + numerator), new BigInteger("" + denominator), false);
     }
 
-    public Fraction add (Fraction f)
+    public INumberAdapter add (INumberAdapter f)
     {
-        BigInteger thisNumerator = this.numerator.multiply(f.getDenominator());
-        BigInteger aNumerator = f.getNumerator().multiply(this.denominator);
+        BigInteger thisNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
+        BigInteger aNumerator = ((Fraction) f).getNumerator().multiply(this.denominator);
 
         BigInteger newNumerator = thisNumerator.add(aNumerator);
-        BigInteger newDenominator = this.denominator.multiply(f.getDenominator());
+        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getDenominator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public Fraction subtract (Fraction f)
+    public INumberAdapter subtract (INumberAdapter f)
     {
-        BigInteger thisNumerator = this.numerator.multiply(f.getDenominator());
-        BigInteger aNumerator = f.getNumerator().multiply(this.denominator);
+        BigInteger thisNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
+        BigInteger aNumerator = ((Fraction) f).getNumerator().multiply(this.denominator);
 
         BigInteger newNumerator = thisNumerator.subtract(aNumerator);
-        BigInteger newDenominator = this.denominator.multiply(f.getDenominator());
+        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getDenominator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public Fraction multiply (Fraction f)
+    public INumberAdapter multiply (INumberAdapter f)
     {
-        BigInteger newNumerator = this.numerator.multiply(f.getNumerator());
-        BigInteger newDenominator = this.denominator.multiply(f.getDenominator());
+        BigInteger newNumerator = this.numerator.multiply(((Fraction) f).getNumerator());
+        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getDenominator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public Fraction divide (Fraction f)
+    public INumberAdapter divide (INumberAdapter f)
     {
-        BigInteger newNumerator = this.numerator.multiply(f.getDenominator());
-        BigInteger newDenominator = this.denominator.multiply(f.getNumerator());
+        BigInteger newNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
+        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getNumerator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
@@ -90,6 +92,10 @@ public class Fraction extends Number implements IUsableNumber<Fraction>
     public Fraction ONE()
     {
         return ONE;
+    }
+
+    public Fraction getValue() {
+        return null;
     }
 
     public boolean isZero() {

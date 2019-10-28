@@ -1,4 +1,6 @@
-public class FloatAdapter extends Number implements IUsableNumber<FloatAdapter>
+package Models;
+
+public class FloatAdapter extends Number implements INumberAdapter<Float>
 {
     private final Float value;
 
@@ -10,20 +12,20 @@ public class FloatAdapter extends Number implements IUsableNumber<FloatAdapter>
         this.value = value;
     }
 
-    public FloatAdapter add(FloatAdapter n) {
-        return new FloatAdapter(this.value + n.value);
+    public INumberAdapter add(INumberAdapter n) {
+        return new FloatAdapter(this.value + ((Float) n.getValue()));
     }
 
-    public FloatAdapter subtract(FloatAdapter n) {
-        return new FloatAdapter(this.value - n.value);
+    public INumberAdapter subtract(INumberAdapter n) {
+        return new FloatAdapter(this.value - ((Float) n.getValue()));
     }
 
-    public FloatAdapter multiply(FloatAdapter n) {
-        return new FloatAdapter(this.value * n.value);
+    public INumberAdapter multiply(INumberAdapter n) {
+        return new FloatAdapter(this.value * ((Float) n.getValue()));
     }
 
-    public FloatAdapter divide(FloatAdapter n) {
-        return new FloatAdapter(this.value / n.value);
+    public INumberAdapter divide(INumberAdapter n) {
+        return new FloatAdapter(this.value / ((Float) n.getValue()));
     }
 
     public FloatAdapter ZERO()

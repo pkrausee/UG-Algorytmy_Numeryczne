@@ -1,3 +1,7 @@
+import Models.DoubleAdapter;
+import Models.FloatAdapter;
+import Models.IntegerAdapter;
+
 public abstract class CollectionUtilities
 {
     public static <TType> void show (TType[][] A, TType[] B)
@@ -23,7 +27,7 @@ public abstract class CollectionUtilities
 
     public static IntegerAdapter[] parse (Integer[] A)
     {
-        System.out.println("IntegerAdapter[]");
+        System.out.println("Models.IntegerAdapter[]");
 
         IntegerAdapter[] f = new IntegerAdapter[A.length];
 
@@ -37,7 +41,7 @@ public abstract class CollectionUtilities
 
     public static FloatAdapter[] parse (Float[] A)
     {
-        System.out.println("FloatAdapter[]");
+        System.out.println("Models.FloatAdapter[]");
 
         FloatAdapter[] f = new FloatAdapter[A.length];
 
@@ -51,7 +55,7 @@ public abstract class CollectionUtilities
 
     public static DoubleAdapter[] parse (Double[] A)
     {
-        System.out.println("DoubleAdapter[]");
+        System.out.println("Models.DoubleAdapter[]");
 
         DoubleAdapter[] d = new DoubleAdapter[A.length];
 
@@ -65,7 +69,7 @@ public abstract class CollectionUtilities
 
     public static IntegerAdapter[][] parse (Integer[][] A)
     {
-        System.out.println("IntegerAdapter[][]");
+        System.out.println("Models.IntegerAdapter[][]");
 
         IntegerAdapter[][] f = new IntegerAdapter[A.length][A[0].length];
 
@@ -82,7 +86,7 @@ public abstract class CollectionUtilities
 
     public static FloatAdapter[][] parse (Float[][] A)
     {
-        System.out.println("FloatAdapter[][]");
+        System.out.println("Models.FloatAdapter[][]");
 
         FloatAdapter[][] f = new FloatAdapter[A.length][A[0].length];
 
@@ -99,7 +103,7 @@ public abstract class CollectionUtilities
 
     public static DoubleAdapter[][] parse (Double[][] A)
     {
-        System.out.println("DoubleAdapter[][]");
+        System.out.println("Models.DoubleAdapter[][]");
 
         DoubleAdapter[][] d = new DoubleAdapter[A.length][A[0].length];
 

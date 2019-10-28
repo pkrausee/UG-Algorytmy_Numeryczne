@@ -1,10 +1,13 @@
+import Models.Fraction;
+import Models.INumberAdapter;
+
 public class MyMatrix
 {
     public static <TType extends Number> void gauss (TType[][] A, char[] X, TType[] B)
     {
         if(A.getClass().equals(Fraction[][].class))
         {
-            System.out.println("Fraction");
+            System.out.println("Models.Fraction");
 
             calculate((Fraction[][]) A, (Fraction[]) B);
         }
@@ -28,12 +31,12 @@ public class MyMatrix
         }
     }
 
-    private static  <TType extends IUsableNumber<TType>> void calculate (TType[][] A, TType[] B)
+    private static void calculate (INumberAdapter[][] A, INumberAdapter[] B)
     {
         CollectionUtilities.show(A, B);
 
-        TType ZERO = A[0][0].ZERO();
-        TType ONE = A[0][0].ONE();
+        INumberAdapter ZERO = A[0][0].ZERO();
+        INumberAdapter ONE = A[0][0].ONE();
 
         for(int x = 0; x < A.length; x++)
         {
@@ -52,8 +55,6 @@ public class MyMatrix
                 }
                 else
                 {
-                    System.out.println("oasdasdasdasd");
-
                     B[x] = B[x].divide(A[x][x]);
                 }
             }
@@ -64,7 +65,7 @@ public class MyMatrix
             {
                 if(i != x)
                 {
-                    TType count = A[i][x].multiply(A[x][x]);
+                    INumberAdapter count = A[i][x].multiply(A[x][x]);
 
                     A[i][x] = ZERO;
 
