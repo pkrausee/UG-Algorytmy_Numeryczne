@@ -3,7 +3,6 @@ import Models.Pair;
 
 import Adapters.INumberAdapter;
 
-import Utilities.CollectionUtilities;
 import Utilities.Parser;
 
 
@@ -43,18 +42,21 @@ public class MyMatrix
 
     private static Pair calculate (INumberAdapter[][] A, INumberAdapter[] B)
     {
-        CollectionUtilities.show(A, B);
-
         INumberAdapter ZERO = A[0][0].ZERO();
         INumberAdapter ONE = A[0][0].ONE();
 
         for(int x = 0; x < A.length; x++)
         {
-            if(A[x][x].isZero())
+            int destRow = x;
+            while(destRow < A.length && A[destRow][x].isZero())
             {
-                System.out.println("Brak rozwiazania");
+                destRow++;
+            }
 
-                break;
+            if(destRow != x)
+            {
+                swapRows(B, x, destRow);
+                swapRows(A, x, destRow);
             }
 
             for(int i = x + 1; i < A[0].length + 1; i++)
@@ -65,8 +67,6 @@ public class MyMatrix
                 }
                 else
                 {
-                    System.out.println(B[x] + " " + A[x][x]);
-
                     B[x] = B[x].divide(A[x][x]);
                 }
             }
@@ -96,8 +96,20 @@ public class MyMatrix
             }
         }
 
-        CollectionUtilities.show(A, B);
-
         return new Pair<INumberAdapter[][], INumberAdapter[]>(A, B);
+    }
+
+    private static void swapRows(INumberAdapter[] A, int src, int dest)
+    {
+        INumberAdapter temp = A[src];
+        A[src] = A[dest];
+        A[dest] = temp;
+    }
+
+    private static void swapRows(INumberAdapter[][] A, int src, int dest)
+    {
+        INumberAdapter[] temp = A[src];
+        A[src] = A[dest];
+        A[dest] = temp;
     }
 }

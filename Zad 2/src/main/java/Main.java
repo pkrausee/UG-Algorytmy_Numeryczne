@@ -34,7 +34,7 @@ public class Main
     {
         Fraction[][] A =
                 {
-                        {new Fraction(1), new Fraction(2), new Fraction(3)},
+                        {new Fraction(0), new Fraction(0), new Fraction(3)},
                         {new Fraction(4), new Fraction(5), new Fraction(6)},
                         {new Fraction(7), new Fraction(8), new Fraction(9)}
                 };
@@ -42,6 +42,8 @@ public class Main
         char[] X = {'x', 'y', 'z'};
 
         Fraction[] B = {new Fraction(10), new Fraction(11), new Fraction(12)};
+
+        CollectionUtilities.show(A, B);
 
         Pair result = MyMatrix.gauss(A, X, B);
 

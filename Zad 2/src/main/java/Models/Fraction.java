@@ -135,7 +135,12 @@ public class Fraction extends Number
     @Override
     public String toString()
     {
-        return "[" +  this.numerator + "/" + this.denominator + "]";
+        if(this.isZero())
+        {
+            return " 0 ";
+        }
+
+        return " " +  this.numerator + "/" + this.denominator + " ";
     }
 
     public BigInteger getNumerator()
