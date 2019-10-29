@@ -1,4 +1,4 @@
-package Models;
+package Adapters;
 
 public interface INumberAdapter <TType extends Number> extends Comparable
 {
@@ -10,10 +10,10 @@ public interface INumberAdapter <TType extends Number> extends Comparable
     INumberAdapter ZERO();
     INumberAdapter ONE();
 
-    TType getValue();
-
     boolean isZero();
 
     String toString();
+
+    TType getValue();
 }
 

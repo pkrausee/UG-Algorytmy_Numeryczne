@@ -1,6 +1,6 @@
-package Models;
+package Adapters;
 
-public class FloatAdapter extends Number implements INumberAdapter<Float>
+public class FloatAdapter implements INumberAdapter<Float>
 {
     private final Float value;
 
@@ -12,19 +12,23 @@ public class FloatAdapter extends Number implements INumberAdapter<Float>
         this.value = value;
     }
 
-    public INumberAdapter add(INumberAdapter n) {
+    public INumberAdapter add(INumberAdapter n)
+    {
         return new FloatAdapter(this.value + ((Float) n.getValue()));
     }
 
-    public INumberAdapter subtract(INumberAdapter n) {
+    public INumberAdapter subtract(INumberAdapter n)
+    {
         return new FloatAdapter(this.value - ((Float) n.getValue()));
     }
 
-    public INumberAdapter multiply(INumberAdapter n) {
+    public INumberAdapter multiply(INumberAdapter n)
+    {
         return new FloatAdapter(this.value * ((Float) n.getValue()));
     }
 
-    public INumberAdapter divide(INumberAdapter n) {
+    public INumberAdapter divide(INumberAdapter n)
+    {
         return new FloatAdapter(this.value / ((Float) n.getValue()));
     }
 
@@ -38,27 +42,13 @@ public class FloatAdapter extends Number implements INumberAdapter<Float>
         return ONE;
     }
 
-    public boolean isZero() {
-        return this.equals(ZERO);
+    public boolean isZero()
+    {
+        return this.value.equals(ZERO.getValue());
     }
 
-    public int intValue() {
-        return this.value.intValue();
-    }
-
-    public long longValue() {
-        return this.value.longValue();
-    }
-
-    public float floatValue() {
-        return this.value;
-    }
-
-    public double doubleValue() {
-        return this.value.doubleValue();
-    }
-
-    public int compareTo(Object o) {
+    public int compareTo(Object o)
+    {
         if(!(o instanceof FloatAdapter))
         {
             return 0;
@@ -72,11 +62,13 @@ public class FloatAdapter extends Number implements INumberAdapter<Float>
     }
 
     @Override
-    public String toString() {
-        return "" + this.value;
+    public String toString()
+    {
+        return String.format("%1.2f", this.value);
     }
 
-    public Float getValue() {
+    public Float getValue()
+    {
         return value;
     }
 }

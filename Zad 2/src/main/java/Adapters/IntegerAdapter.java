@@ -1,6 +1,6 @@
-package Models;
+package Adapters;
 
-public class IntegerAdapter extends Number implements INumberAdapter<Integer>
+public class IntegerAdapter implements INumberAdapter<Integer>
 {
     private final Integer value;
 
@@ -12,19 +12,23 @@ public class IntegerAdapter extends Number implements INumberAdapter<Integer>
         this.value = value;
     }
 
-    public INumberAdapter add(INumberAdapter n) {
+    public INumberAdapter add(INumberAdapter n)
+    {
         return new IntegerAdapter(this.value + ((Integer) n.getValue()));
     }
 
-    public INumberAdapter subtract(INumberAdapter n) {
+    public INumberAdapter subtract(INumberAdapter n)
+    {
         return new IntegerAdapter(this.value - ((Integer) n.getValue()));
     }
 
-    public INumberAdapter multiply(INumberAdapter n) {
+    public INumberAdapter multiply(INumberAdapter n)
+    {
         return new IntegerAdapter(this.value * ((Integer) n.getValue()));
     }
 
-    public INumberAdapter divide(INumberAdapter n) {
+    public INumberAdapter divide(INumberAdapter n)
+    {
         return new IntegerAdapter(this.value / ((Integer) n.getValue()));
     }
 
@@ -38,27 +42,13 @@ public class IntegerAdapter extends Number implements INumberAdapter<Integer>
         return ONE;
     }
 
-    public boolean isZero() {
-        return this.equals(ZERO);
+    public boolean isZero()
+    {
+        return this.value.equals(ZERO.getValue());
     }
 
-    public int intValue() {
-        return this.value;
-    }
-
-    public long longValue() {
-        return this.value.longValue();
-    }
-
-    public float floatValue() {
-        return this.value.floatValue();
-    }
-
-    public double doubleValue() {
-        return this.value.doubleValue();
-    }
-
-    public int compareTo(Object o) {
+    public int compareTo(Object o)
+    {
         if(!(o instanceof IntegerAdapter))
         {
             return 0;
@@ -72,11 +62,13 @@ public class IntegerAdapter extends Number implements INumberAdapter<Integer>
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "" + this.value;
     }
 
-    public Integer getValue() {
+    public Integer getValue()
+    {
         return value;
     }
 }

@@ -1,6 +1,6 @@
-package Models;
+package Adapters;
 
-public class DoubleAdapter extends Number implements INumberAdapter<Double>
+public class DoubleAdapter implements INumberAdapter<Double>
 {
     private final Double value;
 
@@ -46,22 +46,6 @@ public class DoubleAdapter extends Number implements INumberAdapter<Double>
         return this.value.equals(ZERO.getValue());
     }
 
-    public int intValue() {
-        return this.value.intValue();
-    }
-
-    public long longValue() {
-        return this.value.longValue();
-    }
-
-    public float floatValue() {
-        return this.value.floatValue();
-    }
-
-    public double doubleValue() {
-        return this.value;
-    }
-
     public int compareTo(Object o) {
         if(!(o instanceof DoubleAdapter))
         {
@@ -77,7 +61,7 @@ public class DoubleAdapter extends Number implements INumberAdapter<Double>
 
     @Override
     public String toString() {
-        return String.format("%1.1f", this.value);
+        return String.format("%1.2f", this.value);
     }
 
     public Double getValue() {

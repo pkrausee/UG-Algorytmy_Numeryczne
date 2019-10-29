@@ -1,30 +1,14 @@
-import Models.DoubleAdapter;
-import Models.FloatAdapter;
-import Models.IntegerAdapter;
+package Utilities;
 
-public abstract class CollectionUtilities
+import Adapters.DoubleAdapter;
+import Adapters.FloatAdapter;
+import Adapters.FractionAdapter;
+import Adapters.IntegerAdapter;
+
+import Models.Fraction;
+
+public class Parser
 {
-    public static <TType> void show (TType[][] A, TType[] B)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
-            for(int j = 0; j < A[i].length + 1; j++)
-            {
-                if(j < A[i].length)
-                {
-                    System.out.print(A[i][j] + " ");
-                }
-                else
-                {
-                    System.out.print(B[i] + " ");
-                }
-            }
-
-            System.out.println();
-        }
-        System.out.println("-----------------------------");
-    }
-
     public static IntegerAdapter[] parse (Integer[] A)
     {
         System.out.println("Models.IntegerAdapter[]");
@@ -65,6 +49,20 @@ public abstract class CollectionUtilities
         }
 
         return d;
+    }
+
+    public static FractionAdapter[] parse (Fraction[] A)
+    {
+        System.out.println("Models.FractionAdapter[]");
+
+        FractionAdapter[] f = new FractionAdapter[A.length];
+
+        for(int i = 0; i < A.length; i++)
+        {
+            f[i] = new FractionAdapter(A[i]);
+        }
+
+        return f;
     }
 
     public static IntegerAdapter[][] parse (Integer[][] A)
@@ -112,6 +110,23 @@ public abstract class CollectionUtilities
             for(int j = 0; j < A[i].length; j++)
             {
                 d[i][j] = new DoubleAdapter(A[i][j]);
+            }
+        }
+
+        return d;
+    }
+
+    public static FractionAdapter[][] parse (Fraction[][] A)
+    {
+        System.out.println("Models.FractionAdapter[][]");
+
+        FractionAdapter[][] d = new FractionAdapter[A.length][A[0].length];
+
+        for(int i = 0; i < A.length; i++)
+        {
+            for(int j = 0; j < A[i].length; j++)
+            {
+                d[i][j] = new FractionAdapter(A[i][j]);
             }
         }
 

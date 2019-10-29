@@ -1,37 +1,47 @@
 import Models.Fraction;
-import Models.INumberAdapter;
+import Models.Pair;
+
+import Adapters.INumberAdapter;
+
+import Utilities.CollectionUtilities;
+import Utilities.Parser;
+
 
 public class MyMatrix
 {
-    public static <TType extends Number> void gauss (TType[][] A, char[] X, TType[] B)
+    public static <TType extends Number> Pair gauss (TType[][] A, char[] X, TType[] B)
     {
+        Pair result = new Pair<INumberAdapter[][], INumberAdapter[]>();
+
         if(A.getClass().equals(Fraction[][].class))
         {
             System.out.println("Models.Fraction");
 
-            calculate((Fraction[][]) A, (Fraction[]) B);
+            result = calculate(Parser.parse((Fraction[][]) A), Parser.parse((Fraction[]) B));
         }
         else if(A.getClass().equals(Float[][].class))
         {
             System.out.println("Float");
 
-            calculate(CollectionUtilities.parse((Float[][]) A), CollectionUtilities.parse((Float[]) B));
+            result = calculate(Parser.parse((Float[][]) A), Parser.parse((Float[]) B));
         }
         else if(A.getClass().equals(Double[][].class))
         {
             System.out.println("Double");
 
-            calculate(CollectionUtilities.parse((Double[][]) A), CollectionUtilities.parse((Double[]) B));
+            result = calculate(Parser.parse((Double[][]) A), Parser.parse((Double[]) B));
         }
         else if(A.getClass().equals(Integer[][].class))
         {
             System.out.println("Integer");
 
-            calculate(CollectionUtilities.parse((Integer[][]) A), CollectionUtilities.parse((Integer[]) B));
+            result = calculate(Parser.parse((Integer[][]) A), Parser.parse((Integer[]) B));
         }
+
+        return result;
     }
 
-    private static void calculate (INumberAdapter[][] A, INumberAdapter[] B)
+    private static Pair calculate (INumberAdapter[][] A, INumberAdapter[] B)
     {
         CollectionUtilities.show(A, B);
 
@@ -55,6 +65,8 @@ public class MyMatrix
                 }
                 else
                 {
+                    System.out.println(B[x] + " " + A[x][x]);
+
                     B[x] = B[x].divide(A[x][x]);
                 }
             }
@@ -85,5 +97,7 @@ public class MyMatrix
         }
 
         CollectionUtilities.show(A, B);
+
+        return new Pair<INumberAdapter[][], INumberAdapter[]>(A, B);
     }
 }

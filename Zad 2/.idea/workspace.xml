@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CollectionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CollectionUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/DoubleAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/FloatAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IUsableNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/INumberAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/IntegerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CollectionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/CollectionUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/INumberAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyMatrix.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,7 +101,8 @@
       <workItem from="1572096323250" duration="27991000" />
       <workItem from="1572198836091" duration="664000" />
       <workItem from="1572214648493" duration="269000" />
-      <workItem from="1572282276625" duration="4090000" />
+      <workItem from="1572282276625" duration="4170000" />
+      <workItem from="1572366141358" duration="6350000" />
     </task>
     <servers />
   </component>
@@ -119,5 +121,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/MyMatrix.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

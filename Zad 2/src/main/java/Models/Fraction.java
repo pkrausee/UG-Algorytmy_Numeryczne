@@ -2,7 +2,7 @@ package Models;
 
 import java.math.BigInteger;
 
-public class Fraction extends Number implements INumberAdapter<Fraction>
+public class Fraction extends Number
 {
     private final BigInteger numerator;
     private final BigInteger denominator;
@@ -21,6 +21,7 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
         if(reduce)
         {
             BigInteger gcd = numerator.gcd(denominator);
+
             this.numerator = numerator.divide(gcd);
             this.denominator = denominator.divide(gcd);
         }
@@ -29,6 +30,16 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
             this.numerator = numerator;
             this.denominator = denominator;
         }
+    }
+
+    public Fraction (long numerator)
+    {
+        this(new BigInteger("" + numerator), new BigInteger("" + 1), false);
+    }
+
+    public Fraction (long numerator, long denominator)
+    {
+        this(new BigInteger("" + numerator), new BigInteger("" + denominator), false);
     }
 
     public Fraction(BigInteger numerator, BigInteger denominator)
@@ -41,12 +52,7 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
         this(new BigInteger("" + numerator), new BigInteger("" + denominator), reduce);
     }
 
-    public Fraction (long numerator, long denominator)
-    {
-        this(new BigInteger("" + numerator), new BigInteger("" + denominator), false);
-    }
-
-    public INumberAdapter add (INumberAdapter f)
+    public Fraction add (Fraction f)
     {
         BigInteger thisNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
         BigInteger aNumerator = ((Fraction) f).getNumerator().multiply(this.denominator);
@@ -57,7 +63,7 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public INumberAdapter subtract (INumberAdapter f)
+    public Fraction subtract (Fraction f)
     {
         BigInteger thisNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
         BigInteger aNumerator = ((Fraction) f).getNumerator().multiply(this.denominator);
@@ -68,7 +74,7 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public INumberAdapter multiply (INumberAdapter f)
+    public Fraction multiply (Fraction f)
     {
         BigInteger newNumerator = this.numerator.multiply(((Fraction) f).getNumerator());
         BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getDenominator());
@@ -76,7 +82,7 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public INumberAdapter divide (INumberAdapter f)
+    public Fraction divide (Fraction f)
     {
         BigInteger newNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
         BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getNumerator());
@@ -84,38 +90,29 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public Fraction ZERO()
+    public int intValue()
     {
-        return ZERO;
-    }
-
-    public Fraction ONE()
-    {
-        return ONE;
-    }
-
-    public Fraction getValue() {
-        return null;
-    }
-
-    public boolean isZero() {
-        return this.equals(ZERO);
-    }
-
-    public int intValue() {
         return this.numerator.divide(this.denominator).intValue();
     }
 
-    public long longValue() {
+    public long longValue()
+    {
         return this.numerator.divide(this.denominator).longValue();
     }
 
-    public float floatValue() {
+    public float floatValue()
+    {
         return this.numerator.divide(this.denominator).floatValue();
     }
 
-    public double doubleValue() {
+    public double doubleValue()
+    {
         return this.numerator.divide(this.denominator).doubleValue();
+    }
+
+    public boolean isZero()
+    {
+        return this.numerator.equals(ZERO.getNumerator());
     }
 
     public int compareTo(Object o)
@@ -136,15 +133,18 @@ public class Fraction extends Number implements INumberAdapter<Fraction>
     }
 
     @Override
-    public String toString() {
-        return this.numerator + " / " + this.denominator;
+    public String toString()
+    {
+        return "[" +  this.numerator + "/" + this.denominator + "]";
     }
 
-    public BigInteger getNumerator() {
+    public BigInteger getNumerator()
+    {
         return numerator;
     }
 
-    public BigInteger getDenominator() {
+    public BigInteger getDenominator()
+    {
         return denominator;
     }
 }
