@@ -55,29 +55,6 @@ public class MyMatrix
 
         for(int x = 0; x < A.length; x++)
         {
-            int destRow = x;
-            while(destRow < A.length && A[destRow][x].isZero())
-            {
-                destRow++;
-            }
-
-            if(destRow < A.length && destRow != x)
-            {
-                swapRows(B, x, destRow);
-                swapRows(A, x, destRow);
-            }
-
-            int destCol = x;
-            while(destCol < A.length && A[x][destCol].isZero())
-            {
-                destCol++;
-            }
-
-            if(destCol < A.length && destCol != x)
-            {
-                swapCols(A, x, destCol);
-            }
-
             if(!A[x][x].isZero())
             {
                 for(int i = x + 1; i < A[0].length + 1; i++)
@@ -116,14 +93,83 @@ public class MyMatrix
                     }
                 }
             }
-            else
-            {
-                System.out.println("Brak rozwiazania");
-                break;
-            }
         }
 
         return new Pair<INumberAdapter[][], INumberAdapter[]>(A, B);
+    }
+
+    private static void gauss_NoPivoting(INumberAdapter[][] A, INumberAdapter[] B, int pos)
+    {
+        if(A[pos][pos].isZero())
+        {
+            int destRow = pos;
+            while(destRow < A.length && A[destRow][pos].isZero())
+            {
+                destRow++;
+            }
+
+            if(destRow < A.length && destRow != pos)
+            {
+                swapRows(B, pos, destRow);
+                swapRows(A, pos, destRow);
+            }
+
+            int destCol = pos;
+            while(destCol < A.length && A[pos][destCol].isZero())
+            {
+                destCol++;
+            }
+
+            if(destCol < A.length && destCol != pos)
+            {
+                swapCols(A, pos, destCol);
+            }
+        }
+    }
+
+    private static void gauss_PartialPivoting(INumberAdapter[][] A, INumberAdapter[] B, int pos)
+    {
+        int max = pos;
+
+        for(int i = pos; i < A.length; i++)
+        {
+            if(A[max][pos].compareTo(A[i][pos]) < 0)
+            {
+                max = i;
+            }
+        }
+
+        swapRows(B, pos, max);
+        swapRows(A, pos, max);
+    }
+
+    private static void gauss_FullPivoting(INumberAdapter[][] A, INumberAdapter[] B, int pos)
+    {
+        int maxR = pos;
+        int maxC = pos;
+
+        for(int i = pos; i < A.length; i++)
+        {
+            if(A[maxR][pos].compareTo(A[i][pos]) < 0)
+            {
+                maxR = i;
+            }
+
+            if(A[pos][maxC].compareTo(A[pos][i]) < 0)
+            {
+                maxC = i;
+            }
+        }
+
+        if(A[maxR][pos].compareTo(A[pos][maxC]) < 0)
+        {
+            swapCols(A, pos, maxC);
+        }
+        else
+        {
+            swapRows(B, pos, maxR);
+            swapRows(A, pos, maxR);
+        }
     }
 
     private static void swapRows(INumberAdapter[] A, int src, int dest)

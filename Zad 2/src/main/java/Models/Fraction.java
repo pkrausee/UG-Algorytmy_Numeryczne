@@ -128,7 +128,7 @@ public class Fraction extends Number
             int numeratorDiff = this.numerator.compareTo(f.getNumerator());
             int denominatorDiff = this.denominator.compareTo(f.getDenominator());
 
-            return numeratorDiff + denominatorDiff;
+            return numeratorDiff != 0 ? numeratorDiff : denominatorDiff;
         }
     }
 

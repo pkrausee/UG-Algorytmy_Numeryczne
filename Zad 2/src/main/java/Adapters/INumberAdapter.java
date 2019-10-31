@@ -14,6 +14,8 @@ public interface INumberAdapter <TType extends Number> extends Comparable
 
     String toString();
 
+    int compareTo(Object o);
+
     TType getValue();
 }
 
