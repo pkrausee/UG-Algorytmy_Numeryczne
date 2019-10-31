@@ -16,27 +16,33 @@ public class MyMatrix
 
         if(A.getClass().equals(Fraction[][].class))
         {
-            System.out.println("Models.Fraction");
+//            System.out.println("Models.Fraction");
 
             result = calculate(Parser.parse((Fraction[][]) A), Parser.parse((Fraction[]) B));
         }
         else if(A.getClass().equals(Float[][].class))
         {
-            System.out.println("Float");
+//            System.out.println("Float");
 
             result = calculate(Parser.parse((Float[][]) A), Parser.parse((Float[]) B));
         }
         else if(A.getClass().equals(Double[][].class))
         {
-            System.out.println("Double");
+//            System.out.println("Double");
 
             result = calculate(Parser.parse((Double[][]) A), Parser.parse((Double[]) B));
         }
         else if(A.getClass().equals(Integer[][].class))
         {
-            System.out.println("Integer");
+//            System.out.println("Integer");
 
             result = calculate(Parser.parse((Integer[][]) A), Parser.parse((Integer[]) B));
+        }
+        else
+        {
+//            System.out.println("Other");
+
+            result = calculate(Parser.parseGen(A), Parser.parseGen(B));
         }
 
         return result;
@@ -55,46 +61,65 @@ public class MyMatrix
                 destRow++;
             }
 
-            if(destRow != x)
+            if(destRow < A.length && destRow != x)
             {
                 swapRows(B, x, destRow);
                 swapRows(A, x, destRow);
             }
 
-            for(int i = x + 1; i < A[0].length + 1; i++)
+            int destCol = x;
+            while(destCol < A.length && A[x][destCol].isZero())
             {
-                if(i < A[0].length)
-                {
-                    A[x][i] = A[x][i].divide(A[x][x]);
-                }
-                else
-                {
-                    B[x] = B[x].divide(A[x][x]);
-                }
+                destCol++;
             }
 
-            A[x][x] = ONE;
-
-            for(int i = 0; i < A.length; i++)
+            if(destCol < A.length && destCol != x)
             {
-                if(i != x)
+                swapCols(A, x, destCol);
+            }
+
+            if(!A[x][x].isZero())
+            {
+                for(int i = x + 1; i < A[0].length + 1; i++)
                 {
-                    INumberAdapter count = A[i][x].multiply(A[x][x]);
-
-                    A[i][x] = ZERO;
-
-                    for(int j = x + 1; j < A[i].length + 1; j++)
+                    if(i < A[0].length)
                     {
-                        if(j < A[i].length)
+                        A[x][i] = A[x][i].divide(A[x][x]);
+                    }
+                    else
+                    {
+                        B[x] = B[x].divide(A[x][x]);
+                    }
+                }
+
+                A[x][x] = ONE;
+
+                for(int i = 0; i < A.length; i++)
+                {
+                    if(i != x)
+                    {
+                        INumberAdapter count = A[i][x].multiply(A[x][x]);
+
+                        A[i][x] = ZERO;
+
+                        for(int j = x + 1; j < A[i].length + 1; j++)
                         {
-                            A[i][j] = A[i][j].subtract(A[x][j].multiply(count));
-                        }
-                        else
-                        {
-                            B[i] = B[i].subtract(B[x].multiply(count));
+                            if(j < A[i].length)
+                            {
+                                A[i][j] = A[i][j].subtract(A[x][j].multiply(count));
+                            }
+                            else
+                            {
+                                B[i] = B[i].subtract(B[x].multiply(count));
+                            }
                         }
                     }
                 }
+            }
+            else
+            {
+                System.out.println("Brak rozwiazania");
+                break;
             }
         }
 
@@ -114,4 +139,30 @@ public class MyMatrix
         A[src] = A[dest];
         A[dest] = temp;
     }
+
+    private static void swapCols(INumberAdapter[][] A, int src, int dest)
+    {
+        for(int i = 0; i < A.length; i++)
+        {
+            INumberAdapter temp = A[i][src];
+            A[i][src] = A[i][dest];
+            A[i][dest] = temp;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

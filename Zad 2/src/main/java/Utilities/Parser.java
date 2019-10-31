@@ -11,7 +11,7 @@ public class Parser
 {
     public static IntegerAdapter[] parse (Integer[] A)
     {
-        System.out.println("Models.IntegerAdapter[]");
+//        System.out.println("Models.IntegerAdapter[]");
 
         IntegerAdapter[] f = new IntegerAdapter[A.length];
 
@@ -25,7 +25,7 @@ public class Parser
 
     public static FloatAdapter[] parse (Float[] A)
     {
-        System.out.println("Models.FloatAdapter[]");
+//        System.out.println("Models.FloatAdapter[]");
 
         FloatAdapter[] f = new FloatAdapter[A.length];
 
@@ -39,7 +39,7 @@ public class Parser
 
     public static DoubleAdapter[] parse (Double[] A)
     {
-        System.out.println("Models.DoubleAdapter[]");
+//        System.out.println("Models.DoubleAdapter[]");
 
         DoubleAdapter[] d = new DoubleAdapter[A.length];
 
@@ -53,7 +53,7 @@ public class Parser
 
     public static FractionAdapter[] parse (Fraction[] A)
     {
-        System.out.println("Models.FractionAdapter[]");
+//        System.out.println("Models.FractionAdapter[]");
 
         FractionAdapter[] f = new FractionAdapter[A.length];
 
@@ -65,9 +65,24 @@ public class Parser
         return f;
     }
 
+    public static <T extends Number> DoubleAdapter[] parseGen (T[] A)
+    {
+//        System.out.println("Models.DoubleAdapter[] <generic>");
+
+        DoubleAdapter[] f = new DoubleAdapter[A.length];
+
+        for(int i = 0; i < A.length; i++)
+        {
+            f[i] = new DoubleAdapter(A[i].doubleValue());
+        }
+
+        return f;
+    }
+
+
     public static IntegerAdapter[][] parse (Integer[][] A)
     {
-        System.out.println("Models.IntegerAdapter[][]");
+//        System.out.println("Models.IntegerAdapter[][]");
 
         IntegerAdapter[][] f = new IntegerAdapter[A.length][A[0].length];
 
@@ -84,7 +99,7 @@ public class Parser
 
     public static FloatAdapter[][] parse (Float[][] A)
     {
-        System.out.println("Models.FloatAdapter[][]");
+//        System.out.println("Models.FloatAdapter[][]");
 
         FloatAdapter[][] f = new FloatAdapter[A.length][A[0].length];
 
@@ -101,7 +116,7 @@ public class Parser
 
     public static DoubleAdapter[][] parse (Double[][] A)
     {
-        System.out.println("Models.DoubleAdapter[][]");
+//        System.out.println("Models.DoubleAdapter[][]");
 
         DoubleAdapter[][] d = new DoubleAdapter[A.length][A[0].length];
 
@@ -118,7 +133,7 @@ public class Parser
 
     public static FractionAdapter[][] parse (Fraction[][] A)
     {
-        System.out.println("Models.FractionAdapter[][]");
+//        System.out.println("Models.FractionAdapter[][]");
 
         FractionAdapter[][] d = new FractionAdapter[A.length][A[0].length];
 
@@ -127,6 +142,23 @@ public class Parser
             for(int j = 0; j < A[i].length; j++)
             {
                 d[i][j] = new FractionAdapter(A[i][j]);
+            }
+        }
+
+        return d;
+    }
+
+    public static <T extends Number> DoubleAdapter[][] parseGen (T[][] A)
+    {
+//        System.out.println("Models.DoubleAdapter[][] <generic>");
+
+        DoubleAdapter[][] d = new DoubleAdapter[A.length][A[0].length];
+
+        for(int i = 0; i < A.length; i++)
+        {
+            for(int j = 0; j < A[i].length; j++)
+            {
+                d[i][j] = new DoubleAdapter(A[i][j].doubleValue());
             }
         }
 

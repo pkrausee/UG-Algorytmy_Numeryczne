@@ -4,6 +4,7 @@ import Matrix.MyMatrix;
 import Models.Fraction;
 import Models.Pair;
 import Utilities.CollectionUtilities;
+import Utilities.Parser;
 
 
 public class Main
@@ -35,9 +36,9 @@ public class Main
     {
         Fraction[][] A =
                 {
-                        {new Fraction(0), new Fraction(0), new Fraction(3)},
-                        {new Fraction(4), new Fraction(5), new Fraction(6)},
-                        {new Fraction(7), new Fraction(8), new Fraction(9)}
+                        {new Fraction(0), new Fraction(0), new Fraction(1)},
+                        {new Fraction(0), new Fraction(5), new Fraction(6)},
+                        {new Fraction(0), new Fraction(8), new Fraction(9)}
                 };
 
         char[] X = {'x', 'y', 'z'};
