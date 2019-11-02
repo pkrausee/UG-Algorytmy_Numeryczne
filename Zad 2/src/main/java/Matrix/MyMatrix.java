@@ -48,6 +48,11 @@ public class MyMatrix
         return GaussJordanElimination_FullPivoting(Parser.parseGen(A), Parser.parseGen(B), X);
     }
 
+    public PairResult GaussJordanElimination()
+    {
+        return GaussJordanElimination_FullPivoting(this.A, this.B, this.X);
+    }
+
     public PairResult GaussJordanElimination_NoPivoting()
     {
         return GaussJordanElimination_NoPivoting(this.A, this.B, this.X);
