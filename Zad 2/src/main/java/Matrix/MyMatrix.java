@@ -6,7 +6,7 @@ import Adapters.INumberAdapter;
 import Utilities.CollectionUtilities;
 
 
-public class MojaMacierz <TType extends Number>
+public class MyMatrix<TType extends Number>
 {
     private INumberAdapter<TType> adapter;
 
@@ -14,7 +14,7 @@ public class MojaMacierz <TType extends Number>
     private TType[] B;
     private Character[] X;
 
-    public MojaMacierz(INumberAdapter<TType> adapter, TType[][] A, TType[] B, Character[] X)
+    public MyMatrix(INumberAdapter<TType> adapter, TType[][] A, TType[] B, Character[] X)
     {
         this.adapter = adapter;
 

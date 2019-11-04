@@ -1,7 +1,6 @@
 import Adapters.FractionAdapter;
-import Adapters.INumberAdapter;
 
-import Matrix.MojaMacierz;
+import Matrix.MyMatrix;
 
 import Models.Fraction;
 import Models.PairResult;
@@ -22,9 +21,9 @@ public class FractionTest
 
         Fraction[] B = { new Fraction(10), new Fraction(11), new Fraction(12)};
 
-        char[] X = { 'X', 'Y', 'Z' };
+        Character[] X = { 'X', 'Y', 'Z' };
 
-        MojaMacierz myMatrix = new MojaMacierz<Fraction> (new FractionAdapter(), A, B, X);
+        MyMatrix myMatrix = new MyMatrix<Fraction>(new FractionAdapter(), A, B, X);
 
         CollectionUtilities.show(A, B);
 
