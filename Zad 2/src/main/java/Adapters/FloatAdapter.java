@@ -2,73 +2,51 @@ package Adapters;
 
 public class FloatAdapter implements INumberAdapter<Float>
 {
-    private final Float value;
+    public final static Float ZERO = 0f;
+    public final static Float ONE = 1f;
 
-    public final static FloatAdapter ZERO = new FloatAdapter(0f);
-    public final static FloatAdapter ONE = new FloatAdapter(1f);
-
-    public FloatAdapter(Float value)
+    public Float add(Float n1, Float n2)
     {
-        this.value = value;
+        return n1 +  n2;
     }
 
-    public INumberAdapter add(INumberAdapter n)
+    public Float subtract(Float n1, Float n2)
     {
-        return new FloatAdapter(this.value + ((Float) n.getValue()));
+        return n1 - n2;
     }
 
-    public INumberAdapter subtract(INumberAdapter n)
+    public Float multiply(Float n1, Float n2)
     {
-        return new FloatAdapter(this.value - ((Float) n.getValue()));
+        return n1 * n2;
     }
 
-    public INumberAdapter multiply(INumberAdapter n)
+    public Float divide(Float n1, Float n2)
     {
-        return new FloatAdapter(this.value * ((Float) n.getValue()));
+        return n1 / n2;
     }
 
-    public INumberAdapter divide(INumberAdapter n)
-    {
-        return new FloatAdapter(this.value / ((Float) n.getValue()));
-    }
-
-    public FloatAdapter ZERO()
+    public Float ZERO()
     {
         return ZERO;
     }
 
-    public FloatAdapter ONE()
+    public Float ONE()
     {
         return ONE;
     }
 
-    public boolean isZero()
+    public boolean isZero(Float f)
     {
-        return this.value.equals(ZERO.getValue());
+        return f.compareTo(ZERO) == 0;
     }
 
-    public int compareTo(Object o)
+    public int compareTo(Float n1, Float n2)
     {
-        if(!(o instanceof FloatAdapter))
-        {
-            return 0;
-        }
-        else
-        {
-            FloatAdapter f = (FloatAdapter) o;
-
-            return this.value.compareTo(f.getValue());
-        }
+        return n1.compareTo(n2);
     }
 
-    @Override
-    public String toString()
+    public String toString(Float f)
     {
-        return String.format("%1.2f", this.value);
-    }
-
-    public Float getValue()
-    {
-        return value;
+        return String.format("%1.2f", f);
     }
 }

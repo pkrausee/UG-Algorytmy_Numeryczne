@@ -2,7 +2,7 @@ package Models;
 
 import java.math.BigInteger;
 
-public class Fraction extends Number
+public class Fraction extends Number implements Comparable<Fraction>
 {
     private final BigInteger numerator;
     private final BigInteger denominator;
@@ -54,38 +54,38 @@ public class Fraction extends Number
 
     public Fraction add (Fraction f)
     {
-        BigInteger thisNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
-        BigInteger aNumerator = ((Fraction) f).getNumerator().multiply(this.denominator);
+        BigInteger thisNumerator = this.numerator.multiply(f.getDenominator());
+        BigInteger aNumerator = f.getNumerator().multiply(this.denominator);
 
         BigInteger newNumerator = thisNumerator.add(aNumerator);
-        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getDenominator());
+        BigInteger newDenominator = this.denominator.multiply(f.getDenominator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
 
     public Fraction subtract (Fraction f)
     {
-        BigInteger thisNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
-        BigInteger aNumerator = ((Fraction) f).getNumerator().multiply(this.denominator);
+        BigInteger thisNumerator = this.numerator.multiply(f.getDenominator());
+        BigInteger aNumerator = f.getNumerator().multiply(this.denominator);
 
         BigInteger newNumerator = thisNumerator.subtract(aNumerator);
-        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getDenominator());
+        BigInteger newDenominator = this.denominator.multiply(f.getDenominator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
 
     public Fraction multiply (Fraction f)
     {
-        BigInteger newNumerator = this.numerator.multiply(((Fraction) f).getNumerator());
-        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getDenominator());
+        BigInteger newNumerator = this.numerator.multiply(f.getNumerator());
+        BigInteger newDenominator = this.denominator.multiply(f.getDenominator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
 
     public Fraction divide (Fraction f)
     {
-        BigInteger newNumerator = this.numerator.multiply(((Fraction) f).getDenominator());
-        BigInteger newDenominator = this.denominator.multiply(((Fraction) f).getNumerator());
+        BigInteger newNumerator = this.numerator.multiply(f.getDenominator());
+        BigInteger newDenominator = this.denominator.multiply(f.getNumerator());
 
         return new Fraction(newNumerator, newDenominator, true);
     }
@@ -115,21 +115,12 @@ public class Fraction extends Number
         return this.numerator.equals(ZERO.getNumerator());
     }
 
-    public int compareTo(Object o)
+    public int compareTo(Fraction f)
     {
-        if(!(o instanceof Fraction))
-        {
-            return 0;
-        }
-        else
-        {
-            Fraction f = (Fraction) o;
+        int numeratorDiff = this.numerator.compareTo(f.getNumerator());
+        int denominatorDiff = this.denominator.compareTo(f.getDenominator());
 
-            int numeratorDiff = this.numerator.compareTo(f.getNumerator());
-            int denominatorDiff = this.denominator.compareTo(f.getDenominator());
-
-            return numeratorDiff != 0 ? numeratorDiff : denominatorDiff;
-        }
+        return numeratorDiff != 0 ? numeratorDiff : denominatorDiff;
     }
 
     @Override

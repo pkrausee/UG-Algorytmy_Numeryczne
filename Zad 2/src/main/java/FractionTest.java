@@ -1,6 +1,7 @@
+import Adapters.FractionAdapter;
 import Adapters.INumberAdapter;
 
-import Matrix.MyMatrix;
+import Matrix.MojaMacierz;
 
 import Models.Fraction;
 import Models.PairResult;
@@ -23,14 +24,14 @@ public class FractionTest
 
         char[] X = { 'X', 'Y', 'Z' };
 
-        MyMatrix myMatrix = new MyMatrix(A, B, X);
+        MojaMacierz myMatrix = new MojaMacierz<Fraction> (new FractionAdapter(), A, B, X);
 
         CollectionUtilities.show(A, B);
 
         PairResult result = myMatrix.GaussJordanElimination_FullPivoting();
 
-        INumberAdapter[][] AResult = (INumberAdapter[][]) result.First;
-        INumberAdapter[] BResult = (INumberAdapter[]) result.Second;
+        Fraction[][] AResult = (Fraction[][]) result.First;
+        Fraction[] BResult = (Fraction[]) result.Second;
 
         CollectionUtilities.show(AResult, BResult);
     }

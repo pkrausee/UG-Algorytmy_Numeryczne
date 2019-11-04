@@ -1,21 +1,17 @@
 package Adapters;
 
-public interface INumberAdapter <TType extends Number> extends Comparable
+public interface INumberAdapter <TType extends Number>
 {
-    INumberAdapter add(INumberAdapter n);
-    INumberAdapter subtract(INumberAdapter n);
-    INumberAdapter multiply(INumberAdapter n);
-    INumberAdapter divide(INumberAdapter n);
+    TType add(TType n1, TType n2);
+    TType subtract(TType n1, TType n2);
+    TType multiply(TType n1, TType n2);
+    TType divide(TType n1, TType n2);
 
-    INumberAdapter ZERO();
-    INumberAdapter ONE();
+    TType ZERO();
+    TType ONE();
 
-    boolean isZero();
+    boolean isZero(TType n);
 
-    String toString();
-
-    int compareTo(Object o);
-
-    TType getValue();
+    int compareTo(TType n1, TType n2);
 }
 

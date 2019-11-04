@@ -2,69 +2,51 @@ package Adapters;
 
 public class DoubleAdapter implements INumberAdapter<Double>
 {
-    private final Double value;
+    public final static Double ZERO = 0d;
+    public final static Double ONE = 1d;
 
-    public final static DoubleAdapter ZERO = new DoubleAdapter(0d);
-    public final static DoubleAdapter ONE = new DoubleAdapter(1d);
-
-    public DoubleAdapter(Double value)
+    public Double add(Double n1, Double n2)
     {
-        this.value = value;
+        return n1 +  n2;
     }
 
-    public INumberAdapter add(INumberAdapter n)
+    public Double subtract(Double n1, Double n2)
     {
-        return new DoubleAdapter(this.value + ((Double) n.getValue()));
+        return n1 - n2;
     }
 
-    public INumberAdapter subtract(INumberAdapter n)
+    public Double multiply(Double n1, Double n2)
     {
-        return new DoubleAdapter(this.value - ((Double) n.getValue()));
+        return n1 * n2;
     }
 
-    public INumberAdapter multiply(INumberAdapter n)
+    public Double divide(Double n1, Double n2)
     {
-        return new DoubleAdapter(this.value * ((Double) n.getValue()));
+        return n1 / n2;
     }
 
-    public INumberAdapter divide(INumberAdapter n)
-    {
-        return new DoubleAdapter(this.value / ((Double) n.getValue()));
-    }
-
-    public DoubleAdapter ZERO()
+    public Double ZERO()
     {
         return ZERO;
     }
 
-    public DoubleAdapter ONE()
+    public Double ONE()
     {
         return ONE;
     }
 
-    public boolean isZero() {
-        return this.value.equals(ZERO.getValue());
+    public boolean isZero(Double d)
+    {
+        return d.compareTo(ZERO) == 0;
     }
 
-    public int compareTo(Object o) {
-        if(!(o instanceof DoubleAdapter))
-        {
-            return 0;
-        }
-        else
-        {
-            DoubleAdapter d = (DoubleAdapter) o;
-
-            return this.value.compareTo(d.getValue());
-        }
+    public int compareTo(Double n1, Double n2)
+    {
+        return n1.compareTo(n2);
     }
 
-    @Override
-    public String toString() {
-        return String.format("%1.2f", this.value);
-    }
-
-    public Double getValue() {
-        return value;
+    public String toString(Double d)
+    {
+        return String.format("%1.2f", d);
     }
 }

@@ -4,74 +4,51 @@ import Models.Fraction;
 
 public class FractionAdapter implements INumberAdapter<Fraction>
 {
-    private final Fraction value;
+    public final static Fraction ZERO = new Fraction(0);
+    public final static Fraction ONE = new Fraction(1);
 
-    public final static FractionAdapter ZERO = new FractionAdapter(new Fraction(0));
-    public final static FractionAdapter ONE = new FractionAdapter(new Fraction(1));
-
-    public FractionAdapter(Fraction value)
+    public Fraction add(Fraction n1, Fraction n2)
     {
-        this.value = value;
+        return n1.add(n2);
     }
 
-    public INumberAdapter add(INumberAdapter n)
+    public Fraction subtract(Fraction n1, Fraction n2)
     {
-        return new FractionAdapter(value.add((Fraction) n.getValue()));
+        return n1.subtract(n2);
     }
 
-    public INumberAdapter subtract(INumberAdapter n)
+    public Fraction multiply(Fraction n1, Fraction n2)
     {
-        return new FractionAdapter(value.subtract((Fraction) n.getValue()));
+        return n1.multiply(n2);
     }
 
-    public INumberAdapter multiply(INumberAdapter n)
+    public Fraction divide(Fraction n1, Fraction n2)
     {
-        return new FractionAdapter(value.multiply((Fraction) n.getValue()));
+        return n1.divide(n2);
     }
 
-    public INumberAdapter divide(INumberAdapter n)
-    {
-        return new FractionAdapter(value.divide((Fraction) n.getValue()));
-    }
-
-    public FractionAdapter ZERO()
+    public Fraction ZERO()
     {
         return ZERO;
     }
 
-    public FractionAdapter ONE()
+    public Fraction ONE()
     {
         return ONE;
     }
 
-    public boolean isZero()
+    public boolean isZero(Fraction f)
     {
-        return this.value.isZero();
+        return f.compareTo(ZERO) == 0;
     }
 
-    public int compareTo(Object o)
+    public int compareTo(Fraction n1, Fraction n2)
     {
-        if(!(o instanceof FractionAdapter))
-        {
-            return 0;
-        }
-        else
-        {
-            FractionAdapter f = (FractionAdapter) o;
-
-            return this.value.compareTo(f.getValue());
-        }
+        return n1.compareTo(n2);
     }
 
-    @Override
-    public String toString()
+    public String toString(Fraction f)
     {
-        return "" + this.value;
-    }
-
-    public Fraction getValue()
-    {
-
-        return value;
+        return f.toString();
     }
 }

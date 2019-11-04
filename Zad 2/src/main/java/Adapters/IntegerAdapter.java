@@ -2,73 +2,51 @@ package Adapters;
 
 public class IntegerAdapter implements INumberAdapter<Integer>
 {
-    private final Integer value;
+    public final static Integer ZERO = 0;
+    public final static Integer ONE = 1;
 
-    public final static IntegerAdapter ZERO = new IntegerAdapter(0);
-    public final static IntegerAdapter ONE = new IntegerAdapter(1);
-
-    public IntegerAdapter(Integer value)
+    public Integer add(Integer n1, Integer n2)
     {
-        this.value = value;
+        return n1 +  n2;
     }
 
-    public INumberAdapter add(INumberAdapter n)
+    public Integer subtract(Integer n1, Integer n2)
     {
-        return new IntegerAdapter(this.value + ((Integer) n.getValue()));
+        return n1 - n2;
     }
 
-    public INumberAdapter subtract(INumberAdapter n)
+    public Integer multiply(Integer n1, Integer n2)
     {
-        return new IntegerAdapter(this.value - ((Integer) n.getValue()));
+        return n1 * n2;
     }
 
-    public INumberAdapter multiply(INumberAdapter n)
+    public Integer divide(Integer n1, Integer n2)
     {
-        return new IntegerAdapter(this.value * ((Integer) n.getValue()));
+        return n1 / n2;
     }
 
-    public INumberAdapter divide(INumberAdapter n)
-    {
-        return new IntegerAdapter(this.value / ((Integer) n.getValue()));
-    }
-
-    public IntegerAdapter ZERO()
+    public Integer ZERO()
     {
         return ZERO;
     }
 
-    public IntegerAdapter ONE()
+    public Integer ONE()
     {
         return ONE;
     }
 
-    public boolean isZero()
+    public boolean isZero(Integer i)
     {
-        return this.value.equals(ZERO.getValue());
+        return i.compareTo(ZERO) == 0;
     }
 
-    public int compareTo(Object o)
+    public int compareTo(Integer n1, Integer n2)
     {
-        if(!(o instanceof IntegerAdapter))
-        {
-            return 0;
-        }
-        else
-        {
-            IntegerAdapter d = (IntegerAdapter) o;
-
-            return this.value.compareTo(d.getValue());
-        }
+        return n1.compareTo(n2);
     }
 
-    @Override
-    public String toString()
+    public String toString(Integer i)
     {
-        return "" + this.value;
-    }
-
-    public Integer getValue()
-    {
-        return value;
+        return i.toString();
     }
 }
