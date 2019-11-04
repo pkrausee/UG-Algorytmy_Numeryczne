@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FractionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FractionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MojaMacierz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Parser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/zad2.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/zad2.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MojaMacierz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MojaMacierz.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +114,8 @@
       <workItem from="1572641728525" duration="1463000" />
       <workItem from="1572703145552" duration="2838000" />
       <workItem from="1572808176470" duration="2841000" />
-      <workItem from="1572888690088" duration="5525000" />
+      <workItem from="1572888690088" duration="5857000" />
+      <workItem from="1572896449325" duration="456000" />
     </task>
     <servers />
   </component>

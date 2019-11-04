@@ -12,9 +12,9 @@ public class MojaMacierz <TType extends Number>
 
     private TType[][] A;
     private TType[] B;
-    private char[] X;
+    private Character[] X;
 
-    public MojaMacierz(INumberAdapter<TType> adapter, TType[][] A, TType[] B, char[] X)
+    public MojaMacierz(INumberAdapter<TType> adapter, TType[][] A, TType[] B, Character[] X)
     {
         this.adapter = adapter;
 
@@ -27,7 +27,7 @@ public class MojaMacierz <TType extends Number>
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
-            char[] X)
+            Character[] X)
     {
         // This method always uses DoubleAdapter type to parse given matrix and FullPivoting method
 
@@ -48,11 +48,8 @@ public class MojaMacierz <TType extends Number>
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
-            char[] X)
+            Character[] X)
     {
-        TType ZERO = adapter.ZERO();
-        TType ONE = adapter.ONE();
-
         for(int pos = 0; pos < A.length; pos++)
         {
             if(adapter.isZero(A[pos][pos]))
@@ -78,10 +75,11 @@ public class MojaMacierz <TType extends Number>
                 if(destCol < A.length && destCol != pos)
                 {
                     swapCols(A, pos, destCol);
+                    swapRows(X, pos, destCol);
                 }
             }
 
-            eliminate(adapter, A, B, X, pos);
+            eliminate(adapter, A, B, pos);
         }
 
         return new PairResult<TType[][], TType[]>(A, B);
@@ -89,18 +87,14 @@ public class MojaMacierz <TType extends Number>
 
     public PairResult<TType[][], TType[]> GaussJordanElimination_PartialPivoting()
     {
-        return GaussJordanElimination_PartialPivoting(this.adapter, this.A, this.B, this.X);
+        return GaussJordanElimination_PartialPivoting(this.adapter, this.A, this.B);
     }
 
     public static <TType extends Number> PairResult<TType[][], TType[]> GaussJordanElimination_PartialPivoting(
             INumberAdapter<TType> adapter,
             TType[][] A,
-            TType[] B,
-            char[] X)
+            TType[] B)
     {
-        TType ZERO = adapter.ZERO();
-        TType ONE = adapter.ONE();
-
         for(int pos = 0; pos < A.length; pos++)
         {
             int max = pos;
@@ -116,7 +110,7 @@ public class MojaMacierz <TType extends Number>
             swapRows(B, pos, max);
             swapRows(A, pos, max);
 
-            eliminate(adapter, A, B, X, pos);
+            eliminate(adapter, A, B, pos);
         }
 
         return new PairResult<TType[][], TType[]>(A, B);
@@ -131,11 +125,8 @@ public class MojaMacierz <TType extends Number>
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
-            char[] X)
+            Character[] X)
     {
-        TType ZERO = adapter.ZERO();
-        TType ONE = adapter.ONE();
-
         for(int pos = 0; pos < A.length; pos++)
         {
             int maxR = pos;
@@ -157,6 +148,7 @@ public class MojaMacierz <TType extends Number>
             if(adapter.compareTo(A[maxR][pos], A[pos][maxC]) < 0)
             {
                 swapCols(A, pos, maxC);
+                swapRows(X, pos, maxC);
             }
             else
             {
@@ -164,7 +156,7 @@ public class MojaMacierz <TType extends Number>
                 swapRows(A, pos, maxR);
             }
 
-            eliminate(adapter, A, B, X, pos);
+            eliminate(adapter, A, B, pos);
         }
 
         return new PairResult<TType[][], TType[]>(A, B);
@@ -174,7 +166,6 @@ public class MojaMacierz <TType extends Number>
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
-            char[] X,
             int pos)
     {
         if(!adapter.isZero(A[pos][pos]))
@@ -219,21 +210,21 @@ public class MojaMacierz <TType extends Number>
         }
     }
 
-    private static <TType extends Number> void swapRows(TType[] A, int src, int dest)
+    private static <TType> void swapRows(TType[] A, int src, int dest)
     {
         TType temp = A[src];
         A[src] = A[dest];
         A[dest] = temp;
     }
 
-    private static <TType extends Number> void swapRows(TType[][] A, int src, int dest)
+    private static <TType> void swapRows(TType[][] A, int src, int dest)
     {
         TType[] temp = A[src];
         A[src] = A[dest];
         A[dest] = temp;
     }
 
-    private static <TType extends Number> void swapCols(TType[][] A, int src, int dest)
+    private static <TType> void swapCols(TType[][] A, int src, int dest)
     {
         for(int i = 0; i < A.length; i++)
         {
