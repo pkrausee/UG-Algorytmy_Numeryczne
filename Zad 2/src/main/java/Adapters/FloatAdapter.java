@@ -20,6 +20,14 @@ public class FloatAdapter implements INumberAdapter<Float> {
         return n1 / n2;
     }
 
+    public Float pow(Float n, int e) {
+        return (float) Math.pow(n, e);
+    }
+
+    public Float sqrt(Float n) {
+        return (float) Math.sqrt(n);
+    }
+
     public Float ZERO() {
         return ZERO;
     }

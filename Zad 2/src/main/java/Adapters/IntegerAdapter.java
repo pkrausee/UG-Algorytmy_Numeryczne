@@ -20,6 +20,14 @@ public class IntegerAdapter implements INumberAdapter<Integer> {
         return n1 / n2;
     }
 
+    public Integer pow(Integer n, int e) {
+        return (int) Math.pow(n, e);
+    }
+
+    public Integer sqrt(Integer n) {
+        return (int) Math.sqrt(n);
+    }
+
     public Integer ZERO() {
         return ZERO;
     }

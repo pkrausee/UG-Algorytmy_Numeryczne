@@ -1,8 +1,6 @@
 package Matrix;
 
 import Adapters.INumberAdapter;
-import Models.PairResult;
-
 
 public class MyMatrix <TType extends Number> {
     private INumberAdapter<TType> adapter;
@@ -15,14 +13,14 @@ public class MyMatrix <TType extends Number> {
         this.B = B;
     }
 
-    public static <TType extends Number> PairResult<TType[][], TType[]> GaussJordanElimination(
+    public static <TType extends Number> TType[] GaussJordanElimination(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B) {
         return GaussJordanElimination_FullPivoting(adapter, A, B);
     }
 
-    public static <TType extends Number> PairResult<TType[][], TType[]> GaussJordanElimination_NoPivoting(
+    public static <TType extends Number> TType[] GaussJordanElimination_NoPivoting(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B) {
@@ -42,10 +40,10 @@ public class MyMatrix <TType extends Number> {
             eliminate(adapter, A, B, pos);
         }
 
-        return new PairResult<TType[][], TType[]>(A, B);
+        return B;
     }
 
-    public static <TType extends Number> PairResult<TType[][], TType[]> GaussJordanElimination_PartialPivoting(
+    public static <TType extends Number> TType[] GaussJordanElimination_PartialPivoting(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B) {
@@ -64,10 +62,10 @@ public class MyMatrix <TType extends Number> {
             eliminate(adapter, A, B, pos);
         }
 
-        return new PairResult<TType[][], TType[]>(A, B);
+        return B;
     }
 
-    public static <TType extends Number> PairResult<TType[][], TType[]> GaussJordanElimination_FullPivoting(
+    public static <TType extends Number> TType[] GaussJordanElimination_FullPivoting(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B) {
@@ -95,7 +93,7 @@ public class MyMatrix <TType extends Number> {
             eliminate(adapter, A, B, pos);
         }
 
-        return new PairResult<TType[][], TType[]>(A, B);
+        return B;
     }
 
     private static <TType extends Number> void eliminate(
@@ -133,19 +131,19 @@ public class MyMatrix <TType extends Number> {
         }
     }
 
-    public PairResult<TType[][], TType[]> GaussJordanElimination() {
+    public TType[] GaussJordanElimination() {
         return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B);
     }
 
-    public PairResult<TType[][], TType[]> GaussJordanElimination_NoPivoting() {
+    public TType[] GaussJordanElimination_NoPivoting() {
         return GaussJordanElimination_NoPivoting(this.adapter, this.A, this.B);
     }
 
-    public PairResult<TType[][], TType[]> GaussJordanElimination_PartialPivoting() {
+    public TType[] GaussJordanElimination_PartialPivoting() {
         return GaussJordanElimination_PartialPivoting(this.adapter, this.A, this.B);
     }
 
-    public PairResult<TType[][], TType[]> GaussJordanElimination_FullPivoting() {
+    public TType[] GaussJordanElimination_FullPivoting() {
         return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B);
     }
 }

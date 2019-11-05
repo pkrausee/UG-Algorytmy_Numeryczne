@@ -58,10 +58,44 @@ public class MatrixUtilities {
         @SuppressWarnings("unchecked")
         TType[][] result = (TType[][]) Array.newInstance(content, matrix.length, matrix[0].length);
 
-        for (int i = 0; i < matrix.length; i++){
-            for (int j = 0; j < matrix[i].length; j++){
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 result[j][i] = matrix[i][j];
             }
+        }
+
+        return result;
+    }
+
+    public static <TType extends Number> TType norm(
+            Class<TType> content,
+            INumberAdapter<TType> adapter,
+            TType[] A) {
+
+        TType result = adapter.ZERO();
+
+        for (TType element : A) {
+            result = adapter.add(result, adapter.pow(element, 2));
+        }
+
+        return adapter.sqrt(result);
+    }
+
+    public static <TType extends Number> TType[] subtract(
+            Class<TType> content,
+            INumberAdapter<TType> adapter,
+            TType[] A,
+            TType[] B) {
+
+        if (A.length != B.length) {
+            throw new IllegalArgumentException();
+        }
+
+        @SuppressWarnings("unchecked")
+        TType[] result = (TType[]) Array.newInstance(content, A.length);
+
+        for (int i = 0; i < A.length; i++) {
+            result[i] = adapter.subtract(A[i], B[i]);
         }
 
         return result;

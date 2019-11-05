@@ -75,6 +75,10 @@ public class Fraction extends Number implements Comparable<Fraction> {
         return new Fraction(newNumerator, newDenominator, true);
     }
 
+    public Fraction pow (int e) {
+        return new Fraction(this.numerator.pow(e), this.denominator.pow(e));
+    }
+
     public int intValue() {
         return this.numerator.divide(this.denominator).intValue();
     }

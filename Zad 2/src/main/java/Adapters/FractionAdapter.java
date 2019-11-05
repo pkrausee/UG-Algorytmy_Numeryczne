@@ -22,6 +22,14 @@ public class FractionAdapter implements INumberAdapter<Fraction> {
         return n1.divide(n2);
     }
 
+    public Fraction pow(Fraction n, int e) {
+        return n.pow(e);
+    }
+
+    public Fraction sqrt(Fraction n) {
+        return null;
+    }
+
     public Fraction ZERO() {
         return ZERO;
     }

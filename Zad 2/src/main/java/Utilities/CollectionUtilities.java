@@ -1,5 +1,7 @@
 package Utilities;
 
+import java.util.List;
+
 public abstract class CollectionUtilities {
     public static <TType> void show(TType[][] A, TType[] B) {
         for (int i = 0; i < A.length; i++) {
@@ -23,17 +25,21 @@ public abstract class CollectionUtilities {
         System.out.println();
     }
 
-    public static <TType extends Comparable<TType>> boolean compare(TType[] A, TType[] B){
+    public static <TType> void show(List<TType> A) {
+        for (TType tType : A) {
+            System.out.print(tType + " ");
+        }
+        System.out.println();
+    }
 
-        if(A.length != B.length)
-        {
+    public static <TType extends Comparable<TType>> boolean compare(TType[] A, TType[] B) {
+
+        if (A.length != B.length) {
             throw new IllegalArgumentException();
         }
 
-        for(int i = 0; i < A.length; i++)
-        {
-            if(A[i].compareTo(B[i]) != 0)
-            {
+        for (int i = 0; i < A.length; i++) {
+            if (A[i].compareTo(B[i]) != 0) {
                 return false;
             }
         }

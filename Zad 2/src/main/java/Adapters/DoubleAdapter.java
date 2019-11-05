@@ -20,6 +20,14 @@ public class DoubleAdapter implements INumberAdapter<Double> {
         return n1 / n2;
     }
 
+    public Double pow(Double n, int e) {
+        return Math.pow(n, e);
+    }
+
+    public Double sqrt(Double n) {
+        return Math.sqrt(n);
+    }
+
     public Double ZERO() {
         return ZERO;
     }

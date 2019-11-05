@@ -1,22 +1,32 @@
-import Adapters.IntegerAdapter;
+import Adapters.DoubleAdapter;
 import Matrix.MatrixGenerator;
 import Matrix.MatrixUtilities;
+import Matrix.MyMatrix;
+import Utilities.CollectionUtilities;
 
 public class MainTests {
 
     public static void main(String[] args) {
 
-        IntegerAdapter adapter = new IntegerAdapter();
-        int i = 3;
+        DoubleAdapter adapter = new DoubleAdapter();
+        int i = 2;
 
-        Integer[][] A = new Integer[i][i];
-        Integer[] X = new Integer[i];
+        Double[][] A = new Double[i][i];
+        Double[] X = new Double[i];
 
         MatrixGenerator.generateValues(A, 1, 5);
         MatrixGenerator.generateValues(X, 1, 5);
 
-        Integer[][] AT = MatrixUtilities.transpose(Integer.class, A);
+        CollectionUtilities.show(A, X);
 
+        Double[] B = MatrixUtilities.multiplyByVector(Double.class, adapter, A, X);
+
+        CollectionUtilities.show(B);
+
+        Double[] result = MyMatrix.GaussJordanElimination_NoPivoting(adapter, A, B);
+
+        CollectionUtilities.show(X);
+        CollectionUtilities.show(result);
     }
 
 }

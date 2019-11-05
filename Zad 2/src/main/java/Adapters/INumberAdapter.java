@@ -1,6 +1,7 @@
 package Adapters;
 
 public interface INumberAdapter<TType extends Number> {
+
     TType add(TType n1, TType n2);
 
     TType subtract(TType n1, TType n2);
@@ -8,6 +9,10 @@ public interface INumberAdapter<TType extends Number> {
     TType multiply(TType n1, TType n2);
 
     TType divide(TType n1, TType n2);
+
+    TType pow(TType n, int e);
+
+    TType sqrt(TType n);
 
     TType ZERO();
 
