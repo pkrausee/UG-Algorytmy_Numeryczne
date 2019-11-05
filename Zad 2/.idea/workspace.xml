@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FractionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FractionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MojaMacierz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FractionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MatrixGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MatrixGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/PairResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/PairResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/CollectionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/CollectionUtilities.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +74,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.FractionTest">
+  <component name="RunManager" selected="Application.MainTests">
     <configuration name="BigRational" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BigRational" />
       <module name="zad2" />
@@ -87,8 +96,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainTests" />
+      <module name="zad2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MatrixTests.TestIntegerType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zad2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MatrixTests" />
+      <option name="METHOD_NAME" value="TestIntegerType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainTests" />
+        <item itemvalue="JUnit.MatrixTests.TestIntegerType" />
         <item itemvalue="Application.FractionTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.BigRational" />
@@ -118,6 +146,7 @@
       <workItem from="1572808176470" duration="2841000" />
       <workItem from="1572888690088" duration="5857000" />
       <workItem from="1572896449325" duration="767000" />
+      <workItem from="1572970141880" duration="7437000" />
     </task>
     <servers />
   </component>

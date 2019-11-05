@@ -1,7 +1,6 @@
 package Models;
 
-public class PairResult<T, V>
-{
+public class PairResult<T, V> {
     public T First;
     public V Second;
 
