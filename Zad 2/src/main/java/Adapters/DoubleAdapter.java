@@ -47,4 +47,21 @@ public class DoubleAdapter implements INumberAdapter<Double> {
     public String toString(Double d) {
         return String.format("%1.2f", d);
     }
+
+    public Double[] copy(Double[] a) {
+        Double[] copy = new Double[a.length];
+        System.arraycopy( a, 0, copy, 0, a.length );
+
+        return copy;
+    }
+
+    public Double[][] copy(Double[][] a) {
+        Double[][] copy = new Double[a.length][a[0].length];
+
+        for(int i=0; i<a.length; i++){
+            System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
+        }
+
+        return copy;
+    }
 }

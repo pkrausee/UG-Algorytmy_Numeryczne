@@ -1,32 +1,33 @@
 import Adapters.DoubleAdapter;
+import Adapters.FloatAdapter;
+import Adapters.FractionAdapter;
 import Matrix.MatrixGenerator;
 import Matrix.MatrixUtilities;
 import Matrix.MyMatrix;
+import Models.Fraction;
 import Utilities.CollectionUtilities;
+
 
 public class MainTests {
 
     public static void main(String[] args) {
 
-        DoubleAdapter adapter = new DoubleAdapter();
-        int i = 2;
+        int i = 50;
 
-        Double[][] A = new Double[i][i];
-        Double[] X = new Double[i];
+        Fraction[] X = new Fraction[i];
+        Fraction[][] A = new Fraction[i][i];
 
-        MatrixGenerator.generateValues(A, 1, 5);
-        MatrixGenerator.generateValues(X, 1, 5);
+        MatrixGenerator.generateValues(X);
+        MatrixGenerator.generateValues(A);
 
-        CollectionUtilities.show(A, X);
+        Fraction[] B = MatrixUtilities.multiplyByVector(Fraction.class, new FractionAdapter(), A, X);
 
-        Double[] B = MatrixUtilities.multiplyByVector(Double.class, adapter, A, X);
+        Fraction[] Xp = MyMatrix.GaussJordanElimination_NoPivoting(new FractionAdapter(), A, B);
 
-        CollectionUtilities.show(B);
+        double NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, new FractionAdapter(), X, Xp));
 
-        Double[] result = MyMatrix.GaussJordanElimination_NoPivoting(adapter, A, B);
+        System.out.println(NPFail);
 
-        CollectionUtilities.show(X);
-        CollectionUtilities.show(result);
     }
 
 }

@@ -9,6 +9,10 @@ public class ResultType <TType extends Number>{
         this.results = results;
     }
 
+    public void reset(List<TType[]> list){
+        this.results = list;
+    }
+
     @Override
     public String toString() {
 

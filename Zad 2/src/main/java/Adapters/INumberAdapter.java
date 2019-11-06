@@ -21,5 +21,8 @@ public interface INumberAdapter<TType extends Number> {
     boolean isZero(TType n);
 
     int compareTo(TType n1, TType n2);
+
+    TType[] copy (TType[] a);
+    TType[][] copy (TType[][] a);
 }
 

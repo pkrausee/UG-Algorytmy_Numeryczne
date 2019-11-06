@@ -47,4 +47,21 @@ public class IntegerAdapter implements INumberAdapter<Integer> {
     public String toString(Integer i) {
         return i.toString();
     }
+
+    public Integer[] copy(Integer[] a) {
+        Integer[] copy = new Integer[a.length];
+        System.arraycopy( a, 0, copy, 0, a.length );
+
+        return copy;
+    }
+
+    public Integer[][] copy(Integer[][] a) {
+        Integer[][] copy = new Integer[a.length][a[0].length];
+
+        for(int i=0; i<a.length; i++){
+            System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
+        }
+
+        return copy;
+    }
 }

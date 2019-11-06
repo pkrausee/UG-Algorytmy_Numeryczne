@@ -81,6 +81,18 @@ public class MatrixUtilities {
         return adapter.sqrt(result);
     }
 
+    public static <TType extends Number> Double avg(TType[] A) {
+        double count = 0d;
+        double sum = 0d;
+
+        for (TType element : A) {
+            sum +=  element.doubleValue();
+            count++;
+        }
+
+        return sum / count;
+    }
+
     public static <TType extends Number> TType[] subtract(
             Class<TType> content,
             INumberAdapter<TType> adapter,

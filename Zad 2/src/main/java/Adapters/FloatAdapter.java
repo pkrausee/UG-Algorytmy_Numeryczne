@@ -47,4 +47,21 @@ public class FloatAdapter implements INumberAdapter<Float> {
     public String toString(Float f) {
         return String.format("%1.2f", f);
     }
+
+    public Float[] copy(Float[] a) {
+        Float[] copy = new Float[a.length];
+        System.arraycopy( a, 0, copy, 0, a.length );
+
+        return copy;
+    }
+
+    public Float[][] copy(Float[][] a) {
+        Float[][] copy = new Float[a.length][a[0].length];
+
+        for(int i=0; i<a.length; i++){
+            System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
+        }
+
+        return copy;
+    }
 }

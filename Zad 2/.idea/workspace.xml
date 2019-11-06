@@ -3,20 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MatrixGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MatrixGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/PairResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/ThreeResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/CollectionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/CollectionUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MatrixTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MatrixTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/ResultType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/ResultType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MatrixTests.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,17 +86,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MatrixTests">
-    <configuration name="FractionTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FractionTest" />
+  <component name="RunManager" selected="Application.MainTests">
+    <configuration name="H1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Tests.H1" />
       <module name="zad2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration name="H2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Tests.H2" />
       <module name="zad2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,20 +120,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatrixTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="H1_Tests.TestIntegerType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="zad2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MatrixTests" />
+      <option name="MAIN_CLASS_NAME" value="H1_Tests" />
+      <option name="METHOD_NAME" value="TestIntegerType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zad2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatrixTests.TestIntegerType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Tests.TestMatrixForFloatType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="zad2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MatrixTests" />
-      <option name="METHOD_NAME" value="TestIntegerType" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="METHOD_NAME" value="TestMatrixForFloatType" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -133,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MatrixTests" />
-        <item itemvalue="JUnit.MatrixTests.TestIntegerType" />
         <item itemvalue="Application.MainTests" />
-        <item itemvalue="Application.FractionTest" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.Tests.TestMatrixForFloatType" />
+        <item itemvalue="JUnit.Tests" />
+        <item itemvalue="Application.H1" />
+        <item itemvalue="Application.H2" />
       </list>
     </recent_temporary>
   </component>
@@ -165,6 +183,7 @@
       <workItem from="1572888690088" duration="5857000" />
       <workItem from="1572896449325" duration="767000" />
       <workItem from="1572970141880" duration="14795000" />
+      <workItem from="1573058984319" duration="15109000" />
     </task>
     <servers />
   </component>
