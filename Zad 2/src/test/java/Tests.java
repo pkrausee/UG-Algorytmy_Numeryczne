@@ -3,7 +3,7 @@ import Adapters.FloatAdapter;
 import Adapters.FractionAdapter;
 import Matrix.MatrixGenerator;
 import Matrix.MatrixUtilities;
-import Matrix.MyMatrix;
+import Matrix.MyMatrixV1;
 import Models.Fraction;
 
 import java.io.FileNotFoundException;
@@ -59,7 +59,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_NoPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, Acopy, Bcopy);
                 NPTime = System.nanoTime() - startTime;
 
                 NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, X, Xp));
@@ -67,7 +67,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_PartialPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, Acopy, Bcopy);
                 PPTime = System.nanoTime() - startTime;
 
                 PPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, X, Xp));
@@ -75,7 +75,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_FullPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, Acopy, Bcopy);
                 FPTime = System.nanoTime() - startTime;
 
                 FPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, X, Xp));
@@ -125,7 +125,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_NoPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, Acopy, Bcopy);
                 NPTime = System.nanoTime() - startTime;
 
                 NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Float.class, adapter, X, Xp));
@@ -133,7 +133,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_PartialPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, Acopy, Bcopy);
                 PPTime = System.nanoTime() - startTime;
 
                 PPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Float.class, adapter, X, Xp));
@@ -141,7 +141,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_FullPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, Acopy, Bcopy);
                 FPTime = System.nanoTime() - startTime;
 
                 FPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Float.class, adapter, X, Xp));
@@ -191,7 +191,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_NoPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, Acopy, Bcopy);
                 NPTime = System.nanoTime() - startTime;
 
                 NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, adapter, X, Xp));
@@ -199,7 +199,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_PartialPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, Acopy, Bcopy);
                 PPTime = System.nanoTime() - startTime;
 
                 PPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, adapter, X, Xp));
@@ -207,7 +207,7 @@ public class Tests {
                 Acopy = adapter.copy(A);
                 Bcopy = adapter.copy(B);
                 startTime = System.nanoTime();
-                Xp = MyMatrix.GaussJordanElimination_FullPivoting(adapter, Acopy, Bcopy);
+                Xp = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, Acopy, Bcopy);
                 FPTime = System.nanoTime() - startTime;
 
                 FPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, adapter, X, Xp));

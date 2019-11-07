@@ -2,12 +2,12 @@ package Matrix;
 
 import Adapters.INumberAdapter;
 
-public class MyMatrix <TType extends Number> {
+public class MyMatrixV1<TType extends Number> {
     private INumberAdapter<TType> adapter;
     private TType[][] A;
     private TType[] B;
 
-    public MyMatrix(INumberAdapter<TType> adapter, TType[][] A, TType[] B) {
+    public MyMatrixV1(INumberAdapter<TType> adapter, TType[][] A, TType[] B) {
         this.adapter = adapter;
         this.A = A;
         this.B = B;

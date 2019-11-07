@@ -99,11 +99,25 @@ public class Fraction extends Number implements Comparable<Fraction> {
         return this.numerator.equals(ZERO.getNumerator());
     }
 
-    public int compareTo(Fraction f) {
-        int numeratorDiff = this.numerator.compareTo(f.getNumerator());
-        int denominatorDiff = this.denominator.compareTo(f.getDenominator());
+    public int signum()
+    {
+        return this.numerator.signum();
+    }
 
-        return numeratorDiff != 0 ? numeratorDiff : denominatorDiff;
+    public int compareTo(Fraction f)
+    {
+        if(f == null)
+            throw new IllegalArgumentException("Null argument");
+
+        if(signum() != f.signum()){
+            return signum() - f.signum();
+        }
+
+        if(this.denominator.equals(f.getDenominator())){
+            return this.numerator.compareTo(f.getNumerator());
+        }
+
+        return this.numerator.multiply(f.getDenominator()).compareTo(this.denominator.multiply(f.getNumerator()));
     }
 
     @Override

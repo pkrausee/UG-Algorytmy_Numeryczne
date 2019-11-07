@@ -1,22 +1,19 @@
 package MatrixTests;
 
 import Adapters.DoubleAdapter;
-import Matrix.MyMatrix;
+import Matrix.MyMatrixV1;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MyMatrixTests {
 
     @InjectMocks
-    private MyMatrix<Double> myMatrix;
+    private MyMatrixV1<Double> myMatrix;
 
     private final static DoubleAdapter doubleAdapter = new DoubleAdapter();
 
@@ -39,7 +36,7 @@ public class MyMatrixTests {
 
         Double[] expectedB = new Double[] { 11d, -32d, -64d };
 
-        MyMatrix.eliminate(doubleAdapter, A, B, 0);
+        MyMatrixV1.eliminate(doubleAdapter, A, B, 0);
 
         assertThat(A, is(expectedA));
         assertThat(B, is(expectedB));

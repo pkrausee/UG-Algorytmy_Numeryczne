@@ -4,7 +4,12 @@
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MatrixTests/MyMatrixTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MatrixTests/MyMatrixTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/zad2.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/zad2.kotlin_module" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

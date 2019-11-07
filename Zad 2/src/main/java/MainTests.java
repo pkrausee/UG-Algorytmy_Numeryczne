@@ -1,5 +1,9 @@
+import Adapters.DoubleAdapter;
 import Adapters.FloatAdapter;
-import Matrix.MyMatrix;
+import Adapters.FractionAdapter;
+import Matrix.MyMatrixV1;
+import Matrix.MyMatrixV2;
+import Models.Fraction;
 import Utilities.CollectionUtilities;
 
 
@@ -9,21 +13,31 @@ public class MainTests {
 
         int i = 4;
 
-        FloatAdapter adapter = new FloatAdapter();
+        DoubleAdapter adapter = new DoubleAdapter();
 
-        Float[][] A = new Float[][]{
-                {1f, 2f, 3f},
-                {4f, 5f, 6f},
-                {7f, 8f, 9f}
+        Double[][] A = new Double[][]{
+                { 1d, 2d, 3d },
+                { 4d, 5d, 6d },
+                { 7d, 8d, 9d }
         };
 
-        Float[] X = new Float[]{11f, 12f, 13f};
+        Double[] B = new Double[]{ 11d, 12d, 13d };
 
-//        Double[] Xp1 = MyMatrix.GaussJordanElimination_NoPivoting(adapter, A, X);
-//        Double[] Xp2 = MyMatrix.GaussJordanElimination_PartialPivoting(adapter, A, X);
-        Float[] Xp3 = MyMatrix.GaussJordanElimination_FullPivoting(adapter, A, X);
+//        FractionAdapter adapter = new FractionAdapter();
+//
+//        Fraction[][] A = new Fraction[][]{
+//                { new Fraction(1), new Fraction(2), new Fraction(3) },
+//                { new Fraction(4), new Fraction(5), new Fraction(6) },
+//                { new Fraction(7), new Fraction(8), new Fraction(9) }
+//        };
+//
+//        Fraction[] B = new Fraction[]{ new Fraction(11), new Fraction(12), new Fraction(13) };
 
-        CollectionUtilities.show(A, X);
+        MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
+        MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
+        MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
+
+        CollectionUtilities.show(A, B);
 
     }
 }
