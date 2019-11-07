@@ -12,7 +12,7 @@ public class MainTests {
 
     public static void main(String[] args) {
 
-        int i = 50;
+        int i = 4;
 
         Fraction[] X = new Fraction[i];
         Fraction[][] A = new Fraction[i][i];
@@ -22,12 +22,16 @@ public class MainTests {
 
         Fraction[] B = MatrixUtilities.multiplyByVector(Fraction.class, new FractionAdapter(), A, X);
 
-        Fraction[] Xp = MyMatrix.GaussJordanElimination_NoPivoting(new FractionAdapter(), A, B);
+        Fraction[][] Acopy = new FractionAdapter().copy(A);
+        Fraction[] Bcopy = new FractionAdapter().copy(B);
+
+        Fraction[] Xp = MyMatrix.GaussJordanElimination_NoPivoting(new FractionAdapter(), Acopy, Bcopy);
 
         double NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, new FractionAdapter(), X, Xp));
 
+        CollectionUtilities.show(A, B);
+        CollectionUtilities.show(Acopy, Bcopy);
+
         System.out.println(NPFail);
-
     }
-
 }
