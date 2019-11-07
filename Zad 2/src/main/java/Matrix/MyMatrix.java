@@ -96,7 +96,11 @@ public class MyMatrix <TType extends Number> {
         return B;
     }
 
-    private static <TType extends Number> void eliminate(
+    public void eliminate(int pos){
+        eliminate(this.adapter, this.A, this.B, pos);
+    }
+
+    public static <TType extends Number> void eliminate(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
@@ -145,6 +149,30 @@ public class MyMatrix <TType extends Number> {
 
     public TType[] GaussJordanElimination_FullPivoting() {
         return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B);
+    }
+
+    public INumberAdapter<TType> getAdapter() {
+        return adapter;
+    }
+
+    public void setAdapter(INumberAdapter<TType> adapter) {
+        this.adapter = adapter;
+    }
+
+    public TType[][] getA() {
+        return A;
+    }
+
+    public void setA(TType[][] a) {
+        A = a;
+    }
+
+    public TType[] getB() {
+        return B;
+    }
+
+    public void setB(TType[] b) {
+        B = b;
     }
 }
 
