@@ -1,10 +1,5 @@
-import Adapters.DoubleAdapter;
 import Adapters.FloatAdapter;
-import Adapters.FractionAdapter;
-import Matrix.MatrixGenerator;
-import Matrix.MatrixUtilities;
 import Matrix.MyMatrix;
-import Models.Fraction;
 import Utilities.CollectionUtilities;
 
 
@@ -14,24 +9,21 @@ public class MainTests {
 
         int i = 4;
 
-        Fraction[] X = new Fraction[i];
-        Fraction[][] A = new Fraction[i][i];
+        FloatAdapter adapter = new FloatAdapter();
 
-        MatrixGenerator.generateValues(X);
-        MatrixGenerator.generateValues(A);
+        Float[][] A = new Float[][]{
+                {1f, 2f, 3f},
+                {4f, 5f, 6f},
+                {7f, 8f, 9f}
+        };
 
-        Fraction[] B = MatrixUtilities.multiplyByVector(Fraction.class, new FractionAdapter(), A, X);
+        Float[] X = new Float[]{11f, 12f, 13f};
 
-        Fraction[][] Acopy = new FractionAdapter().copy(A);
-        Fraction[] Bcopy = new FractionAdapter().copy(B);
+//        Double[] Xp1 = MyMatrix.GaussJordanElimination_NoPivoting(adapter, A, X);
+//        Double[] Xp2 = MyMatrix.GaussJordanElimination_PartialPivoting(adapter, A, X);
+        Float[] Xp3 = MyMatrix.GaussJordanElimination_FullPivoting(adapter, A, X);
 
-        Fraction[] Xp = MyMatrix.GaussJordanElimination_NoPivoting(new FractionAdapter(), Acopy, Bcopy);
+        CollectionUtilities.show(A, X);
 
-        double NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, new FractionAdapter(), X, Xp));
-
-        CollectionUtilities.show(A, B);
-        CollectionUtilities.show(Acopy, Bcopy);
-
-        System.out.println(NPFail);
     }
 }

@@ -22,18 +22,24 @@ public class MyMatrix <TType extends Number> {
 
     public static <TType extends Number> TType[] GaussJordanElimination_NoPivoting(
             INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B) {
+            TType[][] matrix,
+            TType[] vector) {
+
+        TType[][] A = adapter.copy(matrix);
+        TType[] B = adapter.copy(vector);
+
         for (int pos = 0; pos < A.length; pos++) {
+
             if (adapter.isZero(A[pos][pos])) {
                 int destRow = pos;
+
                 while (destRow < A.length && adapter.isZero(A[destRow][pos])) {
                     destRow++;
                 }
 
                 if (destRow < A.length && destRow != pos) {
-                    MatrixUtilities.swapRows(B, pos, destRow);
                     MatrixUtilities.swapRows(A, pos, destRow);
+                    MatrixUtilities.swapRows(B, pos, destRow);
                 }
             }
 
@@ -45,21 +51,27 @@ public class MyMatrix <TType extends Number> {
 
     public static <TType extends Number> TType[] GaussJordanElimination_PartialPivoting(
             INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B) {
+            TType[][] matrix,
+            TType[] vector) {
+
+        TType[][] A = adapter.copy(matrix);
+        TType[] B = adapter.copy(vector);
+
         for (int pos = 0; pos < A.length; pos++) {
-            int max = pos;
+
+            int destRow = pos;
 
             for (int i = pos; i < A.length; i++) {
-                if (adapter.compareTo(A[max][pos], A[i][pos]) < 0) {
-                    max = i;
+                if (adapter.compareTo(A[destRow][pos], A[i][pos]) < 0) {
+                    destRow = i;
                 }
             }
 
-            MatrixUtilities.swapRows(B, pos, max);
-            MatrixUtilities.swapRows(A, pos, max);
+            if(destRow != pos) {
+                MatrixUtilities.swapRows(A, pos, destRow);
+                MatrixUtilities.swapRows(B, pos, destRow);
+            }
 
-            eliminate(adapter, A, B, pos);
         }
 
         return B;
@@ -67,8 +79,12 @@ public class MyMatrix <TType extends Number> {
 
     public static <TType extends Number> TType[] GaussJordanElimination_FullPivoting(
             INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B) {
+            TType[][] matrix,
+            TType[] vector) {
+
+        TType[][] A = adapter.copy(matrix);
+        TType[] B = adapter.copy(vector);
+
         for (int pos = 0; pos < A.length; pos++) {
             int maxR = pos;
             int maxC = pos;
@@ -90,14 +106,9 @@ public class MyMatrix <TType extends Number> {
                 MatrixUtilities.swapRows(A, pos, maxR);
             }
 
-            eliminate(adapter, A, B, pos);
         }
 
         return B;
-    }
-
-    public void eliminate(int pos){
-        eliminate(this.adapter, this.A, this.B, pos);
     }
 
     public static <TType extends Number> void eliminate(
@@ -175,19 +186,3 @@ public class MyMatrix <TType extends Number> {
         B = b;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
