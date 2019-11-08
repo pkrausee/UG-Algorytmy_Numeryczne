@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 
 public class Tests {
     private final int numberOfTests = 1000;
+    private final int jump = 5;
 
     private static <TType extends Number> String buildString(TType[] results) {
         StringBuilder builder = new StringBuilder();
@@ -34,7 +35,7 @@ public class Tests {
         DoubleAdapter adapter = new DoubleAdapter();
 
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Double.csv", true))) {
-            for (int i = 10; i < numberOfTests; i += 10) {
+            for (int i = 10; i < numberOfTests; i += jump) {
 
                 if (i % 10 == 0) {
                     System.out.println("D " + i + "/" + numberOfTests);
@@ -92,7 +93,7 @@ public class Tests {
         FloatAdapter adapter = new FloatAdapter();
 
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Float.csv", true))) {
-            for (int i = 10; i < numberOfTests; i += 10) {
+            for (int i = 10; i < numberOfTests; i += jump) {
                 if (i % 10 == 0) {
                     System.out.println("F " + i + "/" + numberOfTests);
                 }
@@ -149,7 +150,7 @@ public class Tests {
         FractionAdapter adapter = new FractionAdapter();
 
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Fraction.csv", true))) {
-            for (int i = 10; i < numberOfTests; i += 10) {
+            for (int i = 10; i < numberOfTests; i += jump) {
                 if (i % 10 == 0) {
                     System.out.println("Fr " + i + "/" + numberOfTests);
                 }
