@@ -36,8 +36,12 @@ public class DoubleAdapter implements INumberAdapter<Double> {
         return ONE;
     }
 
+    public Double abs(Double n) {
+        return Math.abs(n);
+    }
+
     public boolean isZero(Double d) {
-        return d.compareTo(ZERO) == 0;
+        return d == 0d;
     }
 
     public int compareTo(Double n1, Double n2) {

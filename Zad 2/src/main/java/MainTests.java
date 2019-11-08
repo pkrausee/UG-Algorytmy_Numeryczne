@@ -1,6 +1,7 @@
 import Adapters.DoubleAdapter;
 import Adapters.FloatAdapter;
 import Adapters.FractionAdapter;
+import Matrix.MatrixUtilities;
 import Matrix.MyMatrixV1;
 import Matrix.MyMatrixV2;
 import Models.Fraction;
@@ -21,7 +22,14 @@ public class MainTests {
                 { 7d, 8d, 9d }
         };
 
-        Double[] B = new Double[]{ 11d, 12d, 13d };
+        Double[] X = new Double[]{ 11d, 12d, 13d };
+
+        Double[] B = MatrixUtilities.multiplyByVector(Double.class, adapter, A, X);
+
+        Double accuracy = 1E-15;
+
+        CollectionUtilities.show(A, X);
+        CollectionUtilities.show(A, B);
 
 //        FractionAdapter adapter = new FractionAdapter();
 //
@@ -33,15 +41,21 @@ public class MainTests {
 //
 //        Fraction[] B = new Fraction[]{ new Fraction(11), new Fraction(12), new Fraction(13) };
 
-        MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
-        MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
-        MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
+//        MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
+//        MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
+//        MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
 
-        MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, A, B);
-        MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, A, B);
-        MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, A, B);
+        Double[] XpNP = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, A, B, accuracy);
+        Double[] XpPP = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, A, B, accuracy);
+        Double[] XpFP = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, A, B, accuracy);
 
-        CollectionUtilities.show(A, B);
+        Double XpNP_Er = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, XpNP, B));
+        Double XpPP_Er = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, XpPP, B));
+        Double XpFP_Er = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, XpFP, B));
+
+        System.out.println("Error " + XpNP_Er);
+        System.out.println("Error " + XpPP_Er);
+        System.out.println("Error " + XpFP_Er);
 
     }
 }

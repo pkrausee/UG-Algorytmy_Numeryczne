@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,7 +66,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/yen" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -76,25 +85,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Tests.TestMatrixForDoubleType">
+  <component name="RunManager" selected="Application.MainTests">
     <configuration name="MainTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainTests" />
       <module name="zad2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MatrixUtilitiesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zad2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MatrixTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MatrixTests" />
-      <option name="MAIN_CLASS_NAME" value="MatrixTests.MatrixUtilitiesTests" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -115,18 +109,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyMatrixTests.eliminateTest_ForDoubleType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Tests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="zad2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MatrixTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MatrixTests" />
-      <option name="MAIN_CLASS_NAME" value="MatrixTests.MyMatrixTests" />
-      <option name="METHOD_NAME" value="eliminateTest_ForDoubleType" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -141,13 +128,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tests.TestMatrixForFloatType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zad2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="METHOD_NAME" value="TestMatrixForFloatType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Tests.TestMatrixForDoubleType" />
         <item itemvalue="Application.MainTests" />
+        <item itemvalue="JUnit.Tests.TestMatrixForFloatType" />
+        <item itemvalue="JUnit.Tests" />
+        <item itemvalue="JUnit.Tests.TestMatrixForDoubleType" />
         <item itemvalue="JUnit.MyMatrixTests.GJE_NoPivoting_Test_ForDoubleType" />
-        <item itemvalue="JUnit.MyMatrixTests.eliminateTest_ForDoubleType" />
-        <item itemvalue="JUnit.MatrixUtilitiesTests" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +187,8 @@
       <workItem from="1573113825275" duration="1775000" />
       <workItem from="1573125744727" duration="3232000" />
       <workItem from="1573129050694" duration="148000" />
-      <workItem from="1573170305888" duration="1786000" />
+      <workItem from="1573170305888" duration="1916000" />
+      <workItem from="1573190271658" duration="10760000" />
     </task>
     <servers />
   </component>

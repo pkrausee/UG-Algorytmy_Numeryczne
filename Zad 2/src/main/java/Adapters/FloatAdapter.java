@@ -36,8 +36,12 @@ public class FloatAdapter implements INumberAdapter<Float> {
         return ONE;
     }
 
+    public Float abs(Float n) {
+        return Math.abs(n);
+    }
+
     public boolean isZero(Float f) {
-        return f.compareTo(ZERO) == 0;
+        return f == 0f;
     }
 
     public int compareTo(Float n1, Float n2) {

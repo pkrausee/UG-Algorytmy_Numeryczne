@@ -36,6 +36,10 @@ public class IntegerAdapter implements INumberAdapter<Integer> {
         return ONE;
     }
 
+    public Integer abs(Integer n) {
+        return Math.abs(n);
+    }
+
     public boolean isZero(Integer i) {
         return i.compareTo(ZERO) == 0;
     }

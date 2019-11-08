@@ -38,6 +38,10 @@ public class FractionAdapter implements INumberAdapter<Fraction> {
         return ONE;
     }
 
+    public Fraction abs(Fraction n) {
+        return n.abs();
+    }
+
     public boolean isZero(Fraction f) {
         return f.compareTo(ZERO) == 0;
     }

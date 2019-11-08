@@ -18,6 +18,8 @@ public interface INumberAdapter<TType extends Number> {
 
     TType ONE();
 
+    TType abs(TType n);
+
     boolean isZero(TType n);
 
     int compareTo(TType n1, TType n2);

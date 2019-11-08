@@ -1,6 +1,7 @@
 package Matrix;
 
 import Adapters.INumberAdapter;
+import Utilities.CollectionUtilities;
 
 public class MyMatrixV2<TType extends Number> {
     private INumberAdapter<TType> adapter;
@@ -46,6 +47,8 @@ public class MyMatrixV2<TType extends Number> {
             eliminate(adapter, A, B, pos);
         }
 
+        CollectionUtilities.show(A, B);
+
         return B;
     }
 
@@ -74,6 +77,8 @@ public class MyMatrixV2<TType extends Number> {
 
             eliminate(adapter, A, B, pos);
         }
+
+        CollectionUtilities.show(A, B);
 
         return B;
     }
@@ -111,6 +116,8 @@ public class MyMatrixV2<TType extends Number> {
 
             eliminate(adapter, A, B, pos);
         }
+
+        CollectionUtilities.show(A, B);
 
         return B;
     }

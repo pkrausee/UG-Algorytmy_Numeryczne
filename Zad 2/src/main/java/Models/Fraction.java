@@ -104,6 +104,11 @@ public class Fraction extends Number implements Comparable<Fraction> {
         return this.numerator.signum();
     }
 
+    public Fraction abs()
+    {
+        return new Fraction(this.numerator.abs(), this.denominator.abs());
+    }
+
     public int compareTo(Fraction f)
     {
         if(f == null)
