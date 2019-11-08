@@ -1,7 +1,6 @@
 package Matrix;
 
 import Adapters.INumberAdapter;
-import Utilities.CollectionUtilities;
 
 public class MyMatrixV2<TType extends Number> {
     private INumberAdapter<TType> adapter;
@@ -39,8 +38,6 @@ public class MyMatrixV2<TType extends Number> {
                 }
 
                 if (destRow < A.length && destRow != pos) {
-                    System.out.println("Swap rows " + pos + " " + destRow);
-
                     MatrixUtilities.swapRows(A, pos, destRow);
                     MatrixUtilities.swapRows(B, pos, destRow);
                 }
@@ -48,8 +45,6 @@ public class MyMatrixV2<TType extends Number> {
 
             eliminate(adapter, A, B, pos);
         }
-
-        CollectionUtilities.show(A, B);
 
         return B;
     }
@@ -73,17 +68,12 @@ public class MyMatrixV2<TType extends Number> {
             }
 
             if(destRow != pos) {
-                System.out.println("Swap rows " + pos + " " + destRow);
-
                 MatrixUtilities.swapRows(A, pos, destRow);
                 MatrixUtilities.swapRows(B, pos, destRow);
             }
 
             eliminate(adapter, A, B, pos);
-
         }
-
-        CollectionUtilities.show(A, B);
 
         return B;
     }
@@ -110,31 +100,22 @@ public class MyMatrixV2<TType extends Number> {
                 }
             }
 
-            System.out.println(pos + " " + maxR + " " + maxC);
-
             if(maxR != pos || maxC != pos) {
                 if (adapter.compareTo(A[maxR][pos], A[pos][maxC]) <= 0) {
-                    System.out.println("Swap cols " + pos + " " + maxC);
-
                     MatrixUtilities.swapCols(A, pos, maxC);
                 } else {
-                    System.out.println("Swap rows " + pos + " " + maxR);
-
                     MatrixUtilities.swapRows(B, pos, maxR);
                     MatrixUtilities.swapRows(A, pos, maxR);
                 }
             }
 
             eliminate(adapter, A, B, pos);
-
         }
-
-        CollectionUtilities.show(A, B);
 
         return B;
     }
 
-    public static <TType extends Number> void eliminate(
+    private static <TType extends Number> void eliminate(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
@@ -146,7 +127,9 @@ public class MyMatrixV2<TType extends Number> {
 
                 TType counter = adapter.divide(A[i][pos], A[pos][pos]);
 
-                for(int j = pos; j <= A[i].length; j++) {
+                A[i][pos] = adapter.ZERO();
+
+                for(int j = pos + 1; j <= A[i].length; j++) {
                     if(j < A[i].length){
                         A[i][j] = adapter.subtract(A[i][j], adapter.multiply(A[pos][j], counter));
                     } else {

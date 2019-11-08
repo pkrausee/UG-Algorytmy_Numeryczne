@@ -72,6 +72,7 @@ public class MyMatrixV1<TType extends Number> {
                 MatrixUtilities.swapRows(B, pos, destRow);
             }
 
+            eliminate(adapter, A, B, pos);
         }
 
         return B;
@@ -99,19 +100,22 @@ public class MyMatrixV1<TType extends Number> {
                 }
             }
 
-            if (adapter.compareTo(A[maxR][pos], A[pos][maxC]) < 0) {
-                MatrixUtilities.swapCols(A, pos, maxC);
-            } else {
-                MatrixUtilities.swapRows(B, pos, maxR);
-                MatrixUtilities.swapRows(A, pos, maxR);
+            if(maxR != pos || maxC != pos) {
+                if (adapter.compareTo(A[maxR][pos], A[pos][maxC]) <= 0) {
+                    MatrixUtilities.swapCols(A, pos, maxC);
+                } else {
+                    MatrixUtilities.swapRows(B, pos, maxR);
+                    MatrixUtilities.swapRows(A, pos, maxR);
+                }
             }
 
+            eliminate(adapter, A, B, pos);
         }
 
         return B;
     }
 
-    public static <TType extends Number> void eliminate(
+    private static <TType extends Number> void eliminate(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
@@ -132,9 +136,7 @@ public class MyMatrixV1<TType extends Number> {
                 if (i != pos) {
                     TType count = adapter.multiply(A[i][pos], A[pos][pos]);
 
-                    A[i][pos] = adapter.ZERO();
-
-                    for (int j = pos + 1; j < A[i].length + 1; j++) {
+                    for (int j = pos; j < A[i].length + 1; j++) {
                         if (j < A[i].length) {
                             A[i][j] = adapter.subtract(A[i][j], adapter.multiply(A[pos][j], count));
                         } else {

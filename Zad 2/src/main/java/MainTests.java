@@ -37,6 +37,10 @@ public class MainTests {
         MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
         MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
 
+        MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, A, B);
+        MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, A, B);
+        MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, A, B);
+
         CollectionUtilities.show(A, B);
 
     }
