@@ -1,9 +1,11 @@
 import Adapters.DoubleAdapter;
 import Adapters.FloatAdapter;
 import Adapters.FractionAdapter;
+
 import Matrix.MatrixGenerator;
 import Matrix.MatrixUtilities;
 import Matrix.MyMatrixV1;
+
 import Models.Fraction;
 
 import java.io.FileNotFoundException;
@@ -35,9 +37,9 @@ public class Tests {
         DoubleAdapter adapter = new DoubleAdapter();
 
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Double.csv", true))) {
-            for (int i = 10; i < numberOfTests; i += jump) {
+            for (int i = jump; i <= numberOfTests; i += jump) {
 
-                if (i % 10 == 0) {
+                if (i % jump == 0) {
                     System.out.println("D " + i + "/" + numberOfTests);
                 }
 
@@ -93,8 +95,9 @@ public class Tests {
         FloatAdapter adapter = new FloatAdapter();
 
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Float.csv", true))) {
-            for (int i = 10; i < numberOfTests; i += jump) {
-                if (i % 10 == 0) {
+            for (int i = jump; i <= numberOfTests; i += jump) {
+
+                if (i % jump == 0) {
                     System.out.println("F " + i + "/" + numberOfTests);
                 }
 
@@ -150,8 +153,9 @@ public class Tests {
         FractionAdapter adapter = new FractionAdapter();
 
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Fraction.csv", true))) {
-            for (int i = 10; i < numberOfTests; i += jump) {
-                if (i % 10 == 0) {
+            for (int i = jump; i <= numberOfTests; i += jump) {
+
+                if (i % jump == 0) {
                     System.out.println("Fr " + i + "/" + numberOfTests);
                 }
 
