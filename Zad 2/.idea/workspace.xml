@@ -1,73 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
+    <list default="true" id="7b799003-3ad4-43b8-afe0-d8d5e0700888" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H2_Double.csv" beforeDir="false" afterPath="$PROJECT_DIR$/H2_Double.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MatrixV2Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MatrixV1Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MatrixV1Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MatrixV2Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MatrixV2Tests.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
-  </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="zad2" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="1ShnkFjPRIGdIsfvmZB4pSDGufc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/yen" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -81,10 +34,27 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainTests">
+  <component name="RunManager" selected="JUnit.All in zad2">
     <configuration name="MainTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainTests" />
       <module name="zad2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in zad2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zad2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MatrixV1Tests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zad2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MatrixV1Tests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,124 +68,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatrixV2Tests.TestMatrixForDoubleType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zad2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MatrixV2Tests" />
-      <option name="METHOD_NAME" value="TestMatrixForDoubleType" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MatrixV2Tests.TestMatrixForFloatType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zad2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MatrixV2Tests" />
-      <option name="METHOD_NAME" value="TestMatrixForFloatType" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyMatrixTests.GJE_NoPivoting_Test_ForDoubleType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zad2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MatrixTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MatrixTests" />
-      <option name="MAIN_CLASS_NAME" value="MatrixTests.MyMatrixTests" />
-      <option name="METHOD_NAME" value="GJE_NoPivoting_Test_ForDoubleType" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainTests" />
-        <item itemvalue="JUnit.MatrixV2Tests.TestMatrixForDoubleType" />
-        <item itemvalue="JUnit.MatrixV2Tests.TestMatrixForFloatType" />
+        <item itemvalue="JUnit.All in zad2" />
+        <item itemvalue="JUnit.MatrixV1Tests" />
         <item itemvalue="JUnit.MatrixV2Tests" />
-        <item itemvalue="JUnit.MyMatrixTests.GJE_NoPivoting_Test_ForDoubleType" />
+        <item itemvalue="Application.MainTests" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="" />
-      <created>1572024835520</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1572024835520</updated>
-      <workItem from="1572024838823" duration="1939000" />
-      <workItem from="1572094684531" duration="1228000" />
-      <workItem from="1572096323250" duration="27991000" />
-      <workItem from="1572198836091" duration="664000" />
-      <workItem from="1572214648493" duration="269000" />
-      <workItem from="1572282276625" duration="4170000" />
-      <workItem from="1572366141358" duration="9702000" />
-      <workItem from="1572504230573" duration="2947000" />
-      <workItem from="1572641728525" duration="1463000" />
-      <workItem from="1572703145552" duration="2838000" />
-      <workItem from="1572808176470" duration="2841000" />
-      <workItem from="1572888690088" duration="5857000" />
-      <workItem from="1572896449325" duration="767000" />
-      <workItem from="1572970141880" duration="14795000" />
-      <workItem from="1573058984319" duration="15144000" />
-      <workItem from="1573105515955" duration="1716000" />
-      <workItem from="1573113825275" duration="1775000" />
-      <workItem from="1573125744727" duration="3232000" />
-      <workItem from="1573129050694" duration="148000" />
-      <workItem from="1573170305888" duration="1916000" />
-      <workItem from="1573190271658" duration="23135000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

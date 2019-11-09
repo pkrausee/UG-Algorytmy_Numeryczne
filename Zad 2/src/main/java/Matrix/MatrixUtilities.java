@@ -2,6 +2,8 @@ package Matrix;
 
 import Adapters.INumberAdapter;
 
+import java.util.ArrayDeque;
+
 public class MatrixUtilities {
 
     public static <TType> void swapRows(TType[] A, int src, int dest) {
@@ -77,19 +79,19 @@ public class MatrixUtilities {
         return adapter.sqrt(result);
     }
 
-    public static <TType extends Number> Double avg(INumberAdapter<TType> adapter, TType[] A) {
-        TType count = adapter.getInstance();
-        TType sum = adapter.getInstance();
+    public static <TType extends Number> TType avg(INumberAdapter<TType> adapter, TType[] A) {
+        TType count = adapter.ZERO();
+        TType sum = adapter.ZERO();
 
         for (TType element : A) {
-            sum =  adapter.add(sum, element);
             count = adapter.add(count, adapter.ONE());
+            sum = adapter.add(sum, adapter.abs(element));
         }
 
-        return (adapter.divide(sum, count)).doubleValue();
+        return adapter.divide(sum, count);
     }
 
-    public static <TType extends Number> TType[] subtractAbs(
+    public static <TType extends Number> TType[] subtract(
             INumberAdapter<TType> adapter,
             TType[] A,
             TType[] B) {
@@ -101,7 +103,7 @@ public class MatrixUtilities {
         TType[] result = adapter.getArrInstance(A.length);
 
         for (int i = 0; i < A.length; i++) {
-            result[i] = adapter.abs(adapter.subtract(A[i], B[i]));
+            result[i] = adapter.subtract(A[i], B[i]);
         }
 
         return result;
