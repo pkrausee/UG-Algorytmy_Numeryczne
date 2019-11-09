@@ -3,14 +3,10 @@ package Matrix;
 import Adapters.INumberAdapter;
 import Utilities.CollectionUtilities;
 
-import java.nio.file.Path;
-
 public class MyMatrixV1<TType extends Number> {
     private INumberAdapter<TType> adapter;
     private TType[][] A;
     private TType[] B;
-
-    private TType accuracy;
 
     public MyMatrixV1(INumberAdapter<TType> adapter, TType[][] A, TType[] B) {
         this.adapter = adapter;
@@ -21,16 +17,14 @@ public class MyMatrixV1<TType extends Number> {
     public static <TType extends Number> TType[] GaussJordanElimination(
             INumberAdapter<TType> adapter,
             TType[][] A,
-            TType[] B,
-            TType accuracy) {
-        return GaussJordanElimination_FullPivoting(adapter, A, B, accuracy);
+            TType[] B) {
+        return GaussJordanElimination_FullPivoting(adapter, A, B);
     }
 
     public static <TType extends Number> TType[] GaussJordanElimination_NoPivoting(
             INumberAdapter<TType> adapter,
             TType[][] matrix,
-            TType[] vector,
-            TType accuracy) {
+            TType[] vector) {
 
         TType[][] A = adapter.copy(matrix);
         TType[] B = adapter.copy(vector);
@@ -50,10 +44,10 @@ public class MyMatrixV1<TType extends Number> {
                 }
             }
 
-            eliminate(adapter, A, B, accuracy, pos);
+            Eliminate(adapter, A, B, pos);
         }
 
-        CollectionUtilities.show(A, B);
+//        CollectionUtilities.show(A, B);
 
         return B;
     }
@@ -61,8 +55,7 @@ public class MyMatrixV1<TType extends Number> {
     public static <TType extends Number> TType[] GaussJordanElimination_PartialPivoting(
             INumberAdapter<TType> adapter,
             TType[][] matrix,
-            TType[] vector,
-            TType accuracy) {
+            TType[] vector) {
 
         TType[][] A = adapter.copy(matrix);
         TType[] B = adapter.copy(vector);
@@ -82,10 +75,10 @@ public class MyMatrixV1<TType extends Number> {
                 MatrixUtilities.swapRows(B, pos, destRow);
             }
 
-            eliminate(adapter, A, B, accuracy, pos);
+            Eliminate(adapter, A, B, pos);
         }
 
-        CollectionUtilities.show(A, B);
+//        CollectionUtilities.show(A, B);
 
         return B;
     }
@@ -93,14 +86,14 @@ public class MyMatrixV1<TType extends Number> {
     public static <TType extends Number> TType[] GaussJordanElimination_FullPivoting(
             INumberAdapter<TType> adapter,
             TType[][] matrix,
-            TType[] vector,
-            TType accuracy) {
+            TType[] vector) {
 
         TType[][] A = adapter.copy(matrix);
         TType[] B = adapter.copy(vector);
 
-        for (int pos = 0; pos < A.length; pos++) {
+        Integer[] ColumnChanges = CollectionUtilities.getIntArr(vector.length);
 
+        for (int pos = 0; pos < A.length; pos++) {
             int destR = pos;
             int destC = pos;
 
@@ -125,21 +118,27 @@ public class MyMatrixV1<TType extends Number> {
             if(destC != pos)
             {
                 MatrixUtilities.swapCols(A, pos, destC);
+                MatrixUtilities.swapRows(ColumnChanges, pos, destC);
             }
 
-            eliminate(adapter, A, B, accuracy, pos);
+            Eliminate(adapter, A, B, pos);
         }
 
-        CollectionUtilities.show(A, B);
+//        CollectionUtilities.show(A, B);
 
-        return B;
+        TType[] swappedResult = adapter.getArrInstance(B.length);
+
+        for ( int i = 0; i < B.length; i++ ) {
+            swappedResult[ColumnChanges[i]] = B[i];
+        }
+
+        return swappedResult;
     }
 
-    private static <TType extends Number> void eliminate(
+    private static <TType extends Number> void Eliminate(
             INumberAdapter<TType> adapter,
             TType[][] A,
             TType[] B,
-            TType accuracy,
             int pos) {
         if (!adapter.isZero(A[pos][pos])) {
 
@@ -171,50 +170,18 @@ public class MyMatrixV1<TType extends Number> {
     }
 
     public TType[] GaussJordanElimination() {
-        return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B, this.accuracy);
+        return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B);
     }
 
     public TType[] GaussJordanElimination_NoPivoting() {
-        return GaussJordanElimination_NoPivoting(this.adapter, this.A, this.B, this.accuracy);
+        return GaussJordanElimination_NoPivoting(this.adapter, this.A, this.B);
     }
 
     public TType[] GaussJordanElimination_PartialPivoting() {
-        return GaussJordanElimination_PartialPivoting(this.adapter, this.A, this.B, this.accuracy);
+        return GaussJordanElimination_PartialPivoting(this.adapter, this.A, this.B);
     }
 
     public TType[] GaussJordanElimination_FullPivoting() {
-        return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B, this.accuracy);
-    }
-
-    public INumberAdapter<TType> getAdapter() {
-        return adapter;
-    }
-
-    public void setAdapter(INumberAdapter<TType> adapter) {
-        this.adapter = adapter;
-    }
-
-    public TType[][] getA() {
-        return A;
-    }
-
-    public void setA(TType[][] a) {
-        A = a;
-    }
-
-    public TType[] getB() {
-        return B;
-    }
-
-    public void setB(TType[] b) {
-        B = b;
-    }
-
-    public TType getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(TType accuracy) {
-        this.accuracy = accuracy;
+        return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B);
     }
 }

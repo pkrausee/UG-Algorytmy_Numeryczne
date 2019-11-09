@@ -1,9 +1,7 @@
 package Matrix;
 
 import Adapters.INumberAdapter;
-
 import Utilities.CollectionUtilities;
-
 
 public class MyMatrixV2<TType extends Number> {
     private INumberAdapter<TType> adapter;

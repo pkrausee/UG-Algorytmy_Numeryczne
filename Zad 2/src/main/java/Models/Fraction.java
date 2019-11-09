@@ -79,18 +79,22 @@ public class Fraction extends Number implements Comparable<Fraction> {
         return new Fraction(this.numerator.pow(e), this.denominator.pow(e));
     }
 
+    @Override
     public int intValue() {
         return this.numerator.divide(this.denominator).intValue();
     }
 
+    @Override
     public long longValue() {
         return this.numerator.divide(this.denominator).longValue();
     }
 
+    @Override
     public float floatValue() {
         return this.numerator.divide(this.denominator).floatValue();
     }
 
+    @Override
     public double doubleValue() {
         return this.numerator.divide(this.denominator).doubleValue();
     }
@@ -109,6 +113,7 @@ public class Fraction extends Number implements Comparable<Fraction> {
         return new Fraction(this.numerator.abs(), this.denominator.abs());
     }
 
+    @Override
     public int compareTo(Fraction f)
     {
         if(f == null)
