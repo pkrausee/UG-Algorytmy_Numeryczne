@@ -3,15 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="5b46b83f-b170-460c-87a5-abf0341ac247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H2_Double.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H2_Float.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/DoubleAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FloatAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/FractionAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/INumberAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adapters/IntegerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MatrixUtilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Matrix/MyMatrixV2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Fraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/CollectionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/CollectionUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MatrixTests/MatrixUtilitiesTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,7 +89,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainTests">
+  <component name="RunManager" selected="JUnit.Tests.TestMatrixForDoubleType">
     <configuration name="MainTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainTests" />
       <module name="zad2" />
@@ -140,10 +144,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Tests.TestMatrixForDoubleType" />
         <item itemvalue="Application.MainTests" />
         <item itemvalue="JUnit.Tests.TestMatrixForFloatType" />
         <item itemvalue="JUnit.Tests" />
-        <item itemvalue="JUnit.Tests.TestMatrixForDoubleType" />
         <item itemvalue="JUnit.MyMatrixTests.GJE_NoPivoting_Test_ForDoubleType" />
       </list>
     </recent_temporary>
@@ -188,7 +192,7 @@
       <workItem from="1573125744727" duration="3232000" />
       <workItem from="1573129050694" duration="148000" />
       <workItem from="1573170305888" duration="1916000" />
-      <workItem from="1573190271658" duration="10760000" />
+      <workItem from="1573190271658" duration="22076000" />
     </task>
     <servers />
   </component>

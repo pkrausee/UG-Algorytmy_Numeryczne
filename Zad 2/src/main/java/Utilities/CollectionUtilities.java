@@ -32,6 +32,16 @@ public abstract class CollectionUtilities {
         System.out.println();
     }
 
+    public static Integer[] getIntArr(int size) {
+        Integer[] arr = new Integer[size];
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = i;
+        }
+
+        return arr;
+    }
+
     public static <TType extends Comparable<TType>> boolean compare(TType[] A, TType[] B) {
 
         if (A.length != B.length) {

@@ -26,5 +26,10 @@ public interface INumberAdapter<TType extends Number> {
 
     TType[] copy (TType[] a);
     TType[][] copy (TType[][] a);
+
+    TType getInstance ();
+    TType[] getArrInstance (int size);
+    TType[][] getMatrixInstance (int size);
+
 }
 

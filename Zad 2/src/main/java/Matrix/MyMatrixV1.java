@@ -100,26 +100,31 @@ public class MyMatrixV1<TType extends Number> {
         TType[] B = adapter.copy(vector);
 
         for (int pos = 0; pos < A.length; pos++) {
-            int maxR = pos;
-            int maxC = pos;
 
-            for (int i = pos; i < A.length; i++) {
-                if (adapter.compareTo(A[maxR][pos], A[i][pos]) < 0) {
-                    maxR = i;
-                }
+            int destR = pos;
+            int destC = pos;
 
-                if (adapter.compareTo(A[pos][maxC], A[pos][i]) < 0) {
-                    maxC = i;
+            for(int i = pos; i < A.length; i++)
+            {
+                for(int j = pos; j < A[0].length; j++)
+                {
+                    if(adapter.compareTo(A[destR][destC], A[i][j]) < 0)
+                    {
+                        destR = i;
+                        destC = j;
+                    }
                 }
             }
 
-            if(maxR != pos || maxC != pos) {
-                if (adapter.compareTo(A[maxR][pos], A[pos][maxC]) <= 0) {
-                    MatrixUtilities.swapCols(A, pos, maxC);
-                } else {
-                    MatrixUtilities.swapRows(B, pos, maxR);
-                    MatrixUtilities.swapRows(A, pos, maxR);
-                }
+            if(destR != pos)
+            {
+                MatrixUtilities.swapRows(A, pos, destR);
+                MatrixUtilities.swapRows(B, pos, destR);
+            }
+
+            if(destC != pos)
+            {
+                MatrixUtilities.swapCols(A, pos, destC);
             }
 
             eliminate(adapter, A, B, accuracy, pos);
@@ -136,7 +141,7 @@ public class MyMatrixV1<TType extends Number> {
             TType[] B,
             TType accuracy,
             int pos) {
-        if (!adapter.isZero(A[pos][pos]) && adapter.compareTo(adapter.abs(A[pos][pos]), accuracy) > 0) {
+        if (!adapter.isZero(A[pos][pos])) {
 
             for (int i = pos + 1; i < A[0].length + 1; i++) {
                 if (i < A[0].length) {
@@ -162,8 +167,6 @@ public class MyMatrixV1<TType extends Number> {
                 }
             }
 
-        } else {
-            A[pos][pos] = adapter.ZERO();
         }
     }
 

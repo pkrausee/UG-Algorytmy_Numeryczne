@@ -1,11 +1,11 @@
 import Adapters.DoubleAdapter;
+
 import Adapters.FloatAdapter;
 import Adapters.FractionAdapter;
-
 import Matrix.MatrixGenerator;
 import Matrix.MatrixUtilities;
-import Matrix.MyMatrixV1;
 
+import Matrix.MyMatrixV2;
 import Models.Fraction;
 
 import java.io.FileNotFoundException;
@@ -13,7 +13,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
 public class Tests {
-    private final int numberOfTests = 1000;
+    private final int numberOfTests = 500;
     private final int jump = 5;
 
     private static <TType extends Number> String buildString(TType[] results) {
@@ -36,8 +36,6 @@ public class Tests {
     public void TestMatrixForDoubleType() {
         DoubleAdapter adapter = new DoubleAdapter();
 
-        double accuracy = 0.000000000000000000000000001d;
-
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Double.csv", true))) {
             for (int i = jump; i <= numberOfTests; i += jump) {
 
@@ -51,36 +49,35 @@ public class Tests {
                 MatrixGenerator.generateValues(A);
                 MatrixGenerator.generateValues(X);
 
-                Double[] B = MatrixUtilities.multiplyByVector(Double.class, adapter, A, X);
-
-                Double[] Xp;
+                Double[] B = MatrixUtilities.multiplyByVector(adapter, A, X);
 
                 long startTime, NPTime, PPTime, FPTime;
-                double NPFail, PPFail, FPFail;
 
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, A, B, accuracy);
+                Double[] XpNP = MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
                 NPTime = System.nanoTime() - startTime;
 
-                NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, X, Xp));
-
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, A, B, accuracy);
+                Double[] XpPP = MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
                 PPTime = System.nanoTime() - startTime;
 
-                PPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, X, Xp));
-
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, A, B, accuracy);
+                Double[] XpFP = MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
                 FPTime = System.nanoTime() - startTime;
 
-                FPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, X, Xp));
+                Double[] XpNP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpNP);
+                Double[] XpPP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpPP);
+                Double[] XpFP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpFP);
+
+                Double XpNP_Er = MatrixUtilities.avg(adapter, XpNP_ErrorArr);
+                Double XpPP_Er = MatrixUtilities.avg(adapter, XpPP_ErrorArr);
+                Double XpFP_Er = MatrixUtilities.avg(adapter, XpFP_ErrorArr);
 
                 Double[] result = new Double[]{
                         (double) i,
-                        (double) NPTime, NPFail,
-                        (double) PPTime, PPFail,
-                        (double) FPTime, FPFail
+                        (double) NPTime, XpNP_Er,
+                        (double) PPTime, XpPP_Er,
+                        (double) FPTime, XpFP_Er
                 };
 
                 writer.write(buildString(result).replace(".", ","));
@@ -96,8 +93,6 @@ public class Tests {
     public void TestMatrixForFloatType() {
         FloatAdapter adapter = new FloatAdapter();
 
-        float accuracy = 0.000000000000000000000000001f;
-
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Float.csv", true))) {
             for (int i = jump; i <= numberOfTests; i += jump) {
 
@@ -111,36 +106,35 @@ public class Tests {
                 MatrixGenerator.generateValues(A);
                 MatrixGenerator.generateValues(X);
 
-                Float[] B = MatrixUtilities.multiplyByVector(Float.class, adapter, A, X);
-
-                Float[] Xp;
+                Float[] B = MatrixUtilities.multiplyByVector(adapter, A, X);
 
                 long startTime, NPTime, PPTime, FPTime;
-                double NPFail, PPFail, FPFail;
 
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, A, B, accuracy);
+                Float[] XpNP = MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
                 NPTime = System.nanoTime() - startTime;
 
-                NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Float.class, adapter, X, Xp));
-
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, A, B, accuracy);
+                Float[] XpPP = MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
                 PPTime = System.nanoTime() - startTime;
 
-                PPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Float.class, adapter, X, Xp));
-
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, A, B, accuracy);
+                Float[] XpFP = MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
                 FPTime = System.nanoTime() - startTime;
 
-                FPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Float.class, adapter, X, Xp));
+                Float[] XpNP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpNP);
+                Float[] XpPP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpPP);
+                Float[] XpFP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpFP);
+
+                Double XpNP_Er = MatrixUtilities.avg(adapter, XpNP_ErrorArr);
+                Double XpPP_Er = MatrixUtilities.avg(adapter, XpPP_ErrorArr);
+                Double XpFP_Er = MatrixUtilities.avg(adapter, XpFP_ErrorArr);
 
                 Double[] result = new Double[]{
                         (double) i,
-                        (double) NPTime, NPFail,
-                        (double) PPTime, PPFail,
-                        (double) FPTime, FPFail
+                        (double) NPTime, XpNP_Er,
+                        (double) PPTime, XpPP_Er,
+                        (double) FPTime, XpFP_Er
                 };
 
                 writer.write(buildString(result).replace(".", ","));
@@ -156,8 +150,6 @@ public class Tests {
     public void TestMatrixForFractionType() {
         FractionAdapter adapter = new FractionAdapter();
 
-        Fraction accuracy = new Fraction(0);
-
         try (PrintWriter writer = new PrintWriter(new FileOutputStream("H2_Fraction.csv", true))) {
             for (int i = jump; i <= numberOfTests; i += jump) {
 
@@ -171,36 +163,35 @@ public class Tests {
                 MatrixGenerator.generateValues(A);
                 MatrixGenerator.generateValues(X);
 
-                Fraction[] B = MatrixUtilities.multiplyByVector(Fraction.class, adapter, A, X);
-
-                Fraction[] Xp;
+                Fraction[] B = MatrixUtilities.multiplyByVector(adapter, A, X);
 
                 long startTime, NPTime, PPTime, FPTime;
-                double NPFail, PPFail, FPFail;
 
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, A, B, accuracy);
+                Fraction[] XpNP = MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
                 NPTime = System.nanoTime() - startTime;
 
-                NPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, adapter, X, Xp));
-
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, A, B, accuracy);
+                Fraction[] XpPP = MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
                 PPTime = System.nanoTime() - startTime;
 
-                PPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, adapter, X, Xp));
-
                 startTime = System.nanoTime();
-                Xp = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, A, B, accuracy);
+                Fraction[] XpFP = MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
                 FPTime = System.nanoTime() - startTime;
 
-                FPFail = MatrixUtilities.avg(MatrixUtilities.subtract(Fraction.class, adapter, X, Xp));
+                Fraction[] XpNP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpNP);
+                Fraction[] XpPP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpPP);
+                Fraction[] XpFP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpFP);
+
+                Double XpNP_Er = MatrixUtilities.avg(adapter, XpNP_ErrorArr);
+                Double XpPP_Er = MatrixUtilities.avg(adapter, XpPP_ErrorArr);
+                Double XpFP_Er = MatrixUtilities.avg(adapter, XpFP_ErrorArr);
 
                 Double[] result = new Double[]{
                         (double) i,
-                        (double) NPTime, NPFail,
-                        (double) PPTime, PPFail,
-                        (double) FPTime, FPFail
+                        (double) NPTime, XpNP_Er,
+                        (double) PPTime, XpPP_Er,
+                        (double) FPTime, XpFP_Er
                 };
 
                 writer.write(buildString(result).replace(".", ","));

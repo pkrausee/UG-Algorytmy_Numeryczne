@@ -2,8 +2,6 @@ package Matrix;
 
 import Adapters.INumberAdapter;
 
-import java.lang.reflect.Array;
-
 public class MatrixUtilities {
 
     public static <TType> void swapRows(TType[] A, int src, int dest) {
@@ -29,7 +27,6 @@ public class MatrixUtilities {
     }
 
     public static <TType extends Number> TType[] multiplyByVector(
-            Class<TType> content,
             INumberAdapter<TType> adapter,
             TType[][] matrix,
             TType[] vector) {
@@ -38,8 +35,7 @@ public class MatrixUtilities {
             throw new IllegalArgumentException();
         }
 
-        @SuppressWarnings("unchecked")
-        TType[] result = (TType[]) Array.newInstance(content, matrix.length);
+        TType[] result = adapter.getArrInstance(matrix.length);
 
         for (int i = 0; i < matrix.length; i++) {
 
@@ -55,10 +51,9 @@ public class MatrixUtilities {
         return result;
     }
 
-    public static <TType extends Number> TType[][] transpose(Class<TType> content, TType[][] matrix) {
+    public static <TType extends Number> TType[][] transpose(INumberAdapter<TType> adapter, TType[][] matrix) {
 
-        @SuppressWarnings("unchecked")
-        TType[][] result = (TType[][]) Array.newInstance(content, matrix.length, matrix[0].length);
+        TType[][] result = adapter.getMatrixInstance(matrix.length);
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -70,11 +65,10 @@ public class MatrixUtilities {
     }
 
     public static <TType extends Number> TType norm(
-            Class<TType> content,
             INumberAdapter<TType> adapter,
             TType[] A) {
 
-        TType result = adapter.ZERO();
+        TType result = adapter.getInstance();
 
         for (TType element : A) {
             result = adapter.add(result, adapter.pow(element, 2));
@@ -83,20 +77,19 @@ public class MatrixUtilities {
         return adapter.sqrt(result);
     }
 
-    public static <TType extends Number> Double avg(TType[] A) {
-        double count = 0d;
-        double sum = 0d;
+    public static <TType extends Number> Double avg(INumberAdapter<TType> adapter, TType[] A) {
+        TType count = adapter.getInstance();
+        TType sum = adapter.getInstance();
 
         for (TType element : A) {
-            sum +=  element.doubleValue();
-            count++;
+            sum =  adapter.add(sum, element);
+            count = adapter.add(count, adapter.ONE());
         }
 
-        return sum / count;
+        return (adapter.divide(sum, count)).doubleValue();
     }
 
-    public static <TType extends Number> TType[] subtract(
-            Class<TType> content,
+    public static <TType extends Number> TType[] subtractAbs(
             INumberAdapter<TType> adapter,
             TType[] A,
             TType[] B) {
@@ -105,11 +98,10 @@ public class MatrixUtilities {
             throw new IllegalArgumentException();
         }
 
-        @SuppressWarnings("unchecked")
-        TType[] result = (TType[]) Array.newInstance(content, A.length);
+        TType[] result = adapter.getArrInstance(A.length);
 
         for (int i = 0; i < A.length; i++) {
-            result[i] = adapter.subtract(A[i], B[i]);
+            result[i] = adapter.abs(adapter.subtract(A[i], B[i]));
         }
 
         return result;

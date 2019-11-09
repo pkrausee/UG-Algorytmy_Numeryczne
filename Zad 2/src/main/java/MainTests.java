@@ -1,10 +1,7 @@
 import Adapters.DoubleAdapter;
-import Adapters.FloatAdapter;
-import Adapters.FractionAdapter;
+import Matrix.MatrixGenerator;
 import Matrix.MatrixUtilities;
-import Matrix.MyMatrixV1;
 import Matrix.MyMatrixV2;
-import Models.Fraction;
 import Utilities.CollectionUtilities;
 
 
@@ -12,46 +9,42 @@ public class MainTests {
 
     public static void main(String[] args) {
 
-        int i = 4;
+        int i = 5;
 
         DoubleAdapter adapter = new DoubleAdapter();
 
         Double[][] A = new Double[][]{
-                { 1d, 2d, 3d },
-                { 4d, 5d, 6d },
-                { 7d, 8d, 9d }
+                { 0.947296142578125, -0.3624114990234375, 0.386505126953125 },
+                { -0.47930908203125, -0.723846435546875, 0.598419189453125 },
+                { 0.4524688720703125, -0.8554534912109375, 0.650390625 }
         };
 
-        Double[] X = new Double[]{ 11d, 12d, 13d };
+        Double[] X = new Double[]{ -0.48309326171875, 0.4238433837890625, -0.83563232421875 };
 
-        Double[] B = MatrixUtilities.multiplyByVector(Double.class, adapter, A, X);
+//        MatrixGenerator.generateValues(A);
+//        MatrixGenerator.generateValues(X);
 
-        Double accuracy = 1E-15;
+        Double[] B = MatrixUtilities.multiplyByVector(adapter, A, X);
 
         CollectionUtilities.show(A, X);
         CollectionUtilities.show(A, B);
 
-//        FractionAdapter adapter = new FractionAdapter();
-//
-//        Fraction[][] A = new Fraction[][]{
-//                { new Fraction(1), new Fraction(2), new Fraction(3) },
-//                { new Fraction(4), new Fraction(5), new Fraction(6) },
-//                { new Fraction(7), new Fraction(8), new Fraction(9) }
-//        };
-//
-//        Fraction[] B = new Fraction[]{ new Fraction(11), new Fraction(12), new Fraction(13) };
+        Double[] XpNP = MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
+        Double[] XpPP = MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
+        Double[] XpFP = MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
 
-//        MyMatrixV2.GaussJordanElimination_NoPivoting(adapter, A, B);
-//        MyMatrixV2.GaussJordanElimination_PartialPivoting(adapter, A, B);
-//        MyMatrixV2.GaussJordanElimination_FullPivoting(adapter, A, B);
+        Double[] XpNP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpNP);
+        Double[] XpPP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpPP);
+        Double[] XpFP_ErrorArr = MatrixUtilities.subtractAbs(adapter, X, XpFP);
 
-        Double[] XpNP = MyMatrixV1.GaussJordanElimination_NoPivoting(adapter, A, B, accuracy);
-        Double[] XpPP = MyMatrixV1.GaussJordanElimination_PartialPivoting(adapter, A, B, accuracy);
-        Double[] XpFP = MyMatrixV1.GaussJordanElimination_FullPivoting(adapter, A, B, accuracy);
+        CollectionUtilities.show(X);
+        CollectionUtilities.show(XpNP_ErrorArr);
+        CollectionUtilities.show(XpPP_ErrorArr);
+        CollectionUtilities.show(XpFP_ErrorArr);
 
-        Double XpNP_Er = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, XpNP, B));
-        Double XpPP_Er = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, XpPP, B));
-        Double XpFP_Er = MatrixUtilities.avg(MatrixUtilities.subtract(Double.class, adapter, XpFP, B));
+        Double XpNP_Er = MatrixUtilities.avg(adapter, XpNP_ErrorArr);
+        Double XpPP_Er = MatrixUtilities.avg(adapter, XpPP_ErrorArr);
+        Double XpFP_Er = MatrixUtilities.avg(adapter, XpFP_ErrorArr);
 
         System.out.println("Error " + XpNP_Er);
         System.out.println("Error " + XpPP_Er);
