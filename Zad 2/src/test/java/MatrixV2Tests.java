@@ -14,7 +14,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
 public class MatrixV2Tests {
-    private final int numberOfTests = 200;
+    private final int numberOfTests = 1500;
     private final int jump = 10;
 
     private static <TType extends Number> String buildString(TType[] results) {
@@ -33,7 +33,7 @@ public class MatrixV2Tests {
         return builder.toString();
     }
 
-//    @org.junit.Test
+    @org.junit.Test
     public void TestMatrixForDoubleType() {
         DoubleAdapter adapter = new DoubleAdapter();
 
@@ -90,7 +90,7 @@ public class MatrixV2Tests {
         }
     }
 
-//    @org.junit.Test
+    @org.junit.Test
     public void TestMatrixForFloatType() {
         FloatAdapter adapter = new FloatAdapter();
 
