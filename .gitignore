@@ -23,7 +23,11 @@
 hs_err_pid*
 
 #idea
-*/.idea
+.DS_Store
+.idea
 
 # just for result - better remove this later
 *.csv
+*.docx
+*.pdf
+*.xlsx
