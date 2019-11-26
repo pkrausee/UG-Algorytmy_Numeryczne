@@ -77,7 +77,7 @@ public class IntegerAdapter implements INumberAdapter<Integer> {
         return new Integer[0];
     }
 
-    public Integer[][] getMatrixInstance(int size) {
-        return new Integer[size][size];
+    public Integer[][] getMatrixInstance(int rows, int cols) {
+        return new Integer[rows][cols];
     }
 }

@@ -7,14 +7,19 @@ public class Main {
     public static void main(String[] args) {
         INumberAdapter<Double> adapter = new DoubleAdapter();
 
-        Double[][] matrix = new Double[][]{
-                {1d, 2d, 3d},
-                {4d, 5d, 6d},
-                {7d, 8d, 9d}
+        Double[][] A = new Double[][]{
+                {1d, 0d, 2d},
+                {-1d, 3d, 1d}
         };
 
-        matrix = MatrixUtilities.transpose(adapter, matrix);
+        Double[][] B = new Double[][]{
+                {3d, 1d},
+                {2d, 1d},
+                {1d, 0d}
+        };
 
-        CollectionUtilities.show(matrix);
+        Double[][] multiResult = MatrixUtilities.multiply(adapter, A, B);
+
+        CollectionUtilities.show(multiResult);
     }
 }

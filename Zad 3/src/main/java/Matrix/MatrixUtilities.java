@@ -26,33 +26,42 @@ public class MatrixUtilities {
         }
     }
 
-    public static <TType extends Number> TType[] multiplyByVector(
+    public static <TType extends Number> TType[] multiply(
             INumberAdapter<TType> adapter,
             TType[][] matrix,
             TType[] vector) {
-
-        if (matrix[0].length != vector.length) {
-            throw new IllegalArgumentException();
-        }
-
         TType[] result = adapter.getArrInstance(matrix.length);
 
         for (int i = 0; i < matrix.length; i++) {
-
-            TType currentValue = adapter.ZERO();
-
             for (int j = 0; j < matrix[i].length; j++) {
-                currentValue = adapter.add(currentValue, adapter.multiply(matrix[i][j], vector[j]));
+                result[i] = adapter.ZERO();
+                result[i] = adapter.add(result[i], adapter.multiply(matrix[i][j], vector[j]));
             }
+        }
 
-            result[i] = currentValue;
+        return result;
+    }
+
+    public static <TType extends Number> TType[][] multiply(
+            INumberAdapter<TType> adapter,
+            TType[][] A,
+            TType[][] B) {
+        TType[][] result = adapter.getMatrixInstance(A.length, B[0].length);
+
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[i].length; j++) {
+                result[i][j] = adapter.ZERO();
+                for (int k = 0; k < B.length; k++) {
+                    result[i][j] = adapter.add(result[i][j], adapter.multiply(A[i][k], B[k][j]));
+                }
+            }
         }
 
         return result;
     }
 
     public static <TType extends Number> TType[][] transpose(INumberAdapter<TType> adapter, TType[][] matrix) {
-        TType[][] transposed = adapter.getMatrixInstance(matrix.length);
+        TType[][] transposed = adapter.getMatrixInstance(matrix.length, matrix[0].length);
 
         for (int i = 0; i < matrix.length; i++)
             for (int j = 0; j < matrix[0].length; j++)

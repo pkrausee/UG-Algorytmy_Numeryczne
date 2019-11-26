@@ -79,7 +79,7 @@ public class FractionAdapter implements INumberAdapter<Fraction> {
         return new Fraction[size];
     }
 
-    public Fraction[][] getMatrixInstance(int size) {
-        return new Fraction[size][size];
+    public Fraction[][] getMatrixInstance(int rows, int cols) {
+        return new Fraction[rows][cols];
     }
 }

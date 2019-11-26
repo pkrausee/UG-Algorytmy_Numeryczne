@@ -77,7 +77,7 @@ public class FloatAdapter implements INumberAdapter<Float> {
         return new Float[size];
     }
 
-    public Float[][] getMatrixInstance(int size) {
-        return new Float[size][size];
+    public Float[][] getMatrixInstance(int rows, int cols) {
+        return new Float[rows][cols];
     }
 }

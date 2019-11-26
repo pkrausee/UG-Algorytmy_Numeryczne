@@ -77,7 +77,7 @@ public class DoubleAdapter implements INumberAdapter<Double> {
         return new Double[size];
     }
 
-    public Double[][] getMatrixInstance(int size) {
-        return new Double[size][size];
+    public Double[][] getMatrixInstance(int rows, int cols) {
+        return new Double[rows][cols];
     }
 }

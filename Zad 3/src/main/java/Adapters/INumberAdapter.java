@@ -33,6 +33,6 @@ public interface INumberAdapter<TType extends Number> {
 
     TType[] getArrInstance(int size);
 
-    TType[][] getMatrixInstance(int size);
+    TType[][] getMatrixInstance(int rows, int cols);
 }
 
