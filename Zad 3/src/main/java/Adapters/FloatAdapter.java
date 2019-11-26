@@ -54,7 +54,7 @@ public class FloatAdapter implements INumberAdapter<Float> {
 
     public Float[] copy(Float[] a) {
         Float[] copy = new Float[a.length];
-        System.arraycopy( a, 0, copy, 0, a.length );
+        System.arraycopy(a, 0, copy, 0, a.length);
 
         return copy;
     }
@@ -62,7 +62,7 @@ public class FloatAdapter implements INumberAdapter<Float> {
     public Float[][] copy(Float[][] a) {
         Float[][] copy = new Float[a.length][a[0].length];
 
-        for(int i=0; i<a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
         }
 
@@ -72,7 +72,7 @@ public class FloatAdapter implements INumberAdapter<Float> {
     public Float getInstance() {
         return 0f;
     }
-    
+
     public Float[] getArrInstance(int size) {
         return new Float[size];
     }

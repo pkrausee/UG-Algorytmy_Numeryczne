@@ -70,7 +70,7 @@ public class GaussJordan<TType extends Number> {
                 }
             }
 
-            if(destRow != pos) {
+            if (destRow != pos) {
                 MatrixUtilities.swapRows(A, pos, destRow);
                 MatrixUtilities.swapRows(B, pos, destRow);
             }
@@ -97,26 +97,21 @@ public class GaussJordan<TType extends Number> {
             int destR = pos;
             int destC = pos;
 
-            for(int i = pos; i < A.length; i++)
-            {
-                for(int j = pos; j < A[0].length; j++)
-                {
-                    if(adapter.compareTo(A[destR][destC], A[i][j]) < 0)
-                    {
+            for (int i = pos; i < A.length; i++) {
+                for (int j = pos; j < A[0].length; j++) {
+                    if (adapter.compareTo(A[destR][destC], A[i][j]) < 0) {
                         destR = i;
                         destC = j;
                     }
                 }
             }
 
-            if(destR != pos)
-            {
+            if (destR != pos) {
                 MatrixUtilities.swapRows(A, pos, destR);
                 MatrixUtilities.swapRows(B, pos, destR);
             }
 
-            if(destC != pos)
-            {
+            if (destC != pos) {
                 MatrixUtilities.swapCols(A, pos, destC);
                 MatrixUtilities.swapRows(ColumnChanges, pos, destC);
             }
@@ -128,7 +123,7 @@ public class GaussJordan<TType extends Number> {
 
         TType[] swappedResult = adapter.getArrInstance(B.length);
 
-        for ( int i = 0; i < B.length; i++ ) {
+        for (int i = 0; i < B.length; i++) {
             swappedResult[ColumnChanges[i]] = B[i];
         }
 

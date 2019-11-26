@@ -7,7 +7,7 @@ public class IntegerAdapter implements INumberAdapter<Integer> {
     public Integer add(Integer n1, Integer n2) {
         return n1 + n2;
     }
-    
+
     public Integer subtract(Integer n1, Integer n2) {
         return n1 - n2;
     }
@@ -51,18 +51,18 @@ public class IntegerAdapter implements INumberAdapter<Integer> {
     public String toString(Integer i) {
         return i.toString();
     }
-    
+
     public Integer[] copy(Integer[] a) {
         Integer[] copy = new Integer[a.length];
-        System.arraycopy( a, 0, copy, 0, a.length );
+        System.arraycopy(a, 0, copy, 0, a.length);
 
         return copy;
     }
-    
+
     public Integer[][] copy(Integer[][] a) {
         Integer[][] copy = new Integer[a.length][a[0].length];
 
-        for(int i=0; i<a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
         }
 
@@ -72,7 +72,7 @@ public class IntegerAdapter implements INumberAdapter<Integer> {
     public Integer getInstance() {
         return 0;
     }
-    
+
     public Integer[] getArrInstance(int size) {
         return new Integer[0];
     }

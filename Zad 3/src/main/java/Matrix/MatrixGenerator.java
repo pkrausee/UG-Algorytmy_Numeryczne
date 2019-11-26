@@ -13,7 +13,7 @@ public class MatrixGenerator {
 
     public static void generateValues(Double[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            int r = min + (int)(Math.random() * ((max - min) + 1));
+            int r = min + (int) (Math.random() * ((max - min) + 1));
 
             arr[i] = (double) r / pow;
         }
@@ -21,7 +21,7 @@ public class MatrixGenerator {
 
     public static void generateValues(Float[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            int r = min + (int)(Math.random() * ((max - min) + 1));
+            int r = min + (int) (Math.random() * ((max - min) + 1));
 
             arr[i] = (float) r / pow;
         }
@@ -38,7 +38,7 @@ public class MatrixGenerator {
     public static void generateValues(Double[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                int r = min + (int)(Math.random() * ((max - min) + 1));
+                int r = min + (int) (Math.random() * ((max - min) + 1));
 
                 matrix[i][j] = (double) r / pow;
             }
@@ -48,7 +48,7 @@ public class MatrixGenerator {
     public static void generateValues(Float[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                int r = min + (int)(Math.random() * ((max - min) + 1));
+                int r = min + (int) (Math.random() * ((max - min) + 1));
 
                 matrix[i][j] = (float) r / pow;
             }
@@ -65,7 +65,7 @@ public class MatrixGenerator {
         }
     }
 
-    private static BigInteger randomBigInteger () {
+    private static BigInteger randomBigInteger() {
         BigInteger minVal = BigInteger.valueOf(min);
         BigInteger maxVal = BigInteger.valueOf(max);
 
@@ -78,7 +78,7 @@ public class MatrixGenerator {
             res = res.add(minVal);
         }
 
-        if (res.compareTo(bigInteger) >= 0){
+        if (res.compareTo(bigInteger) >= 0) {
             res = res.mod(bigInteger).add(minVal);
         }
 

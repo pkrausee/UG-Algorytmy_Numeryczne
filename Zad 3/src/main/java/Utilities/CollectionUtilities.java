@@ -25,6 +25,16 @@ public abstract class CollectionUtilities {
         System.out.println();
     }
 
+    public static <TType> void show(TType[][] A) {
+        for (TType[] tType : A) {
+            for (TType t : tType) {
+                System.out.print(t + " ");
+            }
+            System.out.print(System.lineSeparator());
+        }
+        System.out.println();
+    }
+
     public static <TType> void show(List<TType> A) {
         for (TType tType : A) {
             System.out.print(tType + " ");

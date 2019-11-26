@@ -75,7 +75,7 @@ public class Fraction extends Number implements Comparable<Fraction> {
         return new Fraction(newNumerator, newDenominator, true);
     }
 
-    public Fraction pow (int e) {
+    public Fraction pow(int e) {
         return new Fraction(this.numerator.pow(e), this.denominator.pow(e));
     }
 
@@ -103,26 +103,23 @@ public class Fraction extends Number implements Comparable<Fraction> {
         return this.numerator.equals(ZERO.getNumerator());
     }
 
-    public int signum()
-    {
+    public int signum() {
         return this.numerator.signum();
     }
 
-    public Fraction abs()
-    {
+    public Fraction abs() {
         return new Fraction(this.numerator.abs(), this.denominator.abs());
     }
 
-    public int compareTo(Fraction f)
-    {
-        if(f == null)
+    public int compareTo(Fraction f) {
+        if (f == null)
             throw new IllegalArgumentException("Null argument");
 
-        if(signum() != f.signum()){
+        if (signum() != f.signum()) {
             return signum() - f.signum();
         }
 
-        if(this.denominator.equals(f.getDenominator())){
+        if (this.denominator.equals(f.getDenominator())) {
             return this.numerator.compareTo(f.getNumerator());
         }
 

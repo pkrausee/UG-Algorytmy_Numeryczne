@@ -11,7 +11,7 @@ public class MatrixUtilities {
     }
 
     public static <TType> void swapRows(TType[][] A, int src, int dest) {
-        for(int i = 0; i < A[src].length; i++){
+        for (int i = 0; i < A[src].length; i++) {
             TType temp = A[src][i];
             A[src][i] = A[dest][i];
             A[dest][i] = temp;
