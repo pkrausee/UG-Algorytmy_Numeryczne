@@ -52,16 +52,13 @@ public class MatrixUtilities {
     }
 
     public static <TType extends Number> TType[][] transpose(INumberAdapter<TType> adapter, TType[][] matrix) {
+        TType[][] transposed = adapter.getMatrixInstance(matrix.length);
 
-        TType[][] result = adapter.getMatrixInstance(matrix.length);
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 0; j < matrix[0].length; j++)
+                transposed[j][i] = matrix[i][j];
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                result[j][i] = matrix[i][j];
-            }
-        }
-
-        return result;
+        return transposed;
     }
 
     public static <TType extends Number> TType norm(
