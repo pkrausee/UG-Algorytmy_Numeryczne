@@ -1,40 +1,35 @@
 package Matrix;
 
-import Adapters.INumberAdapter;
 import Utilities.CollectionUtilities;
 
-public class Gauss<TType extends Number> {
-    private INumberAdapter<TType> adapter;
-    private TType[][] A;
-    private TType[] B;
+public class Gauss {
+    private Double[][] A;
+    private Double[] B;
 
-    public Gauss(INumberAdapter<TType> adapter, TType[][] A, TType[] B) {
-        this.adapter = adapter;
+    public Gauss(Double[][] A, Double[] B) {
         this.A = A;
         this.B = B;
     }
 
-    public static <TType extends Number> TType[] GaussElimination(
-            INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B) {
-        return GaussElimination_FullPivoting(adapter, A, B);
+    public static Double[] GaussElimination(
+            Double[][] A,
+            Double[] B) {
+        return GaussElimination_FullPivoting(A, B);
     }
 
-    public static <TType extends Number> TType[] GaussElimination_NoPivoting(
-            INumberAdapter<TType> adapter,
-            TType[][] matrix,
-            TType[] vector) {
+    public static Double[] GaussElimination_NoPivoting(
+            Double[][] matrix,
+            Double[] vector) {
 
-        TType[][] A = adapter.copy(matrix);
-        TType[] B = adapter.copy(vector);
+        Double[][] A = copy(matrix);
+        Double[] B = copy(vector);
 
         for (int pos = 0; pos < A.length; pos++) {
 
-            if (adapter.isZero(A[pos][pos])) {
+            if (A[pos][pos] == 0) {
                 int destRow = pos;
 
-                while (destRow < A.length && adapter.isZero(A[destRow][pos])) {
+                while (destRow < A.length && A[destRow][pos] == 0) {
                     destRow++;
                 }
 
@@ -44,28 +39,27 @@ public class Gauss<TType extends Number> {
                 }
             }
 
-            Eliminate(adapter, A, B, pos);
+            Eliminate(A, B, pos);
         }
 
 //        CollectionUtilities.show(A, B);
 
-        return CalculateResults(adapter, A, B);
+        return CalculateResults(A, B);
     }
 
-    public static <TType extends Number> TType[] GaussElimination_PartialPivoting(
-            INumberAdapter<TType> adapter,
-            TType[][] matrix,
-            TType[] vector) {
+    public static Double[] GaussElimination_PartialPivoting(
+            Double[][] matrix,
+            Double[] vector) {
 
-        TType[][] A = adapter.copy(matrix);
-        TType[] B = adapter.copy(vector);
+        Double[][] A = copy(matrix);
+        Double[] B = copy(vector);
 
         for (int pos = 0; pos < A.length; pos++) {
 
             int destRow = pos;
 
             for (int i = pos; i < A.length; i++) {
-                if (adapter.compareTo(A[destRow][pos], A[i][pos]) < 0) {
+                if (A[destRow][pos].compareTo(A[i][pos]) < 0) {
                     destRow = i;
                 }
             }
@@ -75,21 +69,20 @@ public class Gauss<TType extends Number> {
                 MatrixUtilities.swapRows(B, pos, destRow);
             }
 
-            Eliminate(adapter, A, B, pos);
+            Eliminate(A, B, pos);
         }
 
 //        CollectionUtilities.show(A, B);
 
-        return CalculateResults(adapter, A, B);
+        return CalculateResults(A, B);
     }
 
-    public static <TType extends Number> TType[] GaussElimination_FullPivoting(
-            INumberAdapter<TType> adapter,
-            TType[][] matrix,
-            TType[] vector) {
+    public static Double[] GaussElimination_FullPivoting(
+            Double[][] matrix,
+            Double[] vector) {
 
-        TType[][] A = adapter.copy(matrix);
-        TType[] B = adapter.copy(vector);
+        Double[][] A = copy(matrix);
+        Double[] B = copy(vector);
 
         Integer[] ColumnChanges = CollectionUtilities.getIntArr(vector.length);
 
@@ -99,7 +92,7 @@ public class Gauss<TType extends Number> {
 
             for (int i = pos; i < A.length; i++) {
                 for (int j = pos; j < A[0].length; j++) {
-                    if (adapter.compareTo(A[destR][destC], A[i][j]) < 0) {
+                    if (A[destR][destC].compareTo(A[i][j]) < 0) {
                         destR = i;
                         destC = j;
                     }
@@ -116,13 +109,13 @@ public class Gauss<TType extends Number> {
                 MatrixUtilities.swapRows(ColumnChanges, pos, destC);
             }
 
-            Eliminate(adapter, A, B, pos);
+            Eliminate(A, B, pos);
         }
 
 //        CollectionUtilities.show(A, B);
 
-        TType[] result = CalculateResults(adapter, A, B);
-        TType[] swappedResult = adapter.getArrInstance(result.length);
+        Double[] result = CalculateResults(A, B);
+        Double[] swappedResult = new Double[result.length];
 
         for (int i = 0; i < result.length; i++) {
             swappedResult[ColumnChanges[i]] = result[i];
@@ -131,25 +124,24 @@ public class Gauss<TType extends Number> {
         return swappedResult;
     }
 
-    private static <TType extends Number> void Eliminate(
-            INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B,
+    private static void Eliminate(
+            Double[][] A,
+            Double[] B,
             int pos) {
 
-        if (!adapter.isZero(A[pos][pos])) {
+        if (!(A[pos][pos] == 0)) {
 
             for (int i = pos + 1; i < A.length; i++) {
 
-                TType counter = adapter.divide(A[i][pos], A[pos][pos]);
+                Double counter = A[i][pos] / A[pos][pos];
 
-                A[i][pos] = adapter.ZERO();
+                A[i][pos] = 0d;
 
                 for (int j = pos + 1; j <= A[i].length; j++) {
                     if (j < A[i].length) {
-                        A[i][j] = adapter.subtract(A[i][j], adapter.multiply(A[pos][j], counter));
+                        A[i][j] = A[i][j] - (A[pos][j] * counter);
                     } else {
-                        B[i] = adapter.subtract(B[i], adapter.multiply(B[pos], counter));
+                        B[i] = B[i] - (B[pos] * counter);
                     }
                 }
             }
@@ -157,42 +149,58 @@ public class Gauss<TType extends Number> {
         }
     }
 
-    private static <TType extends Number> TType[] CalculateResults(
-            INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B) {
+    private static Double[] CalculateResults(
+            Double[][] A,
+            Double[] B) {
 
-        TType[] results = adapter.getArrInstance(B.length);
+        Double[] results = new Double[B.length];
 
-        TType currentResult, currentX;
+        Double currentResult, currentX;
 
         for (int i = A.length - 1; i >= 0; i--) {
             currentResult = B[i];
 
             for (int j = A[i].length - 1; j >= i + 1; j--) {
-                currentX = adapter.multiply(results[j], A[i][j]);
-                currentResult = adapter.subtract(currentResult, currentX);
+                currentX = results[j] * A[i][j];
+                currentResult = currentResult - currentX;
             }
 
-            results[i] = adapter.divide(currentResult, A[i][i]);
+            results[i] = currentResult / A[i][i];
         }
 
         return results;
     }
 
-    public TType[] GaussElimination() {
-        return GaussElimination_FullPivoting(this.adapter, this.A, this.B);
+    private static Double[] copy(Double[] a) {
+        Double[] copy = new Double[a.length];
+        System.arraycopy( a, 0, copy, 0, a.length );
+
+        return copy;
     }
 
-    public TType[] GaussElimination_NoPivoting() {
-        return GaussElimination_NoPivoting(this.adapter, this.A, this.B);
+        private static Double[][] copy(Double[][] a) {
+        Double[][] copy = new Double[a.length][a[0].length];
+
+        for(int i=0; i<a.length; i++){
+            System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
+        }
+
+        return copy;
     }
 
-    public TType[] GaussElimination_PartialPivoting() {
-        return GaussElimination_PartialPivoting(this.adapter, this.A, this.B);
+    public Double[] GaussElimination() {
+        return GaussElimination_FullPivoting(this.A, this.B);
     }
 
-    public TType[] GaussElimination_FullPivoting() {
-        return GaussElimination_FullPivoting(this.adapter, this.A, this.B);
+    public Double[] GaussElimination_NoPivoting() {
+        return GaussElimination_NoPivoting(this.A, this.B);
+    }
+
+    public Double[] GaussElimination_PartialPivoting() {
+        return GaussElimination_PartialPivoting(this.A, this.B);
+    }
+
+    public Double[] GaussElimination_FullPivoting() {
+        return GaussElimination_FullPivoting(this.A, this.B);
     }
 }

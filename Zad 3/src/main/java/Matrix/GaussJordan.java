@@ -1,40 +1,35 @@
 package Matrix;
 
-import Adapters.INumberAdapter;
 import Utilities.CollectionUtilities;
 
-public class GaussJordan<TType extends Number> {
-    private INumberAdapter<TType> adapter;
-    private TType[][] A;
-    private TType[] B;
+public class GaussJordan {
+    private Double[][] A;
+    private Double[] B;
 
-    public GaussJordan(INumberAdapter<TType> adapter, TType[][] A, TType[] B) {
-        this.adapter = adapter;
+    public GaussJordan(Double[][] A, Double[] B) {
         this.A = A;
         this.B = B;
     }
 
-    public static <TType extends Number> TType[] GaussJordanElimination(
-            INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B) {
-        return GaussJordanElimination_FullPivoting(adapter, A, B);
+    public static Double[] GaussJordanElimination(
+            Double[][] A,
+            Double[] B) {
+        return GaussJordanElimination_FullPivoting(A, B);
     }
 
-    public static <TType extends Number> TType[] GaussJordanElimination_NoPivoting(
-            INumberAdapter<TType> adapter,
-            TType[][] matrix,
-            TType[] vector) {
+    public static Double[] GaussJordanElimination_NoPivoting(
+            Double[][] matrix,
+            Double[] vector) {
 
-        TType[][] A = adapter.copy(matrix);
-        TType[] B = adapter.copy(vector);
+        Double[][] A = copy(matrix);
+        Double[] B = copy(vector);
 
         for (int pos = 0; pos < A.length; pos++) {
 
-            if (adapter.isZero(A[pos][pos])) {
+            if (A[pos][pos] == 0) {
                 int destRow = pos;
 
-                while (destRow < A.length && adapter.isZero(A[destRow][pos])) {
+                while (destRow < A.length && A[destRow][pos] == 0) {
                     destRow++;
                 }
 
@@ -44,7 +39,7 @@ public class GaussJordan<TType extends Number> {
                 }
             }
 
-            Eliminate(adapter, A, B, pos);
+            Eliminate(A, B, pos);
         }
 
 //        CollectionUtilities.show(A, B);
@@ -52,20 +47,19 @@ public class GaussJordan<TType extends Number> {
         return B;
     }
 
-    public static <TType extends Number> TType[] GaussJordanElimination_PartialPivoting(
-            INumberAdapter<TType> adapter,
-            TType[][] matrix,
-            TType[] vector) {
+    public static Double[] GaussJordanElimination_PartialPivoting(
+            Double[][] matrix,
+            Double[] vector) {
 
-        TType[][] A = adapter.copy(matrix);
-        TType[] B = adapter.copy(vector);
+        Double[][] A = copy(matrix);
+        Double[] B = copy(vector);
 
         for (int pos = 0; pos < A.length; pos++) {
 
             int destRow = pos;
 
             for (int i = pos; i < A.length; i++) {
-                if (adapter.compareTo(A[destRow][pos], A[i][pos]) < 0) {
+                if (A[destRow][pos].compareTo(A[i][pos]) < 0) {
                     destRow = i;
                 }
             }
@@ -75,7 +69,7 @@ public class GaussJordan<TType extends Number> {
                 MatrixUtilities.swapRows(B, pos, destRow);
             }
 
-            Eliminate(adapter, A, B, pos);
+            Eliminate(A, B, pos);
         }
 
 //        CollectionUtilities.show(A, B);
@@ -83,13 +77,12 @@ public class GaussJordan<TType extends Number> {
         return B;
     }
 
-    public static <TType extends Number> TType[] GaussJordanElimination_FullPivoting(
-            INumberAdapter<TType> adapter,
-            TType[][] matrix,
-            TType[] vector) {
+    public static Double[] GaussJordanElimination_FullPivoting(
+            Double[][] matrix,
+            Double[] vector) {
 
-        TType[][] A = adapter.copy(matrix);
-        TType[] B = adapter.copy(vector);
+        Double[][] A = copy(matrix);
+        Double[] B = copy(vector);
 
         Integer[] ColumnChanges = CollectionUtilities.getIntArr(vector.length);
 
@@ -99,7 +92,7 @@ public class GaussJordan<TType extends Number> {
 
             for (int i = pos; i < A.length; i++) {
                 for (int j = pos; j < A[0].length; j++) {
-                    if (adapter.compareTo(A[destR][destC], A[i][j]) < 0) {
+                    if (A[destR][destC].compareTo(A[i][j]) < 0) {
                         destR = i;
                         destC = j;
                     }
@@ -116,12 +109,12 @@ public class GaussJordan<TType extends Number> {
                 MatrixUtilities.swapRows(ColumnChanges, pos, destC);
             }
 
-            Eliminate(adapter, A, B, pos);
+            Eliminate(A, B, pos);
         }
 
 //        CollectionUtilities.show(A, B);
 
-        TType[] swappedResult = adapter.getArrInstance(B.length);
+        Double[] swappedResult = new Double[B.length];
 
         for (int i = 0; i < B.length; i++) {
             swappedResult[ColumnChanges[i]] = B[i];
@@ -130,32 +123,31 @@ public class GaussJordan<TType extends Number> {
         return swappedResult;
     }
 
-    private static <TType extends Number> void Eliminate(
-            INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[] B,
+    private static void Eliminate(
+            Double[][] A,
+            Double[] B,
             int pos) {
-        if (!adapter.isZero(A[pos][pos])) {
+        if (!(A[pos][pos] == 0)) {
 
             for (int i = pos + 1; i < A[0].length + 1; i++) {
                 if (i < A[0].length) {
-                    A[pos][i] = adapter.divide(A[pos][i], A[pos][pos]);
+                    A[pos][i] = A[pos][i] / A[pos][pos];
                 } else {
-                    B[pos] = adapter.divide(B[pos], A[pos][pos]);
+                    B[pos] = B[pos] / A[pos][pos];
                 }
             }
 
-            A[pos][pos] = adapter.ONE();
+            A[pos][pos] = 0d;
 
             for (int i = 0; i < A.length; i++) {
                 if (i != pos) {
-                    TType count = adapter.multiply(A[i][pos], A[pos][pos]);
+                    Double count = A[i][pos] * A[pos][pos];
 
                     for (int j = pos; j < A[i].length + 1; j++) {
                         if (j < A[i].length) {
-                            A[i][j] = adapter.subtract(A[i][j], adapter.multiply(A[pos][j], count));
+                            A[i][j] = A[i][j] - (A[pos][j] * count);
                         } else {
-                            B[i] = adapter.subtract(B[i], adapter.multiply(B[pos], count));
+                            B[i] = B[i] - (B[pos] * count);
                         }
                     }
                 }
@@ -164,19 +156,36 @@ public class GaussJordan<TType extends Number> {
         }
     }
 
-    public TType[] GaussJordanElimination() {
-        return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B);
+    private static Double[] copy(Double[] a) {
+        Double[] copy = new Double[a.length];
+        System.arraycopy( a, 0, copy, 0, a.length );
+
+        return copy;
     }
 
-    public TType[] GaussJordanElimination_NoPivoting() {
-        return GaussJordanElimination_NoPivoting(this.adapter, this.A, this.B);
+    private static Double[][] copy(Double[][] a) {
+        Double[][] copy = new Double[a.length][a[0].length];
+
+        for(int i=0; i<a.length; i++){
+            System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
+        }
+
+        return copy;
     }
 
-    public TType[] GaussJordanElimination_PartialPivoting() {
-        return GaussJordanElimination_PartialPivoting(this.adapter, this.A, this.B);
+    public Double[] GaussJordanElimination() {
+        return GaussJordanElimination_FullPivoting(this.A, this.B);
     }
 
-    public TType[] GaussJordanElimination_FullPivoting() {
-        return GaussJordanElimination_FullPivoting(this.adapter, this.A, this.B);
+    public Double[] GaussJordanElimination_NoPivoting() {
+        return GaussJordanElimination_NoPivoting(this.A, this.B);
+    }
+
+    public Double[] GaussJordanElimination_PartialPivoting() {
+        return GaussJordanElimination_PartialPivoting(this.A, this.B);
+    }
+
+    public Double[] GaussJordanElimination_FullPivoting() {
+        return GaussJordanElimination_FullPivoting(this.A, this.B);
     }
 }

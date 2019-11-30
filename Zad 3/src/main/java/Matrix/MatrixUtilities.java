@@ -1,9 +1,7 @@
 package Matrix;
 
-import Adapters.INumberAdapter;
 
 public class MatrixUtilities {
-
     public static <TType> void swapRows(TType[] A, int src, int dest) {
         TType temp = A[src];
         A[src] = A[dest];
@@ -26,33 +24,31 @@ public class MatrixUtilities {
         }
     }
 
-    public static <TType extends Number> TType[] multiply(
-            INumberAdapter<TType> adapter,
-            TType[][] matrix,
-            TType[] vector) {
-        TType[] result = adapter.getArrInstance(matrix.length);
+    public static Double[] multiply(
+            Double[][] matrix,
+            Double[] vector) {
+        Double[] result = new Double[matrix.length];
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                result[i] = adapter.ZERO();
-                result[i] = adapter.add(result[i], adapter.multiply(matrix[i][j], vector[j]));
+                result[i] = 0d;
+                result[i] = result[i] + (matrix[i][j] * vector[j]);
             }
         }
 
         return result;
     }
 
-    public static <TType extends Number> TType[][] multiply(
-            INumberAdapter<TType> adapter,
-            TType[][] A,
-            TType[][] B) {
-        TType[][] result = adapter.getMatrixInstance(A.length, B[0].length);
+    public static Double[][] multiply(
+            Double[][] A,
+            Double[][] B) {
+        Double[][] result = new Double[A.length][B[0].length];
 
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[i].length; j++) {
-                result[i][j] = adapter.ZERO();
+                result[i][j] = 0d;
                 for (int k = 0; k < B.length; k++) {
-                    result[i][j] = adapter.add(result[i][j], adapter.multiply(A[i][k], B[k][j]));
+                    result[i][j] = result[i][j] + (A[i][k] * B[k][j]);
                 }
             }
         }
@@ -60,8 +56,8 @@ public class MatrixUtilities {
         return result;
     }
 
-    public static <TType extends Number> TType[][] transpose(INumberAdapter<TType> adapter, TType[][] matrix) {
-        TType[][] transposed = adapter.getMatrixInstance(matrix.length, matrix[0].length);
+    public static Double[][] transpose(Double[][] matrix) {
+        Double[][] transposed = new Double[matrix.length][matrix[0].length];
 
         for (int i = 0; i < matrix.length; i++)
             for (int j = 0; j < matrix[0].length; j++)
@@ -70,44 +66,30 @@ public class MatrixUtilities {
         return transposed;
     }
 
-    public static <TType extends Number> TType norm(
-            INumberAdapter<TType> adapter,
-            TType[] A) {
+    public static Double avg(Double[] A) {
+        double count = 0d;
+        double sum = 0d;
 
-        TType result = adapter.getInstance();
-
-        for (TType element : A) {
-            result = adapter.add(result, adapter.pow(element, 2));
+        for (Double element : A) {
+            count = count + 1;
+            sum = sum + Math.abs(element);
         }
 
-        return adapter.sqrt(result);
+        return (sum / count);
     }
 
-    public static <TType extends Number> TType avg(INumberAdapter<TType> adapter, TType[] A) {
-        TType count = adapter.ZERO();
-        TType sum = adapter.ZERO();
-
-        for (TType element : A) {
-            count = adapter.add(count, adapter.ONE());
-            sum = adapter.add(sum, adapter.abs(element));
-        }
-
-        return adapter.divide(sum, count);
-    }
-
-    public static <TType extends Number> TType[] subtract(
-            INumberAdapter<TType> adapter,
-            TType[] A,
-            TType[] B) {
+    public static Double[] subtract(
+            Double[] A,
+            Double[] B) {
 
         if (A.length != B.length) {
             throw new IllegalArgumentException();
         }
 
-        TType[] result = adapter.getArrInstance(A.length);
+        Double[] result = new Double[A.length];
 
         for (int i = 0; i < A.length; i++) {
-            result[i] = adapter.subtract(A[i], B[i]);
+            result[i] = A[i] - B[i];
         }
 
         return result;

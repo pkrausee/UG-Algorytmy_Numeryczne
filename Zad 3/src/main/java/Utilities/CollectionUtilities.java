@@ -30,7 +30,7 @@ public abstract class CollectionUtilities {
             for (TType t : tType) {
                 System.out.print(t + " ");
             }
-            System.out.print(System.lineSeparator());
+            System.out.println();
         }
         System.out.println();
     }

@@ -1,8 +1,5 @@
 package Matrix;
 
-import Models.Fraction;
-
-import java.math.BigInteger;
 import java.util.Random;
 
 public class MatrixGenerator {
@@ -19,22 +16,6 @@ public class MatrixGenerator {
         }
     }
 
-    public static void generateValues(Float[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int r = min + (int) (Math.random() * ((max - min) + 1));
-
-            arr[i] = (float) r / pow;
-        }
-    }
-
-    public static void generateValues(Fraction[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            BigInteger r = randomBigInteger();
-
-            arr[i] = new Fraction(r, BigInteger.valueOf(pow));
-        }
-    }
-
     public static void generateValues(Double[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -45,43 +26,15 @@ public class MatrixGenerator {
         }
     }
 
-    public static void generateValues(Float[][] matrix) {
+    public static Double[][] unitMatrix(int size) {
+        Double[][] matrix = new Double[size][size];
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                int r = min + (int) (Math.random() * ((max - min) + 1));
-
-                matrix[i][j] = (float) r / pow;
+                matrix[i][j] = (i == j) ? 1d : 0d;
             }
         }
-    }
 
-    public static void generateValues(Fraction[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                BigInteger r = randomBigInteger();
-
-                matrix[i][j] = new Fraction(r, BigInteger.valueOf(pow));
-            }
-        }
-    }
-
-    private static BigInteger randomBigInteger() {
-        BigInteger minVal = BigInteger.valueOf(min);
-        BigInteger maxVal = BigInteger.valueOf(max);
-
-        BigInteger bigInteger = maxVal.subtract(minVal);
-
-        int len = maxVal.bitLength();
-        BigInteger res = new BigInteger(len, random);
-
-        if (res.compareTo(minVal) < 0) {
-            res = res.add(minVal);
-        }
-
-        if (res.compareTo(bigInteger) >= 0) {
-            res = res.mod(bigInteger).add(minVal);
-        }
-
-        return res;
+        return matrix;
     }
 }

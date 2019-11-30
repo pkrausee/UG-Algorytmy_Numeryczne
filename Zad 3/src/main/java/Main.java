@@ -1,12 +1,8 @@
-import Adapters.DoubleAdapter;
-import Adapters.INumberAdapter;
 import Matrix.MatrixUtilities;
 import Utilities.CollectionUtilities;
 
 public class Main {
     public static void main(String[] args) {
-        INumberAdapter<Double> adapter = new DoubleAdapter();
-
         Double[][] A = new Double[][]{
                 {1d, 0d, 2d},
                 {-1d, 3d, 1d}
@@ -18,7 +14,7 @@ public class Main {
                 {1d, 0d}
         };
 
-        Double[][] multiResult = MatrixUtilities.multiply(adapter, A, B);
+        Double[][] multiResult = MatrixUtilities.multiply(A, B);
 
         CollectionUtilities.show(multiResult);
     }
