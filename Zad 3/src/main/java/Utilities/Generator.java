@@ -1,5 +1,7 @@
 package Utilities;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class Generator {
@@ -32,10 +34,18 @@ public class Generator {
 
         for(int i = 0; i < rows; i++) {
             for(int j = 0; j < cols; j++) {
-                matrix[i][j] = min + (max - min) * r.nextDouble();
+                matrix[i][j] = round(min + (max - min) * r.nextDouble(), 2);
             }
         }
 
         return matrix;
+    }
+
+    private static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

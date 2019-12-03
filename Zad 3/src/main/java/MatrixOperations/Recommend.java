@@ -12,22 +12,35 @@ import java.util.List;
 public class Recommend {
     private static final int users = 3;
     private static final int products = 4;
-    private static final Double[] ratings = new Double[] {1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0};
+    private static final Double[] ratings = new Double[] {1.0, 2.0, 3.0, 4.0, 5.0};
 
     public static void calculate_ALS (double lambda, int vectorSize, int iterations) {
-        List<Recommendation> recommendations = MockGenerator.mockRecommendations(ratings, users, products);
+//        List<Recommendation> recommendations = MockGenerator.mockRecommendations(ratings, users, products);
 
         Double[][] input = new Double[][] {
                 {1d, 5d, 0d, 2d},
                 {2d, 0d, 1d, 3d},
                 {3d, 0d, 1d, 3d},
         };
+        CollectionUtils.showRecommendationMatrix(input);
 
         Double[][] R = CollectionUtils.copy(input);
-        CollectionUtils.showRecommendationMatrix(R);
 
-        Double[][] U = Generator.generateMatrix(0, 1, vectorSize, users);
-        Double[][] P = Generator.generateMatrix(0, 1, vectorSize, products);
+//        Double[][] U = Generator.generateMatrix(0, 1, vectorSize, users);
+//        Double[][] P = Generator.generateMatrix(0, 1, vectorSize, products);
+
+        Double[][] U = new Double[][] {
+                {0.74, 0.6, 0.92},
+                {0.04, 0.22, 0.05},
+                {0.52, 0.03, 0.45},
+        };
+
+        Double[][] P = new Double[][] {
+                {0.38, 0.6, 0.69, 0.45},
+                {0.14, 0.76, 0.1, 0.07},
+                {0.24, 0.95, 0.87, 0.37},
+        };
+
         Double[][] lambda_E = MathUtils.multiply(lambda, Generator.unitMatrix(vectorSize));
 
         for(int i = 0; i < iterations; i++) {
@@ -40,7 +53,9 @@ public class Recommend {
                 Double[][] Au = MathUtils.add(MathUtils.multiply(P_Iu, P_Iu_T), lambda_E);
                 Double[] Vu = get_Vu(R, P, u, Iu);
 
-                CollectionUtils.paste(Gauss.GaussElimination_FullPivoting(Au, Vu), U, u);
+                Double[] gaussResult = Gauss.GaussElimination_FullPivoting(Au, Vu);
+
+                CollectionUtils.paste(gaussResult, U, u);
             }
 
             for(int p = 0; p < P[0].length; p++) {
@@ -52,14 +67,16 @@ public class Recommend {
                 Double[][] Bp = MathUtils.add(MathUtils.multiply(U_Ip, U_Ip_T), lambda_E);
                 Double[] Wp = get_Wp(R, U, p, Ip);
 
-                CollectionUtils.paste(Gauss.GaussElimination_FullPivoting(Bp, Wp), P, p);
+                Double[] gaussResult = Gauss.GaussElimination_FullPivoting(Bp, Wp);
+
+                CollectionUtils.paste(gaussResult, P, p);
             }
 
             R = MathUtils.multiply(U, P);
-        }
 
-//        CollectionUtilities.show(U);
-//        CollectionUtilities.show(P);
+//        CollectionUtils.show(U);
+//        CollectionUtils.show(P);
+        }
 
         CollectionUtils.showRecommendationMatrix(R);
     }

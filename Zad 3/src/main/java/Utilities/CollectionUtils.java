@@ -60,7 +60,7 @@ public abstract class CollectionUtils {
 
         for (Double[] row : A) {
             for (Double value : row) {
-                    System.out.format(format, round(value, 2));
+                    System.out.format(format, value);
             }
             System.out.print("|\n");
         }
@@ -134,13 +134,5 @@ public abstract class CollectionUtils {
         for(int i = 0; i < src.length; i++) {
             dest[i][destCol] = src[i];
         }
-    }
-
-    private static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
-
-        BigDecimal bd = BigDecimal.valueOf(value);
-        bd = bd.setScale(places, RoundingMode.HALF_UP);
-        return bd.doubleValue();
     }
 }
