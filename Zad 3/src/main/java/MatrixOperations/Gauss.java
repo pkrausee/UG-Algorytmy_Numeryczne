@@ -1,6 +1,6 @@
-package Matrix;
+package MatrixOperations;
 
-import Utilities.CollectionUtilities;
+import Utilities.CollectionUtils;
 
 public class Gauss {
     private Double[][] A;
@@ -34,8 +34,8 @@ public class Gauss {
                 }
 
                 if (destRow < A.length && destRow != pos) {
-                    MatrixUtilities.swapRows(A, pos, destRow);
-                    MatrixUtilities.swapRows(B, pos, destRow);
+                    CollectionUtils.swapRows(A, pos, destRow);
+                    CollectionUtils.swapRows(B, pos, destRow);
                 }
             }
 
@@ -65,8 +65,8 @@ public class Gauss {
             }
 
             if (destRow != pos) {
-                MatrixUtilities.swapRows(A, pos, destRow);
-                MatrixUtilities.swapRows(B, pos, destRow);
+                CollectionUtils.swapRows(A, pos, destRow);
+                CollectionUtils.swapRows(B, pos, destRow);
             }
 
             Eliminate(A, B, pos);
@@ -84,7 +84,7 @@ public class Gauss {
         Double[][] A = copy(matrix);
         Double[] B = copy(vector);
 
-        Integer[] ColumnChanges = CollectionUtilities.getIntArr(vector.length);
+        Integer[] ColumnChanges = CollectionUtils.getIntArr(vector.length);
 
         for (int pos = 0; pos < A.length; pos++) {
             int destR = pos;
@@ -100,13 +100,13 @@ public class Gauss {
             }
 
             if (destR != pos) {
-                MatrixUtilities.swapRows(A, pos, destR);
-                MatrixUtilities.swapRows(B, pos, destR);
+                CollectionUtils.swapRows(A, pos, destR);
+                CollectionUtils.swapRows(B, pos, destR);
             }
 
             if (destC != pos) {
-                MatrixUtilities.swapCols(A, pos, destC);
-                MatrixUtilities.swapRows(ColumnChanges, pos, destC);
+                CollectionUtils.swapCols(A, pos, destC);
+                CollectionUtils.swapRows(ColumnChanges, pos, destC);
             }
 
             Eliminate(A, B, pos);
