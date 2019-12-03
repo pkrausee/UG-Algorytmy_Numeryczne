@@ -1,6 +1,5 @@
 package Utilities;
 
-
 public class MathUtils {
     public static Double[] multiply(Double scalar, Double[] vector) {
         Double[] result = new Double[vector.length];
