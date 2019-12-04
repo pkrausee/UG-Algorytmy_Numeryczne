@@ -4,48 +4,40 @@ import Model.Recommendation;
 import Utilities.CollectionUtils;
 import Utilities.Generator;
 import Utilities.MathUtils;
-import Utilities.MockGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Recommend {
-    private static final int users = 3; // TODO: This should be deleted - get user count from input matrix.
-    private static final int products = 4; // TODO: Same here - get products count from input matrix.
     private static final Double[] ratings = new Double[] {1.0, 2.0, 3.0, 4.0, 5.0};
 
     public static void calculate_ALS (double lambda, int vectorSize, int iterations) {
 //        List<Recommendation> recommendations = MockGenerator.mockRecommendations(ratings, users, products);
 
-        // TODO: Try adding more info about ratings..
-        Double[][] input = new Double[][] {
+        Double[][] R = new Double[][] {
                 {1d, 5d, 0d, 2d},
-                {2d, 0d, 1d, 3d},
+                {2d, 3d, 1d, 3d},
                 {3d, 0d, 1d, 3d},
         };
-        CollectionUtils.showRecommendationMatrix(input);
+        CollectionUtils.showRecommendationMatrix(R);
 
-        Double[][] R = CollectionUtils.copy(input);
-
-        // TODO: Try setting the minimum to 0.01 and max to 0.99
-//        Double[][] U = Generator.generateMatrix(0, 1, vectorSize, users);
-//        Double[][] P = Generator.generateMatrix(0, 1, vectorSize, products);
+//        Double[][] U = Generator.generateMatrix(0.01, 0.99, vectorSize, R.length);
+//        Double[][] P = Generator.generateMatrix(0.01, 0.99, vectorSize, R[0].length);
 
         Double[][] U = new Double[][] {
-                {0.74, 0.6, 0.92},
+                {0.74, 0.63, 0.92},
                 {0.04, 0.22, 0.05},
                 {0.52, 0.03, 0.45},
         };
 
         Double[][] P = new Double[][] {
-                {0.38, 0.6, 0.69, 0.45},
-                {0.14, 0.76, 0.1, 0.07},
+                {0.38, 0.62, 0.69, 0.45},
+                {0.14, 0.76, 0.11, 0.07},
                 {0.24, 0.95, 0.87, 0.37},
         };
 
         Double[][] lambda_E = MathUtils.multiply(lambda, Generator.unitMatrix(vectorSize));
 
-        // TODO: It turns out that 100 iterations is the most optimal number here.
         for(int i = 0; i < iterations; i++) {
             for(int u = 0; u < U.length; u++) {
                 List<Integer> Iu = get_Iu(R, u);
@@ -56,8 +48,7 @@ public class Recommend {
                 Double[][] Au = MathUtils.add(MathUtils.multiply(P_Iu, P_Iu_T), lambda_E);
                 Double[] Vu = get_Vu(R, P, u, Iu);
 
-                // TODO: Find better name ofr Gauss methods
-                Double[] gaussResult = Gauss.GaussElimination_FullPivoting(Au, Vu);
+                Double[] gaussResult = Gauss.FullPivoting(Au, Vu);
 
                 CollectionUtils.paste(gaussResult, U, u);
             }
@@ -71,11 +62,12 @@ public class Recommend {
                 Double[][] Bp = MathUtils.add(MathUtils.multiply(U_Ip, U_Ip_T), lambda_E);
                 Double[] Wp = get_Wp(R, U, p, Ip);
 
-                Double[] gaussResult = Gauss.GaussElimination_FullPivoting(Bp, Wp);
+                Double[] gaussResult = Gauss.FullPivoting(Bp, Wp);
 
                 CollectionUtils.paste(gaussResult, P, p);
             }
-//        R = MathUtils.multiply(U, P);
+
+            CollectionUtils.showRecommendationMatrix(MathUtils.multiply(U, P));
 
 //        CollectionUtils.show(U);
 //        CollectionUtils.show(P);
@@ -87,7 +79,10 @@ public class Recommend {
     }
 
     private static Double[][] create_R (List<Recommendation> recommendations) {
-        Double[][] R = new Double[products][users];
+        int users = 3;
+        int products = 5;
+
+        Double[][] R = new Double[users][products];
 
         for(Recommendation r : recommendations) {
             R[r.getProductId() - 1][r.getUserId() - 1] = r.getRating();

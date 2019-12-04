@@ -11,16 +11,7 @@ public class GaussJordan {
         this.B = B;
     }
 
-    public static Double[] GaussJordanElimination(
-            Double[][] A,
-            Double[] B) {
-        return GaussJordanElimination_FullPivoting(A, B);
-    }
-
-    public static Double[] GaussJordanElimination_NoPivoting(
-            Double[][] matrix,
-            Double[] vector) {
-
+    public static Double[] NoPivoting(Double[][] matrix, Double[] vector) {
         Double[][] A = copy(matrix);
         Double[] B = copy(vector);
 
@@ -42,15 +33,10 @@ public class GaussJordan {
             Eliminate(A, B, pos);
         }
 
-//        CollectionUtilities.show(A, B);
-
         return B;
     }
 
-    public static Double[] GaussJordanElimination_PartialPivoting(
-            Double[][] matrix,
-            Double[] vector) {
-
+    public static Double[] PartialPivoting(Double[][] matrix, Double[] vector) {
         Double[][] A = copy(matrix);
         Double[] B = copy(vector);
 
@@ -72,15 +58,10 @@ public class GaussJordan {
             Eliminate(A, B, pos);
         }
 
-//        CollectionUtilities.show(A, B);
-
         return B;
     }
 
-    public static Double[] GaussJordanElimination_FullPivoting(
-            Double[][] matrix,
-            Double[] vector) {
-
+    public static Double[] FullPivoting(Double[][] matrix, Double[] vector) {
         Double[][] A = copy(matrix);
         Double[] B = copy(vector);
 
@@ -111,8 +92,6 @@ public class GaussJordan {
 
             Eliminate(A, B, pos);
         }
-
-//        CollectionUtilities.show(A, B);
 
         Double[] swappedResult = new Double[B.length];
 
@@ -173,19 +152,15 @@ public class GaussJordan {
         return copy;
     }
 
-    public Double[] GaussJordanElimination() {
-        return GaussJordanElimination_FullPivoting(this.A, this.B);
+    public Double[] NoPivoting() {
+        return NoPivoting(this.A, this.B);
     }
 
-    public Double[] GaussJordanElimination_NoPivoting() {
-        return GaussJordanElimination_NoPivoting(this.A, this.B);
+    public Double[] PartialPivoting() {
+        return PartialPivoting(this.A, this.B);
     }
 
-    public Double[] GaussJordanElimination_PartialPivoting() {
-        return GaussJordanElimination_PartialPivoting(this.A, this.B);
-    }
-
-    public Double[] GaussJordanElimination_FullPivoting() {
-        return GaussJordanElimination_FullPivoting(this.A, this.B);
+    public Double[] FullPivoting() {
+        return FullPivoting(this.A, this.B);
     }
 }

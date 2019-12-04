@@ -11,16 +11,7 @@ public class Gauss {
         this.B = B;
     }
 
-    public static Double[] GaussElimination(
-            Double[][] A,
-            Double[] B) {
-        return GaussElimination_FullPivoting(A, B);
-    }
-
-    public static Double[] GaussElimination_NoPivoting(
-            Double[][] matrix,
-            Double[] vector) {
-
+    public static Double[] NoPivoting(Double[][] matrix, Double[] vector) {
         Double[][] A = copy(matrix);
         Double[] B = copy(vector);
 
@@ -42,15 +33,10 @@ public class Gauss {
             Eliminate(A, B, pos);
         }
 
-//        CollectionUtilities.show(A, B);
-
         return CalculateResults(A, B);
     }
 
-    public static Double[] GaussElimination_PartialPivoting(
-            Double[][] matrix,
-            Double[] vector) {
-
+    public static Double[] PartialPivoting(Double[][] matrix, Double[] vector) {
         Double[][] A = copy(matrix);
         Double[] B = copy(vector);
 
@@ -72,15 +58,10 @@ public class Gauss {
             Eliminate(A, B, pos);
         }
 
-//        CollectionUtilities.show(A, B);
-
         return CalculateResults(A, B);
     }
 
-    public static Double[] GaussElimination_FullPivoting(
-            Double[][] matrix,
-            Double[] vector) {
-
+    public static Double[] FullPivoting(Double[][] matrix, Double[] vector) {
         Double[][] A = copy(matrix);
         Double[] B = copy(vector);
 
@@ -112,8 +93,6 @@ public class Gauss {
             Eliminate(A, B, pos);
         }
 
-//        CollectionUtilities.show(A, B);
-
         Double[] result = CalculateResults(A, B);
         Double[] swappedResult = new Double[result.length];
 
@@ -124,15 +103,10 @@ public class Gauss {
         return swappedResult;
     }
 
-    private static void Eliminate(
-            Double[][] A,
-            Double[] B,
-            int pos) {
-
+    private static void Eliminate(Double[][] A, Double[] B, int pos) {
         if (!(A[pos][pos] == 0)) {
 
             for (int i = pos + 1; i < A.length; i++) {
-
                 Double counter = A[i][pos] / A[pos][pos];
 
                 A[i][pos] = 0d;
@@ -149,10 +123,7 @@ public class Gauss {
         }
     }
 
-    private static Double[] CalculateResults(
-            Double[][] A,
-            Double[] B) {
-
+    private static Double[] CalculateResults(Double[][] A, Double[] B) {
         Double[] results = new Double[B.length];
 
         Double currentResult, currentX;
@@ -188,19 +159,15 @@ public class Gauss {
         return copy;
     }
 
-    public Double[] GaussElimination() {
-        return GaussElimination_FullPivoting(this.A, this.B);
+    public Double[] NoPivoting() {
+        return NoPivoting(this.A, this.B);
     }
 
-    public Double[] GaussElimination_NoPivoting() {
-        return GaussElimination_NoPivoting(this.A, this.B);
+    public Double[] PartialPivoting() {
+        return PartialPivoting(this.A, this.B);
     }
 
-    public Double[] GaussElimination_PartialPivoting() {
-        return GaussElimination_PartialPivoting(this.A, this.B);
-    }
-
-    public Double[] GaussElimination_FullPivoting() {
-        return GaussElimination_FullPivoting(this.A, this.B);
+    public Double[] FullPivoting() {
+        return FullPivoting(this.A, this.B);
     }
 }
