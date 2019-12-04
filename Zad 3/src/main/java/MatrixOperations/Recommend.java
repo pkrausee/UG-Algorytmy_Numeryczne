@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recommend {
-    private static final int users = 3;
-    private static final int products = 4;
+    private static final int users = 3; // TODO: This should be deleted - get user count from input matrix.
+    private static final int products = 4; // TODO: Same here - get products count from input matrix.
     private static final Double[] ratings = new Double[] {1.0, 2.0, 3.0, 4.0, 5.0};
 
     public static void calculate_ALS (double lambda, int vectorSize, int iterations) {
 //        List<Recommendation> recommendations = MockGenerator.mockRecommendations(ratings, users, products);
 
+        // TODO: Try adding more info about ratings..
         Double[][] input = new Double[][] {
                 {1d, 5d, 0d, 2d},
                 {2d, 0d, 1d, 3d},
@@ -43,6 +44,7 @@ public class Recommend {
 
         Double[][] lambda_E = MathUtils.multiply(lambda, Generator.unitMatrix(vectorSize));
 
+        // TODO: It turns out that 100 iterations is the most optimal number here.
         for(int i = 0; i < iterations; i++) {
             for(int u = 0; u < U.length; u++) {
                 List<Integer> Iu = get_Iu(R, u);
@@ -71,12 +73,13 @@ public class Recommend {
 
                 CollectionUtils.paste(gaussResult, P, p);
             }
-
-            R = MathUtils.multiply(U, P);
+//        R = MathUtils.multiply(U, P);
 
 //        CollectionUtils.show(U);
 //        CollectionUtils.show(P);
         }
+        
+        R = MathUtils.multiply(U, P);
 
         CollectionUtils.showRecommendationMatrix(R);
     }
