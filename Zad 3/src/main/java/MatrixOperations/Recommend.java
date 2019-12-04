@@ -27,6 +27,7 @@ public class Recommend {
 
         Double[][] R = CollectionUtils.copy(input);
 
+        // TODO: Try setting the minimum to 0.01 and max to 0.99
 //        Double[][] U = Generator.generateMatrix(0, 1, vectorSize, users);
 //        Double[][] P = Generator.generateMatrix(0, 1, vectorSize, products);
 
@@ -55,6 +56,7 @@ public class Recommend {
                 Double[][] Au = MathUtils.add(MathUtils.multiply(P_Iu, P_Iu_T), lambda_E);
                 Double[] Vu = get_Vu(R, P, u, Iu);
 
+                // TODO: Find better name ofr Gauss methods
                 Double[] gaussResult = Gauss.GaussElimination_FullPivoting(Au, Vu);
 
                 CollectionUtils.paste(gaussResult, U, u);
