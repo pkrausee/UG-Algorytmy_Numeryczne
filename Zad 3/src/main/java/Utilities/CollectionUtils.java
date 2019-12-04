@@ -108,6 +108,14 @@ public abstract class CollectionUtils {
         return col;
     }
 
+    public static Double[] getRow(Double[][] src, int srcRow) {
+        Double[] row = new Double[src.length];
+
+        System.arraycopy(src[srcRow], 0, row, 0, src.length);
+
+        return row;
+    }
+
     public static Double[][] copy(Double[][] src) {
         Double[][] copy = new Double[src.length][src[0].length];
 

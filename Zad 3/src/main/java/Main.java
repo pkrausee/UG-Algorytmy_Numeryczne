@@ -1,7 +1,8 @@
 import MatrixOperations.Recommend;
+import Utilities.CollectionUtils;
 
 public class Main {
     public static void main(String[] args) {
-        Recommend.calculate_ALS(0.1, 3, 100);
+        CollectionUtils.showRecommendationMatrix(Recommend.calculate_ALS(0.1, 3, 10));
     }
 }

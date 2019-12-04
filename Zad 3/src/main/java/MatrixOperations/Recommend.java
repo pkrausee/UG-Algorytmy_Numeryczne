@@ -11,7 +11,7 @@ import java.util.List;
 public class Recommend {
     private static final Double[] ratings = new Double[] {1.0, 2.0, 3.0, 4.0, 5.0};
 
-    public static void calculate_ALS (double lambda, int vectorSize, int iterations) {
+    public static Double[][] calculate_ALS (double lambda, int vectorSize, int iterations) {
 //        List<Recommendation> recommendations = MockGenerator.mockRecommendations(ratings, users, products);
 
         Double[][] R = new Double[][] {
@@ -21,24 +21,25 @@ public class Recommend {
         };
         CollectionUtils.showRecommendationMatrix(R);
 
-//        Double[][] U = Generator.generateMatrix(0.01, 0.99, vectorSize, R.length);
-//        Double[][] P = Generator.generateMatrix(0.01, 0.99, vectorSize, R[0].length);
+        Double[][] U = Generator.generateMatrix(0.01, 0.99, vectorSize, R.length);
+        Double[][] P = Generator.generateMatrix(0.01, 0.99, vectorSize, R[0].length);
 
-        Double[][] U = new Double[][] {
-                {0.74, 0.63, 0.92},
-                {0.04, 0.22, 0.05},
-                {0.52, 0.03, 0.45},
-        };
-
-        Double[][] P = new Double[][] {
-                {0.38, 0.62, 0.69, 0.45},
-                {0.14, 0.76, 0.11, 0.07},
-                {0.24, 0.95, 0.87, 0.37},
-        };
+//        Double[][] U = new Double[][] {
+//                {0.74, 0.63, 0.92},
+//                {0.04, 0.22, 0.05},
+//                {0.52, 0.03, 0.45},
+//        };
+//
+//        Double[][] P = new Double[][] {
+//                {0.38, 0.62, 0.69, 0.45},
+//                {0.14, 0.76, 0.11, 0.07},
+//                {0.24, 0.95, 0.87, 0.37},
+//        };
 
         Double[][] lambda_E = MathUtils.multiply(lambda, Generator.unitMatrix(vectorSize));
 
         for(int i = 0; i < iterations; i++) {
+
             for(int u = 0; u < U.length; u++) {
                 List<Integer> Iu = get_Iu(R, u);
 
@@ -67,15 +68,12 @@ public class Recommend {
                 CollectionUtils.paste(gaussResult, P, p);
             }
 
-            CollectionUtils.showRecommendationMatrix(MathUtils.multiply(U, P));
-
-//        CollectionUtils.show(U);
-//        CollectionUtils.show(P);
+//            CollectionUtils.showRecommendationMatrix(getResult(U, P));
+//            CollectionUtils.show(U);
+//            CollectionUtils.show(P);
         }
-        
-        R = MathUtils.multiply(U, P);
 
-        CollectionUtils.showRecommendationMatrix(R);
+        return getResult(U, P);
     }
 
     private static Double[][] create_R (List<Recommendation> recommendations) {
@@ -94,7 +92,7 @@ public class Recommend {
     private static List<Integer> get_Iu(Double[][] R, Integer u) {
         List<Integer> Iu = new ArrayList<Integer>();
 
-        for(int i = 0; i < R[u].length; i++) {
+        for(int i = 0; i < R[0].length; i++) {
             if (R[u][i] != 0d) {
                 Iu.add(i);
             }
@@ -139,7 +137,7 @@ public class Recommend {
         Double[] Vu = Generator.createVector(P.length);
 
         for(int i = 0; i < Iu.size(); i++) {
-            Double[] Pi = CollectionUtils.getCol(P, i);
+            Double[] Pi = CollectionUtils.getCol(P, Iu.get(i));
             Double rui = R[u][Iu.get(i)];
 
             Vu = MathUtils.add(Vu, MathUtils.multiply(rui, Pi));
@@ -152,12 +150,16 @@ public class Recommend {
         Double[] Wp = Generator.createVector(U.length);
 
         for(int i = 0; i < Ip.size(); i++) {
-            Double[] Ui = CollectionUtils.getCol(U, i);
+            Double[] Ui = CollectionUtils.getCol(U, Ip.get(i));
             Double rip = R[Ip.get(i)][p];
 
             Wp = MathUtils.add(Wp, MathUtils.multiply(rip, Ui));
         }
 
         return Wp;
+    }
+
+    public static Double[][] getResult (Double[][] U, Double[][] P) {
+        return MathUtils.multiply(MathUtils.transpose(U), P);
     }
 }
