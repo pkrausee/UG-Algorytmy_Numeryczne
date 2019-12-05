@@ -12,8 +12,6 @@ public class Recommend {
     private static final Double[] ratings = new Double[] {1.0, 2.0, 3.0, 4.0, 5.0};
 
     public static Double[][] calculate_ALS (double lambda, int vectorSize, int iterations) {
-//        List<Recommendation> recommendations = MockGenerator.mockRecommendations(ratings, users, products);
-
         Double[][] R = new Double[][] {
                 {1d, 5d, 0d, 2d},
                 {2d, 3d, 1d, 3d},
@@ -23,18 +21,6 @@ public class Recommend {
 
         Double[][] U = Generator.generateMatrix(0.01, 0.99, vectorSize, R.length);
         Double[][] P = Generator.generateMatrix(0.01, 0.99, vectorSize, R[0].length);
-
-//        Double[][] U = new Double[][] {
-//                {0.74, 0.63, 0.92},
-//                {0.04, 0.22, 0.05},
-//                {0.52, 0.03, 0.45},
-//        };
-//
-//        Double[][] P = new Double[][] {
-//                {0.38, 0.62, 0.69, 0.45},
-//                {0.14, 0.76, 0.11, 0.07},
-//                {0.24, 0.95, 0.87, 0.37},
-//        };
 
         Double[][] lambda_E = MathUtils.multiply(lambda, Generator.unitMatrix(vectorSize));
 
@@ -68,12 +54,9 @@ public class Recommend {
                 CollectionUtils.paste(gaussResult, P, p);
             }
 
-//            CollectionUtils.showRecommendationMatrix(getResult(U, P));
-//            CollectionUtils.show(U);
-//            CollectionUtils.show(P);
         }
 
-        return getResult(U, P);
+        return MathUtils.multiply(MathUtils.transpose(U), P);
     }
 
     private static Double[][] create_R (List<Recommendation> recommendations) {
@@ -136,9 +119,9 @@ public class Recommend {
     private static Double[] get_Vu(Double[][] R, Double[][] P, int u, List<Integer> Iu) {
         Double[] Vu = Generator.createVector(P.length);
 
-        for(int i = 0; i < Iu.size(); i++) {
-            Double[] Pi = CollectionUtils.getCol(P, Iu.get(i));
-            Double rui = R[u][Iu.get(i)];
+        for (Integer integer : Iu) {
+            Double[] Pi = CollectionUtils.getCol(P, integer);
+            Double rui = R[u][integer];
 
             Vu = MathUtils.add(Vu, MathUtils.multiply(rui, Pi));
         }
@@ -149,17 +132,13 @@ public class Recommend {
     private static Double[] get_Wp(Double[][] R, Double[][] U, int p, List<Integer> Ip) {
         Double[] Wp = Generator.createVector(U.length);
 
-        for(int i = 0; i < Ip.size(); i++) {
-            Double[] Ui = CollectionUtils.getCol(U, Ip.get(i));
-            Double rip = R[Ip.get(i)][p];
+        for (Integer integer : Ip) {
+            Double[] Ui = CollectionUtils.getCol(U, integer);
+            Double rip = R[integer][p];
 
             Wp = MathUtils.add(Wp, MathUtils.multiply(rip, Ui));
         }
 
         return Wp;
-    }
-
-    public static Double[][] getResult (Double[][] U, Double[][] P) {
-        return MathUtils.multiply(MathUtils.transpose(U), P);
     }
 }

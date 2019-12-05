@@ -95,16 +95,4 @@ public class MathUtils {
 
         return transposed;
     }
-
-    public static Double avg(Double[] A) {
-        double count = 0d;
-        double sum = 0d;
-
-        for (Double element : A) {
-            count = count + 1;
-            sum = sum + Math.abs(element);
-        }
-
-        return (sum / count);
-    }
 }
