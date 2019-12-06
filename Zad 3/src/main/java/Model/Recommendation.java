@@ -1,27 +1,19 @@
 package Model;
 
 public class Recommendation {
-    private Integer userId;
     private Integer productId;
+    private String userId;
     private Double rating;
 
-    public Recommendation(Integer userId, Integer productId, Double rating) {
-        this.userId = userId;
+    public Recommendation(Integer productId, String userId, Double rating) {
         this.productId = productId;
+        this.userId = userId;
         this.rating = rating;
     }
 
     @Override
     public String toString() {
-        return this.userId + " | " + this.productId + " | " + this.rating;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+        return this.productId + " | " + this.userId + " | " + this.rating;
     }
 
     public Integer getProductId() {
@@ -30,6 +22,14 @@ public class Recommendation {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public Double getRating() {

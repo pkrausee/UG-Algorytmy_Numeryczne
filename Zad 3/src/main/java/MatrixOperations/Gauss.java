@@ -144,15 +144,15 @@ public class Gauss {
 
     private static Double[] copy(Double[] a) {
         Double[] copy = new Double[a.length];
-        System.arraycopy( a, 0, copy, 0, a.length );
+        System.arraycopy(a, 0, copy, 0, a.length);
 
         return copy;
     }
 
-        private static Double[][] copy(Double[][] a) {
+    private static Double[][] copy(Double[][] a) {
         Double[][] copy = new Double[a.length][a[0].length];
 
-        for(int i=0; i<a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
         }
 

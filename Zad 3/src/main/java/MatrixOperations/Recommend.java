@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recommend {
-    private static final Double[] ratings = new Double[] {1.0, 2.0, 3.0, 4.0, 5.0};
+    private static final Double[] ratings = new Double[]{1.0, 2.0, 3.0, 4.0, 5.0};
 
-    public static Double[][] calculate_ALS (double lambda, int vectorSize, int iterations) {
-        Double[][] R = new Double[][] {
+    public static Double[][] calculate_ALS(double lambda, int vectorSize, int iterations) {
+        Double[][] R = new Double[][]{
                 {1d, 5d, 0d, 2d},
                 {2d, 3d, 1d, 3d},
                 {3d, 0d, 1d, 3d},
@@ -24,9 +24,9 @@ public class Recommend {
 
         Double[][] lambda_E = MathUtils.multiply(lambda, Generator.unitMatrix(vectorSize));
 
-        for(int i = 0; i < iterations; i++) {
+        for (int i = 0; i < iterations; i++) {
 
-            for(int u = 0; u < U.length; u++) {
+            for (int u = 0; u < U.length; u++) {
                 List<Integer> Iu = get_Iu(R, u);
 
                 Double[][] P_Iu = get_P_Iu(P, Iu);
@@ -40,7 +40,7 @@ public class Recommend {
                 CollectionUtils.paste(gaussResult, U, u);
             }
 
-            for(int p = 0; p < P[0].length; p++) {
+            for (int p = 0; p < P[0].length; p++) {
                 List<Integer> Ip = get_Ip(R, p);
 
                 Double[][] U_Ip = get_U_Ip(U, Ip);
@@ -59,23 +59,10 @@ public class Recommend {
         return MathUtils.multiply(MathUtils.transpose(U), P);
     }
 
-    private static Double[][] create_R (List<Recommendation> recommendations) {
-        int users = 3;
-        int products = 5;
-
-        Double[][] R = new Double[users][products];
-
-        for(Recommendation r : recommendations) {
-            R[r.getProductId() - 1][r.getUserId() - 1] = r.getRating();
-        }
-
-        return R;
-    }
-
     private static List<Integer> get_Iu(Double[][] R, Integer u) {
         List<Integer> Iu = new ArrayList<Integer>();
 
-        for(int i = 0; i < R[0].length; i++) {
+        for (int i = 0; i < R[0].length; i++) {
             if (R[u][i] != 0d) {
                 Iu.add(i);
             }
@@ -87,7 +74,7 @@ public class Recommend {
     private static List<Integer> get_Ip(Double[][] R, Integer p) {
         List<Integer> Ip = new ArrayList<Integer>();
 
-        for(int i = 0; i < R.length; i++) {
+        for (int i = 0; i < R.length; i++) {
             if (R[i][p] != 0d) {
                 Ip.add(i);
             }
@@ -99,7 +86,7 @@ public class Recommend {
     private static Double[][] get_P_Iu(Double[][] P, List<Integer> Iu) {
         Double[][] P_Iu = new Double[P.length][Iu.size()];
 
-        for(int i = 0; i < Iu.size(); i++) {
+        for (int i = 0; i < Iu.size(); i++) {
             CollectionUtils.copy(P, P_Iu, Iu.get(i), i);
         }
 
@@ -109,7 +96,7 @@ public class Recommend {
     private static Double[][] get_U_Ip(Double[][] U, List<Integer> Ip) {
         Double[][] U_Ip = new Double[U.length][Ip.size()];
 
-        for(int i = 0; i < Ip.size(); i++) {
+        for (int i = 0; i < Ip.size(); i++) {
             CollectionUtils.copy(U, U_Ip, Ip.get(i), i);
         }
 

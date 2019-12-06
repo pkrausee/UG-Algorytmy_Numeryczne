@@ -8,7 +8,7 @@ public class Generator {
     public static Double[] createVector(int length) {
         Double[] vector = new Double[length];
 
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             vector[i] = 0d;
         }
 
@@ -32,8 +32,8 @@ public class Generator {
 
         Double[][] matrix = new Double[rows][cols];
 
-        for(int i = 0; i < rows; i++) {
-            for(int j = 0; j < cols; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 matrix[i][j] = round(min + (max - min) * r.nextDouble(), 2);
             }
         }

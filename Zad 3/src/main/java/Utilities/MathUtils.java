@@ -66,7 +66,7 @@ public class MathUtils {
     }
 
     public static Double[][] add(Double[][] A, Double[][] B) {
-        if(A.length != B.length || A[0].length != B[0].length) {
+        if (A.length != B.length || A[0].length != B[0].length) {
             throw new IllegalArgumentException();
         }
 
@@ -87,7 +87,7 @@ public class MathUtils {
     public static Double[][] transpose(Double[][] matrix) {
         Double[][] transposed = new Double[matrix[0].length][matrix.length];
 
-        for (int i = 0; i < matrix.length; i++){
+        for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 transposed[j][i] = matrix[i][j];
             }
