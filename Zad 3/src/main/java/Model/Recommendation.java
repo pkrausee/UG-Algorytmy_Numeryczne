@@ -4,11 +4,13 @@ public class Recommendation {
     private Integer productId;
     private String userId;
     private Double rating;
+    private String category;
 
-    public Recommendation(Integer productId, String userId, Double rating) {
+    public Recommendation(Integer productId, String userId, Double rating, String category) {
         this.productId = productId;
         this.userId = userId;
         this.rating = rating;
+        this.category = category;
     }
 
     @Override
@@ -38,5 +40,13 @@ public class Recommendation {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

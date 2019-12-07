@@ -1,11 +1,11 @@
 package Utilities;
 
 public abstract class CollectionUtils {
-    public static void showRecommendationMatrix(Double[][] A) {
+    public static void showRecommendationMatrix(double[][] A) {
         String format = "| %1$-4s ";
 
-        for (Double[] row : A) {
-            for (Double value : row) {
+        for (double[] row : A) {
+            for (double value : row) {
                 System.out.format(format, value);
             }
             System.out.print("|\n");
@@ -14,30 +14,36 @@ public abstract class CollectionUtils {
         System.out.println();
     }
 
-    public static <TType> void swapRows(TType[] A, int src, int dest) {
-        TType temp = A[src];
+    public static void swapRows(double[] A, int src, int dest) {
+        double temp = A[src];
         A[src] = A[dest];
         A[dest] = temp;
     }
 
-    public static <TType> void swapRows(TType[][] A, int src, int dest) {
+    public static void swapRows(Integer[] A, int src, int dest) {
+        int temp = A[src];
+        A[src] = A[dest];
+        A[dest] = temp;
+    }
+
+    public static void swapRows(double[][] A, int src, int dest) {
         for (int i = 0; i < A[src].length; i++) {
-            TType temp = A[src][i];
+            double temp = A[src][i];
             A[src][i] = A[dest][i];
             A[dest][i] = temp;
         }
     }
 
-    public static <TType> void swapCols(TType[][] A, int src, int dest) {
+    public static void swapCols(double[][] A, int src, int dest) {
         for (int i = 0; i < A.length; i++) {
-            TType temp = A[i][src];
+            double temp = A[i][src];
             A[i][src] = A[i][dest];
             A[i][dest] = temp;
         }
     }
 
-    public static Double[] getCol(Double[][] src, int srcCol) {
-        Double[] col = new Double[src.length];
+    public static double[] getCol(double[][] src, int srcCol) {
+        double[] col = new double[src.length];
 
         for (int i = 0; i < src.length; i++) {
             col[i] = src[i][srcCol];
@@ -46,16 +52,16 @@ public abstract class CollectionUtils {
         return col;
     }
 
-    public static Double[] getRow(Double[][] src, int srcRow) {
-        Double[] row = new Double[src.length];
+    public static double[] getRow(double[][] src, int srcRow) {
+        double[] row = new double[src.length];
 
         System.arraycopy(src[srcRow], 0, row, 0, src.length);
 
         return row;
     }
 
-    public static Double[][] copy(Double[][] src) {
-        Double[][] copy = new Double[src.length][src[0].length];
+    public static double[][] copy(double[][] src) {
+        double[][] copy = new double[src.length][src[0].length];
 
         for (int i = 0; i < src.length; i++) {
             System.arraycopy(src[i], 0, copy[i], 0, src[i].length);
@@ -64,7 +70,7 @@ public abstract class CollectionUtils {
         return copy;
     }
 
-    public static <TType> void copy(TType[][] src, TType[][] dest, int srcCol, int destCol) {
+    public static void copy(double[][] src, double[][] dest, int srcCol, int destCol) {
         if (src.length != dest.length) {
             throw new IllegalArgumentException();
         }
@@ -74,7 +80,7 @@ public abstract class CollectionUtils {
         }
     }
 
-    public static <TType> void paste(TType[] src, TType[][] dest, int destCol) {
+    public static void paste(double[] src, double[][] dest, int destCol) {
         for (int i = 0; i < src.length; i++) {
             dest[i][destCol] = src[i];
         }
