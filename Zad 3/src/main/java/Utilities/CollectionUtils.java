@@ -1,6 +1,22 @@
 package Utilities;
 
 public abstract class CollectionUtils {
+    public static void show(double[] matrix) {
+        for (double value : matrix) {
+            System.out.format(value + " ");
+        }
+        System.out.println();
+    }
+
+    public static void show(double[][] matrix) {
+        for (double[] row : matrix) {
+            for (double value : row) {
+                System.out.format(value + " ");
+            }
+            System.out.print("\n");
+        }
+    }
+
     public static void showRecommendationMatrix(double[][] A) {
         String format = "| %1$-4s ";
 
@@ -71,10 +87,6 @@ public abstract class CollectionUtils {
     }
 
     public static void copy(double[][] src, double[][] dest, int srcCol, int destCol) {
-        if (src.length != dest.length) {
-            throw new IllegalArgumentException();
-        }
-
         for (int i = 0; i < src.length; i++) {
             dest[i][destCol] = src[i][srcCol];
         }
