@@ -1,7 +1,5 @@
 package Utilities;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Random;
 
 public class Generator {
@@ -33,6 +31,18 @@ public class Generator {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = (i == j) ? 1d : 0d;
+            }
+        }
+
+        return matrix;
+    }
+
+    public static double[][] generateMatrix(int rows, int cols) {
+        double[][] matrix = new double[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = 0;
             }
         }
 

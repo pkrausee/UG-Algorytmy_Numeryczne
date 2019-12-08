@@ -1,21 +1,26 @@
 package Model;
 
-public class Recommendation {
+public class Recommendation implements Comparable<Recommendation> {
     private Integer productId;
     private String userId;
     private Double rating;
-    private String category;
+    private String group;
 
-    public Recommendation(Integer productId, String userId, Double rating, String category) {
+    public Recommendation(Integer productId, String userId, Double rating, String group) {
         this.productId = productId;
         this.userId = userId;
         this.rating = rating;
-        this.category = category;
+        this.group = group;
     }
 
     @Override
     public String toString() {
         return this.productId + " | " + this.userId + " | " + this.rating;
+    }
+
+    @Override
+    public int compareTo(Recommendation r2) {
+        return this.userId.compareTo(r2.getUserId());
     }
 
     public Integer getProductId() {
@@ -42,11 +47,11 @@ public class Recommendation {
         this.rating = rating;
     }
 
-    public String getCategory() {
-        return category;
+    public String getGroup() {
+        return group;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setGroup(String group) {
+        this.group = group;
     }
 }

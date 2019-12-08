@@ -1,11 +1,15 @@
 import Recommendation.Recommend;
-import Utilities.CollectionUtils;
+
+import Test.Test_Convergence;
+import Test.Test_D;
 
 public class Main {
     public static void main(String[] args) {
-//        AmazonMetaFileCsvStats.getStats("amazon-meta.csv");
+        Recommend.check_Implementation();
 
-        double[][] R = Recommend.calculate_ALS("DVD", 0.1, 3, 100);
+        Test_Convergence.testParameters();
+        Test_D.test_fUP();
+        Test_D.test_timings();
 
     }
 }

@@ -18,7 +18,7 @@ public abstract class CollectionUtils {
     }
 
     public static void showRecommendationMatrix(double[][] A) {
-        String format = "| %1$-4s ";
+        String format = "| %.2f ";
 
         for (double[] row : A) {
             for (double value : row) {
@@ -80,7 +80,9 @@ public abstract class CollectionUtils {
         double[][] copy = new double[src.length][src[0].length];
 
         for (int i = 0; i < src.length; i++) {
-            System.arraycopy(src[i], 0, copy[i], 0, src[i].length);
+            for (int j = 0; j < src[0].length; j++) {
+                copy[i][j] = src[i][j];
+            }
         }
 
         return copy;
