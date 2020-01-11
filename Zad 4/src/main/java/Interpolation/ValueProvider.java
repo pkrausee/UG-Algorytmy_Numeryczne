@@ -8,7 +8,10 @@ import java.net.URL;
 
 public class ValueProvider {
     public static String getGoogleApiData() throws Exception {
-        URL url = new URL("https://maps.googleapis.com/maps/api/elevation/json?path={point1}|{point2}&key={key}&samples={samples}");
+        String googleApi = "https://maps.googleapis.com/maps/api/elevation/json";
+        String path = "{point1}|{point2}&key={key}&samples={samples}";
+
+        URL url = new URL(googleApi + "?path=" + path);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         Reader streamReader;

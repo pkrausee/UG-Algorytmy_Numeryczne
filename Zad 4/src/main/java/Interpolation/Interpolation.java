@@ -9,9 +9,6 @@ public class Interpolation {
         vector = CollectionUtils.addOnStart(vector, 0);
         vector = CollectionUtils.addOnEnd(vector, 0);
 
-        System.out.println(diff);
-        CollectionUtils.show(vector);
-
         double r1 = (Math.pow(point - xs[diff + 1], 3) / (xs[diff] - xs[diff + 1])
                 - (point - xs[diff + 1]) * (xs[diff] - xs[diff + 1]))
                 * vector[diff] / 6;

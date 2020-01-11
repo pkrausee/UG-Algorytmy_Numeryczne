@@ -1,4 +1,4 @@
-package Interpolation;
+package Interpolation.Utils;
 
 import Utilities.CollectionUtils;
 import org.javatuples.Pair;
