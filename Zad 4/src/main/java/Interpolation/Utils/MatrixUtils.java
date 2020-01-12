@@ -66,4 +66,14 @@ public class MatrixUtils {
 
         return new double[]{Mj0, Mj1, Mj2, b};
     }
+
+    public static double norm(double[] vector) {
+        double result = 0;
+
+        for (double v : vector) {
+            result += Math.pow(v, 2);
+        }
+
+        return Math.sqrt(result);
+    }
 }

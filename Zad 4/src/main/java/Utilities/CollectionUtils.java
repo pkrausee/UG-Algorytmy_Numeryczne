@@ -1,5 +1,8 @@
 package Utilities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class CollectionUtils {
     public static void show(double[] matrix) {
         for (double value : matrix) {
@@ -111,6 +114,16 @@ public abstract class CollectionUtils {
 
         for (int i = 0; i < a.length; i++) {
             System.arraycopy(a[i], 0, copy[i], 0, a[i].length);
+        }
+
+        return copy;
+    }
+
+    public static <T> List<T> copy(List<T> list, int quantity) {
+        List<T> copy = new ArrayList<>();
+
+        for (int i = 0; i < quantity; i++) {
+            copy.add(list.get(i));
         }
 
         return copy;
