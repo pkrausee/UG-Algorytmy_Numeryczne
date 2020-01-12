@@ -1,7 +1,6 @@
 package Interpolation.Utils;
 
 import Interpolation.Model.Point;
-
 import java.util.List;
 
 public class PointHelper {

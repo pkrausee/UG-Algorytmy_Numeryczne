@@ -1,7 +1,14 @@
 package Interpolation.Utils;
 
+import Interpolation.Model.Location;
+import Interpolation.Model.SparseLocation;
 import Utilities.CollectionUtils;
 import org.javatuples.Pair;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class MatrixUtils {
     /*
@@ -38,6 +45,27 @@ public class MatrixUtils {
         }
 
         return new Pair<>(matrix, vector);
+    }
+
+    public static Pair<Map<SparseLocation, Double>, double[]> getMatrixForSparse(double[] xs, double[] hs, double[] ys) {
+        Map<SparseLocation, Double> locationDict = new HashMap<>();
+        double[] vector = new double[0];
+
+        for (int i = 1; i < xs.length - 1; i++) {
+            double[] Ms = getMs(hs, ys, i);
+
+            vector = CollectionUtils.addOnEnd(vector, Ms[3], 1);
+
+            int row = i - 2;
+            locationDict.put(new SparseLocation(i - 1, row), Ms[0]);
+            locationDict.put(new SparseLocation(i - 1, row + 1), Ms[1]);
+            locationDict.put(new SparseLocation(i - 1, row + 2), Ms[2]);
+        }
+
+        locationDict.remove(new SparseLocation(0, -1));
+        locationDict.remove(new SparseLocation(xs.length - 3, xs.length - 2));
+
+        return new Pair<>(locationDict, vector);
     }
 
     private static double[] getRowValues(int i, int matrixSize, double[] Ms) {

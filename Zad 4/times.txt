@@ -1,0 +1,96 @@
+Size: 500
+
+Gauss: 1.5234183 sec
+
+Gauss-Seidel: 0.113804 sec
+
+Jacobi: 0.1056804 sec
+Size: 1000
+
+Gauss: 14.3823685 sec
+
+Gauss-Seidel: 0.3976393 sec
+
+Jacobi: 0.5001759 sec
+Size: 1500
+
+Gauss: 49.2978671 sec
+
+Gauss-Seidel: 0.8393193 sec
+
+Jacobi: 1.097268 sec
+Size: 2000
+
+Gauss: 113.2275425 sec
+
+Gauss-Seidel: 1.6172317 sec
+
+Jacobi: 1.8615087 sec
+Size: 2500
+
+Gauss: 239.7305572 sec
+
+Gauss-Seidel: 2.6521064 sec
+
+Jacobi: 3.0808561 sec
+Size: 3000
+
+Gauss: 393.1544923 sec
+
+Gauss-Seidel: 3.6554828 sec
+
+Jacobi: 4.2797797 sec
+Size: 3500
+
+Gauss: 617.7696963 sec
+
+Gauss-Seidel: 4.8061936 sec
+
+Jacobi: 5.6496169 sec
+Size: 4000
+
+Gauss: 867.8978068 sec
+
+Gauss-Seidel: 6.1146682 sec
+
+Jacobi: 6.8198516 sec
+Size: 4500
+
+Gauss: 1102.0737674 sec
+
+Gauss-Seidel: 7.4880246 sec
+
+Jacobi: 9.0799981 sec
+Size: 5000
+
+Gauss: 1559.5640329 sec
+
+Gauss-Seidel: 8.9847048 sec
+
+Jacobi: 10.2360203 sec
+Size: 5500
+
+Gauss: 2088.0486043 sec
+
+Gauss-Seidel: 11.8697483 sec
+
+Jacobi: 13.3347504 sec
+
+Size: 10000
+
+Gauss-Seidel: 2.1090253 sec
+Jacobi: 4.879079 sec
+Sparse: 0.0535258 sec
+External Lib: 0.0083198 sec
+
+Size: 15000
+
+Gauss-Seidel: 4.0685896 sec
+Jacobi: 10.5485378 sec
+Sparse: 0.0720106 sec
+External Lib: 0.008535 sec
+
+Size: 20000
+
+Sparse: 0.0927941 sec
+External Lib: 0.010964 sec

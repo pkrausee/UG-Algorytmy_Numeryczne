@@ -1,7 +1,11 @@
 package Utilities;
 
+import Interpolation.Model.Location;
+import Interpolation.Model.SparseLocation;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract class CollectionUtils {
     public static void show(double[] matrix) {
@@ -17,6 +21,13 @@ public abstract class CollectionUtils {
                 System.out.format(value + " ");
             }
             System.out.print("\n");
+        }
+    }
+
+    public static void show(Map<SparseLocation, Double> map) {
+        for(Map.Entry<SparseLocation, Double> entry : map.entrySet()) {
+            System.out.print(entry.getKey().getLat() + " " + entry.getKey().getLng());
+            System.out.print(" " + entry.getValue() + "\n");
         }
     }
 

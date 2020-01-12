@@ -1,6 +1,8 @@
 package Interpolation.Model;
 
-public class Location {
+import java.util.Objects;
+
+public class Location implements Comparable<Location>{
     private double lat;
     private double lng;
 
@@ -26,5 +28,9 @@ public class Location {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public int compareTo(Location o) {
+        return Double.compare(lat, o.lat);
     }
 }
