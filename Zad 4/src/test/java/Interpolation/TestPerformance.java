@@ -117,10 +117,10 @@ public class TestPerformance {
 //        end = System.nanoTime();
 //        System.out.println("Jacobi: " + (double) (end - start) / 1000000000 + " sec");
 
-//        start = System.nanoTime();
-//        Interpolation.getResult(xs, ys, Sparse.calculate(sparseMatrix, sparseVector, 20), 1);
-//        end = System.nanoTime();
-//        System.out.println("Sparse: " + (double) (end - start) / 1000000000 + " sec");
+        start = System.nanoTime();
+        Interpolation.getResult(xs, ys, Sparse.calculate(sparseMatrix, sparseVector, 20), 1);
+        end = System.nanoTime();
+        System.out.println("Sparse: " + (double) (end - start) / 1000000000 + " sec");
 
         start = System.nanoTime();
         ExternalInterpolationLib.getResult(xs, ys, 1);
