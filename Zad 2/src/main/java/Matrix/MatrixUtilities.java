@@ -2,8 +2,6 @@ package Matrix;
 
 import Adapters.INumberAdapter;
 
-import java.util.ArrayDeque;
-
 public class MatrixUtilities {
 
     public static <TType> void swapRows(TType[] A, int src, int dest) {

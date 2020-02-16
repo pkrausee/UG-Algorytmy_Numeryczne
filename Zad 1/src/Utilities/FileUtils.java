@@ -1,5 +1,3 @@
-// Paweł Krause - 253983 - Algorytmy numeryczne - Zadanie 1
-
 package Utilities;
 
 import Models.QTestResult;
